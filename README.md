@@ -1,2 +1,3 @@
-# kiwi-components
-*WIP* Kiwigrid Web Components
+# Kiwi Components | Web Components
+
+**Project status: work in progress**
