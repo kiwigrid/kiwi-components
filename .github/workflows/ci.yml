@@ -28,3 +28,16 @@ jobs:
       - run: npm run install:all
       - run: npm run lint:all
       - run: npm run test:all
+      - run: npm run test:e2e:all
+  build:
+    runs-on: ubuntu-latest
+    name: Build
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm install
+      - run: npm run install:all
+      - run: npm run build:all
