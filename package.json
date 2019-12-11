@@ -6,6 +6,7 @@
     "audit:all": "lerna exec -- npm audit",
     "lint:all": "lerna run --parallel lint",
     "test:all": "lerna run --parallel test",
+    "test:e2e:all": "lerna run --parallel test:e2e",
     "build:all": "lerna run --parallel build",
     "lerna:publish": "lerna publish"
   },
