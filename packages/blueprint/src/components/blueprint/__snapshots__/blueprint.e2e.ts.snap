@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kiwi-blueprint should show default message 1`] = `
+<kiwi-blueprint class="hydrated">
+  <mock:shadow-root>
+    <p>
+      Say 'Hello!' to awesome Web Components
+    </p>
+  </mock:shadow-root>
+</kiwi-blueprint>
+`;
+
+exports[`kiwi-blueprint should show message from attribute 1`] = `
+<kiwi-blueprint class="hydrated" message="E2E Test!">
+  <mock:shadow-root>
+    <p>
+      Say 'E2E Test!' to awesome Web Components
+    </p>
+  </mock:shadow-root>
+</kiwi-blueprint>
+`;
