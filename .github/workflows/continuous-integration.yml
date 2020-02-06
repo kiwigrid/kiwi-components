@@ -13,6 +13,12 @@ jobs:
           node-version: '12.x'
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Copy .npmrc file
+        uses: canastro/copy-file-action@master
+        with:
+          source: '.github/workflows/.npmrc'
+          target: '.npmrc'
+
       - name: Cache node modules
         uses: actions/cache@v1
         env:
