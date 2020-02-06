@@ -6,7 +6,7 @@
   "module": "dist/index.mjs",
   "es2015": "dist/esm/index.mjs",
   "es2017": "dist/esm/index.mjs",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/types/components.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/blueprint/blueprint.js",
@@ -17,6 +17,7 @@
   "scripts": {
     "build": "stencil build --docs",
     "start": "stencil build --dev --watch --serve",
+    "clean": "rimraf dist loader www .stencil",
     "lint": "echo \"N/A\"",
     "test": "stencil test --spec",
     "test:e2e": "stencil test --e2e",
