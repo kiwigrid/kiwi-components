@@ -18,6 +18,8 @@ jobs:
         with:
           source: '.github/workflows/.npmrc'
           target: '.npmrc'
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
       - name: Cache node modules
         uses: actions/cache@v1
