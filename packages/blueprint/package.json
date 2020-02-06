@@ -1,5 +1,5 @@
 {
-  "name": "@kiwi-components/blueprint",
+  "name": "@kiwigrid/kiwi-blueprint",
   "description": "Say 'Hello!' to awesome Web Components",
   "version": "0.0.1",
   "main": "dist/index.js",
