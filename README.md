@@ -21,9 +21,9 @@ This project uses conventional commit messages. This leads to more readable mess
     <footer>
 
 `type` should be one of the `type-enum` in the file `.commitlintrc.yml`. \
-`scope` is a lerna package (folder below `packages` directory).
+`scope` is a lerna package.
 
 #### Examples
 
-    feat(blueprint): add message property
+    feat(kiwi-blueprint): add message property
     ci: add continuous integration github action
