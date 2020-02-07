@@ -16,6 +16,11 @@
       "conventionalCommits": true,
       "yes": true,
       "message": "core: release"
+    },
+    "version": {
+      "conventionalCommits": true,
+      "yes": true,
+      "message": "core: release"
     }
   }
 }
