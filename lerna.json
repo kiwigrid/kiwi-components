@@ -12,13 +12,10 @@
     "**/*.md"
   ],
   "command": {
-    "version": {
-      "conventionalCommits": true,
-      "yes": true
-    },
     "publish": {
       "conventionalCommits": true,
-      "yes": true
+      "yes": true,
+      "message": "core: release"
     }
   }
 }
