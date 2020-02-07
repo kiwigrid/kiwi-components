@@ -1,15 +1,14 @@
 name: continuous-delivery
 
 on:
-  pull_request:
-    types: [closed]
+  push:
     branches:
       - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged
+    if: '!contains(github.event.head_commit.author.email, "github@kiwigrid.com")'
 
     steps:
       - uses: actions/checkout@v2
