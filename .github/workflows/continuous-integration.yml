@@ -16,10 +16,7 @@ jobs:
       - name: Add .npmrc file
         run: echo //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN >> .npmrc
         env:
-          NPM_AUTH_TOKEN: ${{ secrets.TEST_SECRET }}
-
-      - name: Print .npmrc file
-        run: cat .npmrc
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
       - name: Cache node modules
         uses: actions/cache@v1
