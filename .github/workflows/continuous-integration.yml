@@ -13,11 +13,6 @@ jobs:
           node-version: '12.x'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Add .npmrc file
-        run: echo //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN >> .npmrc
-        env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-
       - name: Cache node modules
         uses: actions/cache@v1
         env:
