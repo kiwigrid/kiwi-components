@@ -18,6 +18,11 @@ jobs:
           node-version: '12.x'
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Set git config
+        run: |
+          git config --local user.email "github@kiwigrid.com"
+          git config --local user.name "Kiwigrid | GitHub"
+
       - name: Add .npmrc file
         run: echo //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN >> .npmrc
         env:
