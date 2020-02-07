@@ -9,3 +9,6 @@ dist
 
 # node and npm
 .npmrc
+
+# lerna
+lerna-debug.log
