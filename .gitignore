@@ -6,3 +6,9 @@ node_modules
 
 # output
 dist
+
+# node and npm
+.npmrc
+
+# lerna
+lerna-debug.log

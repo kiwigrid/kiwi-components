@@ -3,10 +3,19 @@
     "packages/*"
   ],
   "version": "independent",
+  "ignoreChanges": [
+    "**/__snapshots__/**",
+    "**/__fixtures__/**",
+    "**/__tests__/**",
+    "**/*.spec.*",
+    "**/*.e2e.*",
+    "**/*.md"
+  ],
   "command": {
     "publish": {
       "conventionalCommits": true,
-      "yes": true
+      "yes": true,
+      "message": "core: release"
     }
   }
 }
