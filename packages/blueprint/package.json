@@ -25,7 +25,7 @@
     "generate": "stencil generate"
   },
   "devDependencies": {
-    "@stencil/core": "1.8.1",
+    "@stencil/core": "1.12.3",
     "@types/jest": "24.0.23",
     "@types/puppeteer": "1.20.3",
     "jest": "24.9.0",
