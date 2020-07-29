@@ -1,4 +1,4 @@
-name: continuous-delivery
+name: lerna-version
 
 on: pull_request_review
 
