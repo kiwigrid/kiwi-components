@@ -8,7 +8,7 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: github.event.pull_request_review.review.state == "approved" && env.MERGEABLE
+    if: (github.event.pull_request_review.review.state == 'approved') && env.MERGEABLE
 
     steps:
       - uses: actions/checkout@v2
