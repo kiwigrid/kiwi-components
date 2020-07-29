@@ -11,7 +11,8 @@
     "test:e2e:all": "lerna run --parallel test:e2e",
     "build:all": "lerna run --parallel build",
     "lerna:version": "lerna version",
-    "lerna:publish": "lerna publish"
+    "lerna:publish": "lerna publish",
+    "lerna:publish:from-git": "lerna publish from-git"
   },
   "devDependencies": {
     "@commitlint/cli": "8.3.5",

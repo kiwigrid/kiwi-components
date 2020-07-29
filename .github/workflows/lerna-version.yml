@@ -1,15 +1,14 @@
 name: continuous-delivery
 
-on:
-  pull_request:
-    types: [closed]
-    branches:
-      - master
+on: pull_request_review
+
+env:
+  MERGEABLE: $(curl -s ${{github.event.pull_request_review.pull_request_url}} | jq .mergeable)
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged
+    if: github.event.pull_request_review.review.state == "approved" && env.MERGEABLE
 
     steps:
       - uses: actions/checkout@v2
@@ -22,11 +21,6 @@ jobs:
         run: |
           git config --local user.email "github@kiwigrid.com"
           git config --local user.name "Kiwigrid | GitHub"
-
-      - name: Add .npmrc file
-        run: echo //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN >> .npmrc
-        env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
       - name: Cache node modules
         uses: actions/cache@v1
@@ -58,5 +52,5 @@ jobs:
       - name: Build all packages
         run: npm run build:all
 
-      - name: Publish packages
-        run: npm run lerna:publish:from-git
+      - name: Version packages
+        run: npm run lerna:version
