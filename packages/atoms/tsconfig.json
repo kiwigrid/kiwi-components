@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "declaration": false,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "lib": ["dom", "es2017"],
+    "baseUrl": "." /* Base directory to resolve non-absolute module names. */,
+    "moduleResolution": "node",
+    "module": "esnext",
+    "target": "es2017",
+    // "noUnusedLocals": true,
+    // "noUnusedParameters": true,
+    "jsx": "react",
+    "jsxFactory": "h",
+    "strict": true
+  },
+  "include": ["src", "types/jsx.d.ts"],
+  "exclude": ["node_modules"]
+}

@@ -1,0 +1,24 @@
+<script>
+  // Replace Stencil Polyfill document.baseURI
+  if (typeof document.baseURI !== 'string') {
+    Object.defineProperty(Document.prototype, 'baseURI', {
+      enumerable: true,
+      configurable: true,
+      get: function () {
+        var base = document.querySelector('base');
+        if (base && base.href) {
+          return base.href;
+        }
+        return document.URL;
+      },
+    });
+  }
+</script>
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://storage.googleapis.com/library-bootstrap/files/7.19.1/kiwigrid/theme.min.css"
+/>
+<script type="module" src="/build/atoms.esm.js"></script>
+<script nomodule src="/build/atoms.js"></script>

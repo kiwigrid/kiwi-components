@@ -1,0 +1,4 @@
+kiwi-breadcrumb-item:not(:last-child) li::after {
+  content: '»';
+  padding: 0 0.75rem;
+}

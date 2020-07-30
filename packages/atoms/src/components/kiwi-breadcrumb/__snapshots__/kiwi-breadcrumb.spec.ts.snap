@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kiwi-breadcrumb renders 1`] = `
+<kiwi-breadcrumb>
+  <!---->
+  <nav>
+    <ol class="align-items-center breadcrumb d-flex"></ol>
+  </nav>
+</kiwi-breadcrumb>
+`;

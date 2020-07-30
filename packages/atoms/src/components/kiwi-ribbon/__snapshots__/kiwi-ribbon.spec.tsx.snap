@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kiwi-ribbon renders 1`] = `
+<kiwi-ribbon>
+  <div class="bg-primary ribbon-inner text-default"></div>
+</kiwi-ribbon>
+`;

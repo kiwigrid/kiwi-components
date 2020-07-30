@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kiwi-labeled-checkbox renders 1`] = `
+<kiwi-labeled-checkbox label="My Checkbox" name="my-checkbox">
+  <!---->
+  <div class="checkbox form-group">
+    <input id="my-checkbox" name="my-checkbox" type="checkbox" style="pointer-events: all;">
+    <label htmlfor="my-checkbox" style="pointer-events: all;">
+      My Checkbox
+    </label>
+  </div>
+</kiwi-labeled-checkbox>
+`;
+
+exports[`kiwi-labeled-checkbox renders: checked 1`] = `
+<kiwi-labeled-checkbox checked="true" label="My Checkbox" name="my-checkbox">
+  <!---->
+  <div class="checkbox form-group">
+    <input checked="" id="my-checkbox" name="my-checkbox" type="checkbox" style="pointer-events: all;">
+    <label htmlfor="my-checkbox" style="pointer-events: all;">
+      My Checkbox
+    </label>
+  </div>
+</kiwi-labeled-checkbox>
+`;

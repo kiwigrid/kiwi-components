@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kiwi-dropdown renders: initially closed 1`] = `
+<kiwi-dropdown container-class="fanzy">
+  <!---->
+  <div class="btn-group dropdown fanzy">
+    <button class="btn btn-default dropdown-toggle">
+      <span slot="dropdown-toggle">
+        Toggle Me
+      </span>
+    </button>
+    <div class="dropdown-menu">
+      <span slot="dropdown-content">
+        Boring content
+      </span>
+    </div>
+  </div>
+</kiwi-dropdown>
+`;
+
+exports[`kiwi-dropdown renders: opened on click 1`] = `
+<kiwi-dropdown container-class="fanzy">
+  <!---->
+  <div class="btn-group dropdown fanzy open">
+    <button class="btn btn-default dropdown-toggle">
+      <span slot="dropdown-toggle">
+        Toggle Me
+      </span>
+    </button>
+    <div class="dropdown-menu">
+      <span slot="dropdown-content">
+        Boring content
+      </span>
+    </div>
+  </div>
+</kiwi-dropdown>
+`;

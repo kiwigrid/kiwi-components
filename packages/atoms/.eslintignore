@@ -1,0 +1,13 @@
+api
+www
+target
+dist
+loader
+node
+node_modules
+stencil.config.ts
+jest.globalSetup.ts
+jest.config.js
+scripts
+storybook-static
+__mocks__
