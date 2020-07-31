@@ -2,6 +2,7 @@
   "name": "@kiwigrid/kiwi-blueprint",
   "description": "Say 'Hello!' to awesome Web Components",
   "version": "0.0.1",
+  "private": true,
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "es2015": "dist/esm/index.mjs",

@@ -12,3 +12,6 @@ dist
 
 # lerna
 lerna-debug.log
+
+# storybook
+storybook-static

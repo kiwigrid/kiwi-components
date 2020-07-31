@@ -9,7 +9,7 @@
   "types": "dist/types/components.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/kiwi-atoms/kiwi-atoms.js",
+  "unpkg": "dist/atoms/atoms.js",
   "files": [
     "dist/",
     "loader/"
