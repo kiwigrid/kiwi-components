@@ -3,8 +3,16 @@ import { KiwiDropdown } from '../kiwi-dropdown/kiwi-dropdown';
 import { KiwiCheckboxDropdownMenu } from './kiwi-checkbox-dropdown-menu';
 
 describe('kiwi-checkbox-dropdown-menu', () => {
-  it('builds', () => {
-    expect(new KiwiCheckboxDropdownMenu()).toBeTruthy();
+  it('builds', async () => {
+    const dropdown = await newSpecPage({
+      components: [KiwiCheckboxDropdownMenu],
+      html: `
+        <kiwi-checkbox-dropdown-menu>
+        </kiwi-checkbox-dropdown-menu>
+      `,
+    });
+
+    expect(dropdown.root).toBeTruthy();
   });
 
   it('renders', async () => {

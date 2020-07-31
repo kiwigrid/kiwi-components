@@ -2,8 +2,12 @@ import { newSpecPage } from '@stencil/core/testing';
 import { KiwiCheckboxMenuItem } from './kiwi-checkbox-menu-item';
 
 describe('kiwi-checkbox-menu-item', () => {
-  it('builds', () => {
-    expect(new KiwiCheckboxMenuItem()).toBeTruthy();
+  it('builds', async () => {
+    const item = await newSpecPage({
+      components: [KiwiCheckboxMenuItem],
+      html: `<kiwi-checkbox-menu-item></kiwi-checkbox-menu-item>`,
+    });
+    expect(item.root).toBeTruthy();
   });
 
   it('renders', async () => {
