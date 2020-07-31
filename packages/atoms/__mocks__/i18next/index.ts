@@ -1,8 +1,6 @@
 import i18next from 'i18next';
-import incDE from '../../src/components/inc/inc-i18n-provider/assets/locales/de/inc.json';
-import commonDE from '../../src/components/inc/inc-i18n-provider/assets/locales/de/common.json';
-import incEN from '../../src/components/inc/inc-i18n-provider/assets/locales/en/inc.json';
-import commonEN from '../../src/components/inc/inc-i18n-provider/assets/locales/en/common.json';
+import commonDE from './assets/de/common.json';
+import commonEN from './assets/en/common.json';
 
 const init = i18next.init.bind(i18next);
 
@@ -14,11 +12,9 @@ i18next.init = jest.fn((opts, cb) =>
       resources: {
         en: {
           common: commonEN,
-          inc: incEN,
         },
         de: {
           common: commonDE,
-          inc: incDE,
         },
       },
     },

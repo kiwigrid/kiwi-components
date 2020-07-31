@@ -22,10 +22,10 @@ describe('kiwi-i18next-provider', () => {
       html: `<kiwi-i18next-provider lng="de"></kiwi-i18next-provider>`,
     });
 
-    expect(store.get('t')('inc:label.energyPlant')).toEqual('Anlage');
+    expect(store.get('t')('common:hello')).toEqual('Hallo');
 
     (page.rootInstance as KiwiI18nextProvider).lng = 'en';
 
-    expect(store.get('t')('inc:label.energyPlant')).toEqual('Energy plant');
+    expect(store.get('t')('common:hello')).toEqual('Hello');
   });
 });
