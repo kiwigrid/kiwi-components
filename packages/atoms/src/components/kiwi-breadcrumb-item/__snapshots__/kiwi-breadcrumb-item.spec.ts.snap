@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kiwi-breadcrumb-item renders 1`] = `
+<kiwi-breadcrumb-item>
+  <!---->
+  <li class="breadcrumb-item"></li>
+</kiwi-breadcrumb-item>
+`;

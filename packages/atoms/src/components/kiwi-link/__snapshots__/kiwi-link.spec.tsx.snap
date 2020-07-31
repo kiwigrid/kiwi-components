@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kiwi-link renders 1`] = `
+<kiwi-link to="https://google.com">
+  <!---->
+  <a href="https://google.com">
+    Google
+  </a>
+</kiwi-link>
+`;

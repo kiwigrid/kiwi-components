@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kiwi-checkbox-dropdown-menu renders 1`] = `
+<kiwi-checkbox-dropdown-menu>
+  <!---->
+  <kiwi-dropdown>
+    <!---->
+    <div class="btn-group checkbox-dropdown-menu dropdown">
+      <button class="btn btn-default dropdown-toggle">
+        <span slot="dropdown-toggle">
+          Toggle
+        </span>
+      </button>
+      <div class="dropdown-menu">
+        <span slot="dropdown-content">
+          Content
+        </span>
+      </div>
+    </div>
+  </kiwi-dropdown>
+</kiwi-checkbox-dropdown-menu>
+`;

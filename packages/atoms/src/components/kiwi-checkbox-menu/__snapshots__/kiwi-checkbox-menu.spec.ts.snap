@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kiwi-checkbox-menu renders 1`] = `
+<kiwi-checkbox-menu>
+  <!---->
+  <ul class="checkbox-menu mb-0">
+    <li>
+      There can be only one
+    </li>
+  </ul>
+</kiwi-checkbox-menu>
+`;

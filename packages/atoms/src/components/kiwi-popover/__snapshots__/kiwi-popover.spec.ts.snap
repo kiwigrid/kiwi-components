@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kiwi-popover renders 1`] = `
+<kiwi-popover>
+  <!---->
+  <div aria-describedby="kiwi-popper-content">
+    <div slot="popover-ref">
+      toggle
+    </div>
+  </div>
+  <div class="fade m-0 popover" id="kiwi-popper-content" role="tooltip" style="display: inherit; min-width: 150px; max-width: 300px;">
+    <div class="arrow m-0" data-popper-arrow></div>
+    <div class="popover-content">
+      <div slot="popover-content">
+        content
+      </div>
+    </div>
+  </div>
+</kiwi-popover>
+`;
+
+exports[`kiwi-popover renders with title 1`] = `
+<kiwi-popover show-title="true">
+  <!---->
+  <div aria-describedby="kiwi-popper-content">
+    <div slot="popover-ref">
+      toggle
+    </div>
+  </div>
+  <div class="fade m-0 popover" id="kiwi-popper-content" role="tooltip" style="display: inherit; min-width: 150px; max-width: 300px;">
+    <div class="arrow m-0" data-popper-arrow></div>
+    <div class="popover-title">
+      <span slot="popover-title">
+        My Popover
+      </span>
+    </div>
+    <div class="popover-content">
+      <div slot="popover-content">
+        content
+      </div>
+    </div>
+  </div>
+</kiwi-popover>
+`;

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kiwi-i18next renders: de 1`] = `
+<kiwi-i18next msgkey="inc:label.energyPlant">
+  Anlage
+</kiwi-i18next>
+`;
+
+exports[`kiwi-i18next renders: en 1`] = `
+<kiwi-i18next msgkey="inc:label.energyPlant">
+  Energy plant
+</kiwi-i18next>
+`;

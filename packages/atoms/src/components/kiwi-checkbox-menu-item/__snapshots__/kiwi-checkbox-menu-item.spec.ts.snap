@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kiwi-checkbox-menu-item renders 1`] = `
+<kiwi-checkbox-menu-item>
+  <!---->
+  <li class="checkbox-menu-item pointer">
+    <span>
+      Slot Child
+    </span>
+  </li>
+</kiwi-checkbox-menu-item>
+`;

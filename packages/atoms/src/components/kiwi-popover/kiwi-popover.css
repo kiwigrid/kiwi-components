@@ -1,0 +1,14 @@
+kiwi-popover {
+  display: inline-block;
+  position: relative;
+}
+
+.popover.fade {
+  z-index: -1;
+  visibility: hidden;
+  transition: opacity 0.15s linear, visibility 0.15s linear;
+}
+.popover.fade.in {
+  z-index: 1010;
+  visibility: visible;
+}

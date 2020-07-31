@@ -1,0 +1,35 @@
+kiwi-ribbon {
+  width: 85px;
+  height: 88px;
+  overflow: hidden;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 10;
+}
+
+.ribbon-inner {
+  text-align: center;
+  transform: rotateZ(45deg);
+  position: relative;
+  padding: 7px 0;
+  left: -5px;
+  top: 11px;
+  width: 120px;
+  font-size: 15px;
+  box-shadow: 0px -1px 2px 0px #000b;
+}
+
+.ribbon-inner:before,
+.ribbon-inner:after {
+  content: '';
+  position: absolute;
+}
+
+.ribbon-inner:before {
+  left: 0;
+}
+
+.ribbon-inner:after {
+  right: 0;
+}
