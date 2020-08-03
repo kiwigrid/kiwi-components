@@ -1,7 +1,7 @@
 {
   "name": "@kiwigrid/kiwi-atoms",
   "description": "Common Components for Kiwigrid Apps",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "es2015": "dist/esm/index.mjs",
