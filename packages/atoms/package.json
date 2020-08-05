@@ -18,7 +18,7 @@
     "clean": "rimraf dist loader www .stencil",
     "lint": "eslint --fix '*/**/*.{ts,tsx}'",
     "start": "run-p start:stencil start:storybook",
-    "start:stencil": "stencil build --docs --dev --watch --serve",
+    "start:stencil": "stencil build --docs --dev --watch --serve --port 3334",
     "start:storybook": "start-storybook -p 6006 -s www",
     "test": "NODE_ICU_DATA=node_modules/full-icu stencil test --spec",
     "test:watch": "NODE_ICU_DATA=node_modules/full-icu stencil test --spec --watchAll",

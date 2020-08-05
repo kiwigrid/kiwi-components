@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { TFunction } from "i18next";
 import { NavigateToEvent } from "./components/kiwi-link/kiwi-link";
 import { Placement } from "@popperjs/core/lib";
 import { Modifier } from "@popperjs/core/lib/types";
@@ -269,6 +270,7 @@ declare namespace LocalJSX {
           * Namespaces to be loaded by i18next
          */
         "ns"?: string[];
+        "onTFunctionChanged"?: (event: CustomEvent<TFunction>) => void;
     }
     interface KiwiLabeledCheckbox {
         /**

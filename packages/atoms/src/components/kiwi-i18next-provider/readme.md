@@ -14,6 +14,13 @@
 | `ns`                        | --               | Namespaces to be loaded by i18next           | `string[]` | `['common']` |
 
 
+## Events
+
+| Event              | Description | Type                     |
+| ------------------ | ----------- | ------------------------ |
+| `tFunctionChanged` |             | `CustomEvent<TFunction>` |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
