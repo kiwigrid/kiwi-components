@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-atoms@0.1.0...@kiwigrid/kiwi-atoms@0.1.1) (2020-08-05)
+
+
+### Bug Fixes
+
+* **kiwi-atoms:** expose i18next t function in kiwi-i18next-provider ([22d8f42](https://github.com/kiwigrid/kiwi-components/commit/22d8f42f259ebe4af05556d040a9795b188cd27c))
+
+
+
+
+
 # 0.1.0 (2020-08-03)
 
 
