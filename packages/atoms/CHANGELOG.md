@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-atoms@0.1.1...@kiwigrid/kiwi-atoms@0.2.0) (2020-08-17)
+
+
+### Features
+
+* **kiwi-atoms:** added new component kiwi-modal ([b4361a5](https://github.com/kiwigrid/kiwi-components/commit/b4361a5478a92add361b4b92787f703af8c6d4b1))
+
+
+
+
+
 ## [0.1.1](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-atoms@0.1.0...@kiwigrid/kiwi-atoms@0.1.1) (2020-08-05)
 
 
