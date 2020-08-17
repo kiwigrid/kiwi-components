@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kiwi-modal renders 1`] = `
+<kiwi-modal cancel-text="Cancel" id="modalId" ok-text="Ok" open="" with-footer="true" with-header="true">
+  <!---->
+  <div class="modal show">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-default modal-header">
+          <button aria-hidden="true" class="close" type="close">
+            ×
+          </button>
+          <h4 class="modal-title">
+            <i slot="modal-title">
+              Italic Modal Header
+            </i>
+          </h4>
+        </div>
+        <div class="modal-body">
+          <div slot="modal-body">
+            Press Escape to close the modal
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-link">
+            Cancel
+          </button>
+          <button class="btn btn-primary">
+            Ok
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</kiwi-modal>
+`;

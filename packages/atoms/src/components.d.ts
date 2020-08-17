@@ -75,6 +75,32 @@ export namespace Components {
          */
         "to": string | NavigateToEvent;
     }
+    interface KiwiModal {
+        /**
+          * Set this text to show the cancel button, remember to set "withFooter" to show the cancel button
+         */
+        "cancelText"?: string;
+        /**
+          * Set to true if the modal should be closed on Escape press
+         */
+        "escape"?: boolean;
+        /**
+          * Sets the text of the ok button, remember to set "withFooter" to show the ok button
+         */
+        "okText"?: string;
+        /**
+          * Set this to true to show the modal or alternatively set an id to this element and dispatch a 'showKiwiModal' CustomEvent with the id as event.detail
+         */
+        "open"?: boolean;
+        /**
+          * Set this to true if you want to show the footer
+         */
+        "withFooter"?: boolean;
+        /**
+          * Set this to true if you want to show the header
+         */
+        "withHeader"?: boolean;
+    }
     interface KiwiPopover {
         /**
           * The maximum width of the popover.
@@ -190,6 +216,12 @@ declare global {
         prototype: HTMLKiwiLinkElement;
         new (): HTMLKiwiLinkElement;
     };
+    interface HTMLKiwiModalElement extends Components.KiwiModal, HTMLStencilElement {
+    }
+    var HTMLKiwiModalElement: {
+        prototype: HTMLKiwiModalElement;
+        new (): HTMLKiwiModalElement;
+    };
     interface HTMLKiwiPopoverElement extends Components.KiwiPopover, HTMLStencilElement {
     }
     var HTMLKiwiPopoverElement: {
@@ -213,6 +245,7 @@ declare global {
         "kiwi-i18next-provider": HTMLKiwiI18nextProviderElement;
         "kiwi-labeled-checkbox": HTMLKiwiLabeledCheckboxElement;
         "kiwi-link": HTMLKiwiLinkElement;
+        "kiwi-modal": HTMLKiwiModalElement;
         "kiwi-popover": HTMLKiwiPopoverElement;
         "kiwi-ribbon": HTMLKiwiRibbonElement;
     }
@@ -296,6 +329,34 @@ declare namespace LocalJSX {
          */
         "to": string | NavigateToEvent;
     }
+    interface KiwiModal {
+        /**
+          * Set this text to show the cancel button, remember to set "withFooter" to show the cancel button
+         */
+        "cancelText"?: string;
+        /**
+          * Set to true if the modal should be closed on Escape press
+         */
+        "escape"?: boolean;
+        /**
+          * Sets the text of the ok button, remember to set "withFooter" to show the ok button
+         */
+        "okText"?: string;
+        "onClosed"?: (event: CustomEvent<any>) => void;
+        "onConfirmed"?: (event: CustomEvent<any>) => void;
+        /**
+          * Set this to true to show the modal or alternatively set an id to this element and dispatch a 'showKiwiModal' CustomEvent with the id as event.detail
+         */
+        "open"?: boolean;
+        /**
+          * Set this to true if you want to show the footer
+         */
+        "withFooter"?: boolean;
+        /**
+          * Set this to true if you want to show the header
+         */
+        "withHeader"?: boolean;
+    }
     interface KiwiPopover {
         /**
           * The maximum width of the popover.
@@ -360,6 +421,7 @@ declare namespace LocalJSX {
         "kiwi-i18next-provider": KiwiI18nextProvider;
         "kiwi-labeled-checkbox": KiwiLabeledCheckbox;
         "kiwi-link": KiwiLink;
+        "kiwi-modal": KiwiModal;
         "kiwi-popover": KiwiPopover;
         "kiwi-ribbon": KiwiRibbon;
     }
@@ -378,6 +440,7 @@ declare module "@stencil/core" {
             "kiwi-i18next-provider": LocalJSX.KiwiI18nextProvider & JSXBase.HTMLAttributes<HTMLKiwiI18nextProviderElement>;
             "kiwi-labeled-checkbox": LocalJSX.KiwiLabeledCheckbox & JSXBase.HTMLAttributes<HTMLKiwiLabeledCheckboxElement>;
             "kiwi-link": LocalJSX.KiwiLink & JSXBase.HTMLAttributes<HTMLKiwiLinkElement>;
+            "kiwi-modal": LocalJSX.KiwiModal & JSXBase.HTMLAttributes<HTMLKiwiModalElement>;
             "kiwi-popover": LocalJSX.KiwiPopover & JSXBase.HTMLAttributes<HTMLKiwiPopoverElement>;
             "kiwi-ribbon": LocalJSX.KiwiRibbon & JSXBase.HTMLAttributes<HTMLKiwiRibbonElement>;
         }
