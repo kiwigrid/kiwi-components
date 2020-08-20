@@ -59,4 +59,4 @@ jobs:
         run: npm run build:all
 
       - name: Publish packages
-        run: npm run lerna:publish
+        run: npm run lerna:version
