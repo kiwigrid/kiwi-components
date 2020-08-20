@@ -2,7 +2,8 @@ version: 2.1
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    docker:
+      image: circleci/node
     if: github.event.pull_request.merged
 
     steps:
