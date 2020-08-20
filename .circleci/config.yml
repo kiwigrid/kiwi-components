@@ -7,40 +7,41 @@ jobs:
 
     steps:
       - run:
-        name: Set git config
-        command: |
-          git config --local user.email "github@kiwigrid.com"
-          git config --local user.name "Kiwigrid | GitHub"
+          name: Set git config
+          command: |
+            git config --local user.email "github@kiwigrid.com"
+            git config --local user.name "Kiwigrid | GitHub"
 
       - run:
-        name: Add .npmrc file
-        command: echo //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN >> .npmrc
-        env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          name: Add .npmrc file
+          command: echo //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN >> .npmrc
+          env:
+            NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
       - run:
-        name: Install root dependencies
-        command: npm clean-install
+          name: Install root dependencies
+          command: npm clean-install
 
       - run:
-        name: Install dependencies for all packages
-        command: npm run clean-install:all
+          name: Install dependencies for all packages
+          command: npm run clean-install:all
 
       - run:
-        name: Lint all packages
-        command: npm run lint:all
+          name: Lint all packages
+          command: npm run lint:all
 
       - run:
-        name: Test all packages
-        command : npm run test:all
-
-      - name: Run e2e tests for all packages
-        command: npm run test:e2e:all
+          name: Test all packages
+          command : npm run test:all
 
       - run:
-        name: Build all packages
-        command: npm run build:all
+          name: Run e2e tests for all packages
+          command: npm run test:e2e:all
 
       - run:
-        name: Publish packages
-        command: npm run lerna:version
+          name: Build all packages
+          command: npm run build:all
+
+      - run:
+          name: Publish packages
+          command: npm run lerna:version
