@@ -1,59 +1,56 @@
 version: 2.1
-orbs:
-  node: circleci/node@3.0.0
-workflows:
-  continuous-delivery:
-    jobs:
-      build:
-        runs-on: ubuntu-latest
-        if: github.event.pull_request.merged
 
-        steps:
-          - uses: actions/checkout@v2
-          - uses: actions/setup-node@v1
-            with:
-              node-version: "12.x"
-              registry-url: "https://registry.npmjs.org"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged
 
-          - name: Set git config
-            run: |
-              git config --local user.email "github@kiwigrid.com"
-              git config --local user.name "Kiwigrid | GitHub"
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+          registry-url: "https://registry.npmjs.org"
 
-          - name: Add .npmrc file
-            run: echo //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN >> .npmrc
-            env:
-              NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      - name: Set git config
+        run: |
+          git config --local user.email "github@kiwigrid.com"
+          git config --local user.name "Kiwigrid | GitHub"
 
-          - name: Cache node modules
-            uses: actions/cache@v1
-            env:
-              cache-name: cache-node-modules
-            with:
-              path: ~/.npm
-              key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-              restore-keys: |
-                ${{ runner.os }}-build-${{ env.cache-name }}-
-                ${{ runner.os }}-build-
-                ${{ runner.os }}-
+      - name: Add .npmrc file
+        run: echo //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN >> .npmrc
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
-          - name: Install root dependencies
-            run: npm clean-install
+      - name: Cache node modules
+        uses: actions/cache@v1
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
 
-          - name: Install dependencies for all packages
-            run: npm run clean-install:all
+      - name: Install root dependencies
+        run: npm clean-install
 
-          - name: Lint all packages
-            run: npm run lint:all
+      - name: Install dependencies for all packages
+        run: npm run clean-install:all
 
-          - name: Test all packages
-            run: npm run test:all
+      - name: Lint all packages
+        run: npm run lint:all
 
-          - name: Run e2e tests for all packages
-            run: npm run test:e2e:all
+      - name: Test all packages
+        run: npm run test:all
 
-          - name: Build all packages
-            run: npm run build:all
+      - name: Run e2e tests for all packages
+        run: npm run test:e2e:all
 
-          - name: Publish packages
-            run: npm run lerna:version
+      - name: Build all packages
+        run: npm run build:all
+
+      - name: Publish packages
+        run: npm run lerna:version
