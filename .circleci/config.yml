@@ -6,7 +6,7 @@ jobs:
       - image: circleci/node
 
     steps:
-
+      - checkout
       - run:
           name: Add .npmrc file
           command: echo //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN >> .npmrc
