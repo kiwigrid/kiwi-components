@@ -8,39 +8,39 @@ jobs:
     steps:
       - run:
         name: Set git config
-        cmd: |
+        command: |
           git config --local user.email "github@kiwigrid.com"
           git config --local user.name "Kiwigrid | GitHub"
 
       - run:
         name: Add .npmrc file
-        cmd: echo //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN >> .npmrc
+        command: echo //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN >> .npmrc
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
       - run:
         name: Install root dependencies
-        cmd: npm clean-install
+        command: npm clean-install
 
       - run:
         name: Install dependencies for all packages
-        cmd: npm run clean-install:all
+        command: npm run clean-install:all
 
       - run:
         name: Lint all packages
-        cmd: npm run lint:all
+        command: npm run lint:all
 
       - run:
         name: Test all packages
-        cmd : npm run test:all
+        command : npm run test:all
 
       - name: Run e2e tests for all packages
-        cmd: npm run test:e2e:all
+        command: npm run test:e2e:all
 
       - run:
         name: Build all packages
-        cmd: npm run build:all
+        command: npm run build:all
 
       - run:
         name: Publish packages
-        cmd: npm run lerna:version
+        command: npm run lerna:version
