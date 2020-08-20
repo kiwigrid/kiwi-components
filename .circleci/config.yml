@@ -19,19 +19,6 @@ jobs:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
       - run:
-        name: Cache node modules
-        uses: actions/cache@v1
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-
-      - run:
         name: Install root dependencies
         cmd: npm clean-install
 
@@ -46,6 +33,7 @@ jobs:
       - run:
         name: Test all packages
         cmd : npm run test:all
+
       - name: Run e2e tests for all packages
         cmd: npm run test:e2e:all
 
