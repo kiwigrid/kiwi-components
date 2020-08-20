@@ -6,11 +6,6 @@ jobs:
       - image: circleci/node
 
     steps:
-      - run:
-          name: Set git config
-          command: |
-            git config --local user.email "github@kiwigrid.com"
-            git config --local user.name "Kiwigrid | GitHub"
 
       - run:
           name: Add .npmrc file
