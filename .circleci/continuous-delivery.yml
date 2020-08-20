@@ -20,6 +20,8 @@ jobs:
 
       - name: Set git config
         run: |
+          mkdir .git
+          touch .git/config
           git config --local user.email "github@kiwigrid.com"
           git config --local user.name "Kiwigrid | GitHub"
 
