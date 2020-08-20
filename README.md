@@ -27,5 +27,3 @@ This project uses conventional commit messages. This leads to more readable mess
 
     feat(blueprint): add message property
     ci: add continuous integration github action
-    
-##### Commit Dummy
