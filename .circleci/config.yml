@@ -1,9 +1,9 @@
 version: 2.1
 
 jobs:
-  build:
+  Build:
     docker:
-      - image: circleci/node:12-browsers-legacy
+      - image: circleci/node:12
 
     steps:
       - checkout
@@ -27,6 +27,13 @@ jobs:
       #    command: npm run lint:all
 
       - run:
+          name: Build all packages
+          command: npm run build:all
+  Test:
+    docker:
+      - image: circleci/node:12-browsers-legacy
+    steps:
+      - run:
           name: Test all packages
           command : npm run test:all
 
@@ -34,10 +41,23 @@ jobs:
           name: Run e2e tests for all packages
           command: npm run test:e2e:all
 
-      - run:
-          name: Build all packages
-          command: npm run build:all
 
+  Release:
+    docker:
+      - image: circleci/node:12
+    steps:
       - run:
           name: Publish packages
           command: npm run lerna:version
+
+workflow:
+  version: 2
+  Make Fun:
+    jobs:
+      - Build
+      - Test:
+          requires:
+            - Build
+      - Release:
+          requires:
+            - Test
