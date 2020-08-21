@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  Build:
+  Build-Job:
     docker:
       - image: circleci/node:12
 
@@ -29,7 +29,7 @@ jobs:
       - run:
           name: Build all packages
           command: npm run build:all
-  Test:
+  Test-Job:
     docker:
       - image: circleci/node:12-browsers-legacy
     steps:
@@ -42,7 +42,7 @@ jobs:
           command: npm run test:e2e:all
 
 
-  Release:
+  Release-Job:
     docker:
       - image: circleci/node:12
     steps:
@@ -54,10 +54,10 @@ workflow:
   version: 2
   Make Fun:
     jobs:
-      - Build
-      - Test:
+      - Build-Job
+      - Test-Job:
           requires:
-            - Build
-      - Release:
+            - Build-Job
+      - Release-Job:
           requires:
-            - Test
+            - Test-Job
