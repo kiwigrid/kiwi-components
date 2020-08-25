@@ -12,35 +12,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Add .npmrc file
-          command: echo //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN >> .npmrc
-          env:
-            NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-
-      - run:
-          name: Install root dependencies
-          command: npm clean-install
-
-      - run:
-          name: Install dependencies for all packages
-          command: npm run clean-install:all
-
-      # temporary deactivated - full pipeline should run first!
-      #- run:
-      #    name: Lint all packages
-      #    command: npm run lint:all
-
-      - run:
-          name: Build all packages
-          command: npm run build:all
-
-      - run:
-          name: Test all packages
-          command : npm run test:all
-
-      - run:
-          name: Run e2e tests for all packages
-          command: npm run test:e2e:all
+          name: dummy build
+          command: echo "ich bin der Build ..." > mybuild.txt
 
 
   Release-Job:
@@ -48,7 +21,6 @@ jobs:
     steps:
       - run:
           name: Publish packages
-          # command: npm run lerna:version && npm run lerna:publish
           command: echo 'DUMMY  in publish now ...' && pwd && ls -al
 
 workflows:
