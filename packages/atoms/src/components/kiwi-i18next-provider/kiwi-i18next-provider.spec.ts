@@ -22,7 +22,7 @@ describe('kiwi-i18next-provider', () => {
       html: `<kiwi-i18next-provider lng="de"></kiwi-i18next-provider>`,
     });
 
-    expect(store.get('t')('common:hello')).toEqual('Hallo');
+    expect(store.get('t')('common:hello')).toEqual('Hallo Du');
 
     (page.rootInstance as KiwiI18nextProvider).lng = 'en';
 
