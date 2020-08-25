@@ -7,6 +7,13 @@ jobs:
     steps:
       - checkout
       - run:
+          command: |
+            mkdir -p .git
+            touch .git/config
+            git config --local user.email "github@kiwigrid.com"
+            git config --local user.name "Kiwigrid | GitHub"
+
+      - run:
           name: Add .npmrc file
           command: echo //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN >> .npmrc
           env:
