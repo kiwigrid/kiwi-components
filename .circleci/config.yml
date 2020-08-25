@@ -51,7 +51,7 @@ jobs:
           # command: npm run lerna:version && npm run lerna:publish
           command: echo '### in publish now ###'
 
-workflow:
+workflows:
   version: 2
   Make Fun:
     jobs:
