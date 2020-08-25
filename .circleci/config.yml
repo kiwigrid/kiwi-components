@@ -1,10 +1,14 @@
 version: 2.1
 
+executors:
+  my-executor:
+    docker:
+      - image: circleci/node:12-browsers-legacy
+    #working_directory: /tmp
+
 jobs:
   Build-Job:
-    docker:
-      - image: circleci/node:12
-
+    executor: my-executor
     steps:
       - checkout
       - run:
@@ -29,10 +33,7 @@ jobs:
       - run:
           name: Build all packages
           command: npm run build:all
-  Test-Job:
-    docker:
-      - image: circleci/node:12-browsers-legacy
-    steps:
+
       - run:
           name: Test all packages
           command : npm run test:all
@@ -43,8 +44,7 @@ jobs:
 
 
   Release-Job:
-    docker:
-      - image: circleci/node:12
+    executor: my-executor
     steps:
       - run:
           name: Publish packages
@@ -56,9 +56,6 @@ workflows:
   Make Fun:
     jobs:
       - Build-Job
-      - Test-Job:
-          requires:
-            - Build-Job
       - Release-Job:
           requires:
-            - Test-Job
+            - Build-Job
