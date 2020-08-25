@@ -1,6 +1,5 @@
 version: 2.1
 
-
 jobs:
   build:
     docker:
@@ -8,11 +7,35 @@ jobs:
     steps:
       - checkout
       - run:
-          name: dummy build
-          command: |
-            echo "ich bin der Build ..." > mybuild.txt
-            pwd
-            ls -al
+          name: Add .npmrc file
+          command: echo //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN >> .npmrc
+          env:
+            NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
+      - run:
+          name: Install root dependencies
+          command: npm clean-install
+
+      - run:
+          name: Install dependencies for all packages
+          command: npm run clean-install:all
+
+      # temporary deactivated - full pipeline should run first!
+      #- run:
+      #    name: Lint all packages
+      #    command: npm run lint:all
+
+      - run:
+          name: Build all packages
+          command: npm run build:all
+
+      - run:
+          name: Test all packages
+          command : npm run test:all
+
+      - run:
+          name: Run e2e tests for all packages
+          command: npm run test:e2e:all
 
       - when:
           name: Publish packages
@@ -20,21 +43,18 @@ jobs:
             equal: [ master, << pipeline.git.branch >> ]
           steps:
             - run:
-                name: My-Publish
+                name: publish version
                 command: |
-                  echo 'DUMMY  in publish now because I am in master branch'
-                  echo in branch: << pipeline.git.branch >>
-                  pwd
-                  ls -al
+                  echo Start publish now because I am in master branch.
+                  npm run lerna:publish
       - unless:
-          name: No Master Step
+          name: No new version
           condition:
             equal: [ master, << pipeline.git.branch >> ]
           steps:
             - run:
-                name: No-Publish
+                name: do not publish
                 command: |
-                  echo 'DUMMY  cannot publish now because I am NOT in  master branch'
-                  echo in branch: << pipeline.git.branch >>
-                  pwd
-                  ls -al
+                  echo Cannot publish now because I am NOT in  master branch.
+                  echo I am in branch: << pipeline.git.branch >>
+

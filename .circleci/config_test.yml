@@ -1,0 +1,40 @@
+version: 2.1
+
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:12-browsers-legacy
+    steps:
+      - checkout
+      - run:
+          name: dummy build
+          command: |
+            echo "ich bin der Build ..." > mybuild.txt
+            pwd
+            ls -al
+
+      - when:
+          name: Publish packages
+          condition:
+            equal: [ master, << pipeline.git.branch >> ]
+          steps:
+            - run:
+                name: My-Publish
+                command: |
+                  echo 'DUMMY  in publish now because I am in master branch'
+                  echo in branch: << pipeline.git.branch >>
+                  pwd
+                  ls -al
+      - unless:
+          name: No Master Step
+          condition:
+            equal: [ master, << pipeline.git.branch >> ]
+          steps:
+            - run:
+                name: No-Publish
+                command: |
+                  echo 'DUMMY  cannot publish now because I am NOT in  master branch'
+                  echo in branch: << pipeline.git.branch >>
+                  pwd
+                  ls -al
