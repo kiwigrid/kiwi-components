@@ -35,5 +35,6 @@ jobs:
                 name: No-Publish
                 command: |
                   echo 'DUMMY  cannot publish now because I am NOT in  master branch'
+                  echo in branch: << pipeline.git.branch >>
                   pwd
                   ls -al
