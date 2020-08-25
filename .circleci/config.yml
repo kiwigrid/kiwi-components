@@ -14,18 +14,18 @@ jobs:
             pwd
             ls -al
 
+      #- when:
+      #    name: Publish packages
+      #    condition:
+      #      equal: [ master, << pipeline.git.branch >> ]
+      #    steps:
+      #      - run:
+      #          name: My-Publish
+      #          command: |
+      #            echo 'DUMMY  in publish now because I am in master branch'
+      #            pwd
+      #            ls -al
       - when:
-          name: Publish packages
-          condition:
-            equal: [ master, << pipeline.git.branch >> ]
-          steps:
-            - run:
-                name: My-Publish
-                command: |
-                  echo 'DUMMY  in publish now because I am in master branch'
-                  pwd
-                  ls -al
-      - unless:
           name: No Master Step
           condition:
             not:
