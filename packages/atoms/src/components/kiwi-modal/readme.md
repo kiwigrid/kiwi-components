@@ -7,6 +7,7 @@ To show the modal there are two options:
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property     | Attribute     | Description                                                                                                                                          | Type                   | Default     |
@@ -18,6 +19,7 @@ To show the modal there are two options:
 | `withFooter` | `with-footer` | Set this to true if you want to show the footer                                                                                                      | `boolean \| undefined` | `false`     |
 | `withHeader` | `with-header` | Set this to true if you want to show the header                                                                                                      | `boolean \| undefined` | `false`     |
 
+
 ## Events
 
 | Event       | Description | Type               |
@@ -25,6 +27,7 @@ To show the modal there are two options:
 | `closed`    |             | `CustomEvent<any>` |
 | `confirmed` |             | `CustomEvent<any>` |
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*
