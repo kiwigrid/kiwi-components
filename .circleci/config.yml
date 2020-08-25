@@ -48,7 +48,8 @@ jobs:
     steps:
       - run:
           name: Publish packages
-          command: npm run lerna:version
+          # command: npm run lerna:version && npm run lerna:publish
+          command: echo '### in publish now ###'
 
 workflow:
   version: 2
