@@ -1,35 +1,27 @@
 version: 2.1
 
-executors:
-  my-executor:
-    docker:
-      - image: circleci/node:12-browsers-legacy
-    working_directory: ~/kiwi
 
 jobs:
-  Build-Job:
-    executor: my-executor
-    working_directory: ~/kiwi
+  build:
+    docker:
+      - image: circleci/node:12-browsers-legacy
     steps:
       - checkout
       - run:
           name: dummy build
-          command: echo "ich bin der Build ..." > mybuild.txt
+          command: |
+            echo "ich bin der Build ..." > mybuild.txt
+            pwd
+            ls -al
 
-
-  Release-Job:
-    executor: my-executor
-    working_directory: ~/kiwi
-    steps:
-      - run:
+      - when:
           name: Publish packages
-          command: echo 'DUMMY  in publish now ...' && pwd && ls -al
-
-workflows:
-  version: 2
-  Make Fun:
-    jobs:
-      - Build-Job
-      - Release-Job:
-          requires:
-            - Build-Job
+          condition:
+            equal: [ master, << pipeline.git.branch >> ]
+          steps:
+            - run:
+                name: My-Publish
+                command: |
+                  echo 'DUMMY  in publish now ...'
+                  pwd
+                  ls -al
