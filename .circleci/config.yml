@@ -22,6 +22,6 @@ jobs:
             - run:
                 name: My-Publish
                 command: |
-                  echo 'DUMMY  in publish now ...'
+                  echo 'DUMMY  in publish now because I am in master branch'
                   pwd
                   ls -al
