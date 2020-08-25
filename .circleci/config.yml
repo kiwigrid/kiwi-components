@@ -25,3 +25,12 @@ jobs:
                   echo 'DUMMY  in publish now because I am in master branch'
                   pwd
                   ls -al
+      - unless:
+          name: No Master Step
+          steps:
+            - run:
+                name: No-Publish
+                command: |
+                  echo 'DUMMY  cannot publish now because I am NOT in  master branch'
+                  pwd
+                  ls -al
