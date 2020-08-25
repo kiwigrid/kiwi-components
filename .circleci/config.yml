@@ -27,6 +27,9 @@ jobs:
                   ls -al
       - unless:
           name: No Master Step
+          condition:
+            not:
+              equal: [ master, << pipeline.git.branch >> ]
           steps:
             - run:
                 name: No-Publish
