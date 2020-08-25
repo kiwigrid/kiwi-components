@@ -49,7 +49,7 @@ jobs:
       - run:
           name: Publish packages
           # command: npm run lerna:version && npm run lerna:publish
-          command: echo '### in publish now ###'
+          command: echo 'DUMMY  in publish now ...' && pwd && ls -al
 
 workflows:
   version: 2
