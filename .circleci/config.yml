@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           command: |
-            mkdir .git
+            mkdir -p .git
             touch .git/config
             git config --local user.email "github@kiwigrid.com"
             git config --local user.name "Kiwigrid | GitHub"
