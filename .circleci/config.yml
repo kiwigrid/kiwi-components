@@ -15,6 +15,8 @@ jobs:
             touch .git/config
             git config --local user.email "github@kiwigrid.com"
             git config --local user.name "Kiwigrid | GitHub"
+            # chrome requires this!
+            sudo apt install libxss1
 
       - run:
           name: Add .npmrc file
