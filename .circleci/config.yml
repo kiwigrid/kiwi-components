@@ -5,6 +5,9 @@ jobs:
     docker:
       - image: circleci/node:12-browsers-legacy
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "7e:ba:5d:7e:01:c9:28:0e:1f:82:e9:23:bb:1d:db:71"
       - checkout
       - run:
           command: |
@@ -50,7 +53,7 @@ jobs:
             equal: [ master, << pipeline.git.branch >> ]
           steps:
             - run:
-                name: publish version
+                name: Publish version
                 command: |
                   echo Start publish now because I am in master branch.
                   npm run lerna:publish
@@ -60,7 +63,7 @@ jobs:
             equal: [ master, << pipeline.git.branch >> ]
           steps:
             - run:
-                name: do not publish
+                name: Do not publish
                 command: |
                   echo Cannot publish now because I am NOT in  master branch.
                   echo I am in branch: << pipeline.git.branch >>
