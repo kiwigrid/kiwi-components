@@ -16,9 +16,9 @@
 
 ## Events
 
-| Event              | Description | Type                     |
-| ------------------ | ----------- | ------------------------ |
-| `tFunctionChanged` |             | `CustomEvent<TFunction>` |
+| Event              | Description                                                                                | Type                     |
+| ------------------ | ------------------------------------------------------------------------------------------ | ------------------------ |
+| `tFunctionChanged` | This event is dispatched when i18nexts t function changes The t function is passed as data | `CustomEvent<TFunction>` |
 
 
 ----------------------------------------------

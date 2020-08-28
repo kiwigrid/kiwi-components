@@ -35,6 +35,10 @@ export class KiwiI18nextProvider implements ComponentWillLoad {
   @Prop()
   public ns: string[] = ['common'];
 
+  /**
+   * This event is dispatched when i18nexts t function changes
+   * The t function is passed as data
+   */
   @Event()
   private tFunctionChanged!: EventEmitter<TFunction>;
 
