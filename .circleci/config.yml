@@ -24,6 +24,13 @@ jobs:
           env:
             NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
+      - restore_cache:
+          keys:
+            # when lock file changes, use increasingly general patterns to restore cache
+            - node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - node-v1-{{ .Branch }}-
+            - node-v1-
+
       - run:
           name: Install root dependencies
           command: npm clean-install
@@ -31,6 +38,11 @@ jobs:
       - run:
           name: Install dependencies for all packages
           command: npm run clean-install:all
+
+      - save_cache:
+          paths:
+            - ~/usr/local/lib/node_modules  # location depends on npm version
+          key: node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
 
       # temporary deactivated - full pipeline should run first!
       #- run:
