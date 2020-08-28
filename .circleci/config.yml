@@ -26,9 +26,9 @@ jobs:
 
       - restore_cache:
           keys:
-            - node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
-            - node-v1-{{ .Branch }}-
-            - node-v1-
+            - node-v2-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - node-v2-{{ .Branch }}-
+            - node-v2-
 
       - run:
           name: Install root dependencies
@@ -41,7 +41,7 @@ jobs:
       - save_cache:
           paths:
             - ./node_modules
-          key: node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: node-v2-{{ .Branch }}-{{ checksum "package-lock.json" }}
 
       # temporary deactivated - full pipeline should run first!
       #- run:
