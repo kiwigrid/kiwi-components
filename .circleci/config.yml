@@ -40,7 +40,7 @@ jobs:
 
       - save_cache:
           paths:
-            - ~/usr/local/lib/node_modules  # location depends on npm version
+            - ./node_modules
           key: node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
 
       # temporary deactivated - full pipeline should run first!
