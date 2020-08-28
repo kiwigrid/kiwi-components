@@ -64,16 +64,14 @@ jobs:
           steps:
             - run:
                 name: Publish version
-                command: |
-                  echo Start publish now because I am in master branch.
-                  npm run lerna:publish
+                command: npm run lerna:publish
       - unless:
-          name: No new version
+          name: On Branch
           condition:
             equal: [master, << pipeline.git.branch >>]
           steps:
             - run:
-                name: Do not publish
+                name: Fail if there are uncommited changes (e.g. from build)
                 command: |
-                  echo Cannot publish now because I am NOT in  master branch.
-                  echo I am in branch: << pipeline.git.branch >>
+                  git diff --exit-code
+                  git diff --cached --exit-code
