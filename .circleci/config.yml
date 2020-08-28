@@ -26,7 +26,6 @@ jobs:
 
       - restore_cache:
           keys:
-            # when lock file changes, use increasingly general patterns to restore cache
             - node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
             - node-v1-{{ .Branch }}-
             - node-v1-
@@ -81,4 +80,3 @@ jobs:
                 command: |
                   echo Cannot publish now because I am NOT in  master branch.
                   echo I am in branch: << pipeline.git.branch >>
-
