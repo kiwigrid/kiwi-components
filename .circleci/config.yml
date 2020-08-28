@@ -24,6 +24,12 @@ jobs:
           env:
             NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
+      - restore_cache:
+          keys:
+            - node-v2-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - node-v2-{{ .Branch }}-
+            - node-v2-
+
       - run:
           name: Install root dependencies
           command: npm clean-install
@@ -31,6 +37,11 @@ jobs:
       - run:
           name: Install dependencies for all packages
           command: npm run clean-install:all
+
+      - save_cache:
+          paths:
+            - ./node_modules
+          key: node-v2-{{ .Branch }}-{{ checksum "package-lock.json" }}
 
       # temporary deactivated - full pipeline should run first!
       #- run:
@@ -59,6 +70,7 @@ jobs:
                 command: |
                   echo Start publish now because I am in master branch.
                   npm run lerna:publish
+
       - unless:
           name: No new version
           condition:
@@ -69,4 +81,3 @@ jobs:
                 command: |
                   echo Cannot publish now because I am NOT in  master branch.
                   echo I am in branch: << pipeline.git.branch >>
-
