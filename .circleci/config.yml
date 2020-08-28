@@ -1,0 +1,79 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:12-browsers-legacy
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "0f:9c:31:fd:6c:3f:94:87:c2:60:d1:c6:d7:13:0b:5e"
+      - checkout
+      - run:
+          name: Set git config
+          command: |
+            mkdir -p .git
+            touch .git/config
+            git config --local user.email "github@kiwigrid.com"
+            git config --local user.name "Kiwigrid | GitHub"
+            # chrome requires this!
+            sudo apt install libxss1
+      - run:
+          name: Add .npmrc file
+          command: echo //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN >> .npmrc
+
+      - restore_cache:
+          keys:
+            - node-v2-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - node-v2-{{ .Branch }}-
+            - node-v2-
+
+      - run:
+          name: Install root dependencies
+          command: npm clean-install
+
+      - run:
+          name: Install dependencies for all packages
+          command: npm run clean-install:all
+
+      - save_cache:
+          paths:
+            - ./node_modules
+          key: node-v2-{{ .Branch }}-{{ checksum "package-lock.json" }}
+
+      - run:
+          name: Lint all packages
+          command: npm run lint:all
+
+      - run:
+          name: Build all packages
+          command: npm run build:all
+
+      - run:
+          name: Test all packages
+          command: npm run test:all
+
+      - run:
+          name: Run e2e tests for all packages
+          command: npm run test:e2e:all
+
+      - when:
+          name: Publish packages
+          condition:
+            equal: [master, << pipeline.git.branch >>]
+          steps:
+            - run:
+                name: Publish version
+                command: |
+                  echo Start publish now because I am in master branch.
+                  npm run lerna:publish
+      - unless:
+          name: No new version
+          condition:
+            equal: [master, << pipeline.git.branch >>]
+          steps:
+            - run:
+                name: Do not publish
+                command: |
+                  echo Cannot publish now because I am NOT in  master branch.
+                  echo I am in branch: << pipeline.git.branch >>
