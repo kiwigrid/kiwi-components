@@ -37,12 +37,16 @@ export class KiwiModal {
   @Prop()
   escape?: boolean = false;
 
-  @Element() host!: HTMLElement;
+  @Element() host!: HTMLKiwiModalElement;
 
+  /** This event is emitted after the modal was closed */
   @Event()
   closed!: EventEmitter;
+  /** This event is emitted on click on the "ok" button  */
   @Event()
   confirmed!: EventEmitter;
+
+  private modalElement?: HTMLDivElement;
 
   @Listen('showKiwiModal', { target: 'document' })
   private showKiwiModalHandler(event: CustomEvent<string>): void {
@@ -51,28 +55,37 @@ export class KiwiModal {
     }
   }
 
-  componentDidLoad() {
+  componentDidLoad(): void {
     if (this.escape) {
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-          this.handleClose(e);
+          this.handleClose();
         }
       });
     }
   }
 
-  private handleClose = (event: Event): void => {
+  private handleClose = (): void => {
     this.open = false;
     this.closed.emit();
   };
-  private handleConfirmation = (event: Event): void => {
+  private handleConfirmation = (): void => {
     this.confirmed.emit();
-    this.handleClose(event);
+    this.handleClose();
+  };
+  private handleClickOutside = (event: Event): void => {
+    if (event.target === this.modalElement) {
+      this.handleClose();
+    }
   };
 
-  render() {
+  render(): void {
     return (
-      <div class={{ modal: true, show: this.open ?? false }}>
+      <div
+        class={{ modal: true, show: this.open ?? false }}
+        onClick={this.handleClickOutside}
+        ref={(el) => (this.modalElement = el)}
+      >
         <div class="modal-dialog">
           <div class="modal-content">
             {this.withHeader && (
