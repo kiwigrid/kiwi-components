@@ -303,6 +303,9 @@ declare namespace LocalJSX {
           * Namespaces to be loaded by i18next
          */
         "ns"?: string[];
+        /**
+          * This event is dispatched when i18nexts t function changes The t function is passed as data
+         */
         "onTFunctionChanged"?: (event: CustomEvent<TFunction>) => void;
     }
     interface KiwiLabeledCheckbox {
@@ -342,7 +345,13 @@ declare namespace LocalJSX {
           * Sets the text of the ok button, remember to set "withFooter" to show the ok button
          */
         "okText"?: string;
+        /**
+          * This event is emitted after the modal was closed
+         */
         "onClosed"?: (event: CustomEvent<any>) => void;
+        /**
+          * This event is emitted on click on the "ok" button
+         */
         "onConfirmed"?: (event: CustomEvent<any>) => void;
         /**
           * Set this to true to show the modal or alternatively set an id to this element and dispatch a 'showKiwiModal' CustomEvent with the id as event.detail

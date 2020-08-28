@@ -7,6 +7,7 @@ To show the modal there are two options:
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property     | Attribute     | Description                                                                                                                                          | Type                   | Default     |
@@ -18,13 +19,15 @@ To show the modal there are two options:
 | `withFooter` | `with-footer` | Set this to true if you want to show the footer                                                                                                      | `boolean \| undefined` | `false`     |
 | `withHeader` | `with-header` | Set this to true if you want to show the header                                                                                                      | `boolean \| undefined` | `false`     |
 
+
 ## Events
 
-| Event       | Description | Type               |
-| ----------- | ----------- | ------------------ |
-| `closed`    |             | `CustomEvent<any>` |
-| `confirmed` |             | `CustomEvent<any>` |
+| Event       | Description                                       | Type               |
+| ----------- | ------------------------------------------------- | ------------------ |
+| `closed`    | This event is emitted after the modal was closed  | `CustomEvent<any>` |
+| `confirmed` | This event is emitted on click on the "ok" button | `CustomEvent<any>` |
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*
