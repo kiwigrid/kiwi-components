@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-atoms@0.2.0...@kiwigrid/kiwi-atoms@0.2.1) (2020-08-31)
+
+
+### Bug Fixes
+
+* **kiwi-atoms:** kiwi-modal now closes on click outside of it ([2ff6b01](https://github.com/kiwigrid/kiwi-components/commit/2ff6b012d509493a31a8b34f116c6eff87c37604))
+
+
+
+
+
 # [0.2.0](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-atoms@0.1.1...@kiwigrid/kiwi-atoms@0.2.0) (2020-08-17)
 
 
