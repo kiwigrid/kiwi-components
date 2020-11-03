@@ -113,7 +113,7 @@ export namespace Components {
         /**
           * Popper.js modifiers options. See https://popper.js.org/popper-documentation.html#modifiers
          */
-        "modifiers": Modifier<unknown>[];
+        "modifiers": Modifier<unknown, unknown>[];
         /**
           * Placement of the tooltip.
          */
@@ -378,7 +378,7 @@ declare namespace LocalJSX {
         /**
           * Popper.js modifiers options. See https://popper.js.org/popper-documentation.html#modifiers
          */
-        "modifiers"?: Modifier<unknown>[];
+        "modifiers"?: Modifier<unknown, unknown>[];
         /**
           * Placement of the tooltip.
          */

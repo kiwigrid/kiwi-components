@@ -1,11 +1,10 @@
-import { withKnobs } from '@storybook/addon-knobs';
 import { html } from 'lit-html';
 import notes from './readme.md';
 
 export default {
   title: 'KiwiComponents/Modal',
-  parameters: { notes },
-  decorators: [withKnobs],
+  parameters: { docs: { description: { component: notes } } },
+  decorators: [],
 };
 
 export const basic = () => {

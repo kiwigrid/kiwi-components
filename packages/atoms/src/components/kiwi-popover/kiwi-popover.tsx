@@ -75,7 +75,7 @@ export class KiwiPopover implements ComponentInterface {
    * See https://popper.js.org/popper-documentation.html#modifiers
    */
   @Prop()
-  modifiers: Modifier<unknown>[] = [];
+  modifiers: Modifier<unknown, unknown>[] = [];
 
   @State()
   placedAt?: string;
