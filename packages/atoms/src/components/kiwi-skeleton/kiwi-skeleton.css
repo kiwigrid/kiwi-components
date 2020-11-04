@@ -1,0 +1,80 @@
+.loading-skeleton {
+  --line-height: 18px;
+  --fill: #bdbcbc;
+  --fill-highlight: #e2e2e2;
+}
+
+.loading-skeleton li {
+  margin-top: 8px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Paragraph */
+
+.loading-skeleton.paragraph li,
+.loading-skeleton.paragraph h3 {
+  height: var(--line-height);
+  background: linear-gradient(
+    90deg,
+    var(--fill-highlight),
+    var(--fill) 50%,
+    var(--fill-highlight)
+  );
+  background-size: 400% 100%;
+  animation: skeleton-loading 1.8s infinite;
+  border-radius: 2px;
+}
+
+.loading-skeleton.paragraph h3 {
+  width: 50%;
+  margin: var(--line-height) 0;
+}
+
+/* Table */
+.loading-skeleton.table {
+  --line-height: 32px;
+}
+
+.loading-skeleton.table h3 {
+  margin: var(--line-height) 0;
+}
+
+.loading-skeleton.table h3,
+.loading-skeleton.table li {
+  display: flex;
+}
+
+.loading-skeleton.table span {
+  display: block;
+  width: 100%;
+  margin: 0 8px;
+  height: var(--line-height);
+  background: linear-gradient(
+    90deg,
+    var(--fill-highlight),
+    var(--fill) 50%,
+    var(--fill-highlight)
+  );
+  background-size: 400% 100%;
+  animation: skeleton-loading 1.8s infinite;
+  border-radius: 2px;
+}
+
+.loading-skeleton.table span:first-child {
+  width: 33%;
+}
+
+.loading-skeleton.table span:last-child {
+  width: 66%;
+}

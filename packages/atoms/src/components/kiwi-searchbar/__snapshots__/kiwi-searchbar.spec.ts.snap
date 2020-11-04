@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kiwi-searchbar renders 1`] = `
+<kiwi-searchbar>
+  <div class="input-group">
+    <kiwi-input>
+      <input class="form-control" name="search" placeholder="" type="text" value="">
+    </kiwi-input>
+    <span class="input-group-btn">
+      <button aria-label="Search" class="btn btn-addon btn-primary" type="button">
+        <span class="glyphicon glyphicon-search"></span>
+      </button>
+    </span>
+  </div>
+</kiwi-searchbar>
+`;

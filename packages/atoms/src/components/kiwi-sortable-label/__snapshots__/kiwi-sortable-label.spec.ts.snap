@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kiwi-sortable-label renders: initial 1`] = `
+<kiwi-sortable-label criterion="math.random" label="Random" sort-key="random">
+  <!---->
+  <div class="text-nowrap">
+    <a class="header pointer">
+      Random
+      <span class="glyphicon glyphicon-sort-by-alphabet"></span>
+    </a>
+  </div>
+</kiwi-sortable-label>
+`;
