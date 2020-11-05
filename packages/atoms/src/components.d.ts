@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { Size } from "./components/kiwi-empty/kiwi-empty";
 import { TFunction } from "i18next";
 import { LabelKind } from "./components/kiwi-label/kiwi-label";
 import { NavigateToEvent } from "./components/kiwi-link/kiwi-link";
@@ -41,6 +42,28 @@ export namespace Components {
           * Type of the toggle button.
          */
         "toggleButtonType": 'default' | 'primary' | 'danger' | 'warning' | 'info';
+    }
+    interface KiwiEmpty {
+        /**
+          * Additional css class to apply to the container.
+         */
+        "containerClass": string;
+        /**
+          * The name of the glyphicon icon to use. So if you want to render a `glyphicon-ok` pass `ok` as the name.
+         */
+        "glyphicon": string;
+        /**
+          * Provide a custom class to use instead of glyphicons.
+         */
+        "icon"?: string;
+        /**
+          * The size of the icon.
+         */
+        "size": Size;
+        /**
+          * Show optional content below the icon.
+         */
+        "withContent": boolean;
     }
     interface KiwiI18next {
         /**
@@ -306,6 +329,12 @@ declare global {
         prototype: HTMLKiwiDropdownElement;
         new (): HTMLKiwiDropdownElement;
     };
+    interface HTMLKiwiEmptyElement extends Components.KiwiEmpty, HTMLStencilElement {
+    }
+    var HTMLKiwiEmptyElement: {
+        prototype: HTMLKiwiEmptyElement;
+        new (): HTMLKiwiEmptyElement;
+    };
     interface HTMLKiwiI18nextElement extends Components.KiwiI18next, HTMLStencilElement {
     }
     var HTMLKiwiI18nextElement: {
@@ -404,6 +433,7 @@ declare global {
         "kiwi-checkbox-menu": HTMLKiwiCheckboxMenuElement;
         "kiwi-checkbox-menu-item": HTMLKiwiCheckboxMenuItemElement;
         "kiwi-dropdown": HTMLKiwiDropdownElement;
+        "kiwi-empty": HTMLKiwiEmptyElement;
         "kiwi-i18next": HTMLKiwiI18nextElement;
         "kiwi-i18next-provider": HTMLKiwiI18nextProviderElement;
         "kiwi-input": HTMLKiwiInputElement;
@@ -459,6 +489,28 @@ declare namespace LocalJSX {
           * Type of the toggle button.
          */
         "toggleButtonType"?: 'default' | 'primary' | 'danger' | 'warning' | 'info';
+    }
+    interface KiwiEmpty {
+        /**
+          * Additional css class to apply to the container.
+         */
+        "containerClass"?: string;
+        /**
+          * The name of the glyphicon icon to use. So if you want to render a `glyphicon-ok` pass `ok` as the name.
+         */
+        "glyphicon"?: string;
+        /**
+          * Provide a custom class to use instead of glyphicons.
+         */
+        "icon"?: string;
+        /**
+          * The size of the icon.
+         */
+        "size"?: Size;
+        /**
+          * Show optional content below the icon.
+         */
+        "withContent"?: boolean;
     }
     interface KiwiI18next {
         /**
@@ -720,6 +772,7 @@ declare namespace LocalJSX {
         "kiwi-checkbox-menu": KiwiCheckboxMenu;
         "kiwi-checkbox-menu-item": KiwiCheckboxMenuItem;
         "kiwi-dropdown": KiwiDropdown;
+        "kiwi-empty": KiwiEmpty;
         "kiwi-i18next": KiwiI18next;
         "kiwi-i18next-provider": KiwiI18nextProvider;
         "kiwi-input": KiwiInput;
@@ -748,6 +801,7 @@ declare module "@stencil/core" {
             "kiwi-checkbox-menu": LocalJSX.KiwiCheckboxMenu & JSXBase.HTMLAttributes<HTMLKiwiCheckboxMenuElement>;
             "kiwi-checkbox-menu-item": LocalJSX.KiwiCheckboxMenuItem & JSXBase.HTMLAttributes<HTMLKiwiCheckboxMenuItemElement>;
             "kiwi-dropdown": LocalJSX.KiwiDropdown & JSXBase.HTMLAttributes<HTMLKiwiDropdownElement>;
+            "kiwi-empty": LocalJSX.KiwiEmpty & JSXBase.HTMLAttributes<HTMLKiwiEmptyElement>;
             "kiwi-i18next": LocalJSX.KiwiI18next & JSXBase.HTMLAttributes<HTMLKiwiI18nextElement>;
             "kiwi-i18next-provider": LocalJSX.KiwiI18nextProvider & JSXBase.HTMLAttributes<HTMLKiwiI18nextProviderElement>;
             "kiwi-input": LocalJSX.KiwiInput & JSXBase.HTMLAttributes<HTMLKiwiInputElement>;
