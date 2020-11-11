@@ -12,7 +12,6 @@ import { debounceTime } from 'rxjs/operators';
 
 @Component({
   tag: 'kiwi-searchbar',
-  styleUrl: 'kiwi-searchbar.css',
   shadow: false,
 })
 export class KiwiSearchbar implements ComponentInterface {

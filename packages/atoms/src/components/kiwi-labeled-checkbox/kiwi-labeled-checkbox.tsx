@@ -4,7 +4,6 @@ const pointerEventsOn = { pointerEvents: 'all' };
 
 @Component({
   tag: 'kiwi-labeled-checkbox',
-  styleUrl: 'kiwi-labeled-checkbox.css',
   shadow: false,
 })
 export class KiwiLabeledCheckbox implements ComponentInterface {

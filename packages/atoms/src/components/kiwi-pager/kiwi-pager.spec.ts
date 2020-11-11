@@ -3,10 +3,6 @@ import { newSpecPage } from '@stencil/core/testing';
 import { fakeSchedulers } from 'rxjs-marbles/jest';
 
 describe('kiwi-pager', () => {
-  it('builds', () => {
-    expect(new KiwiPager()).toBeTruthy();
-  });
-
   it('renders', async () => {
     const pager = await newSpecPage({
       components: [KiwiPager],

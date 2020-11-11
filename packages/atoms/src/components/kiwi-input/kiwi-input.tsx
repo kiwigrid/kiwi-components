@@ -2,7 +2,6 @@ import { Component, ComponentInterface, h, JSX, Prop } from '@stencil/core';
 
 @Component({
   tag: 'kiwi-input',
-  styleUrl: 'kiwi-input.css',
   shadow: false,
 })
 export class KiwiInput implements ComponentInterface {
@@ -35,10 +34,14 @@ export class KiwiInput implements ComponentInterface {
         name={this.name}
         placeholder={this.placeholder}
         value={this.value}
-        onInput={() => (this.value = this.input.value)}
+        onInput={this.handleOnInput}
         class="form-control"
         type="text"
       />
     );
   }
+
+  private handleOnInput = (): void => {
+    this.value = this.input.value;
+  };
 }

@@ -6,7 +6,7 @@ exports[`kiwi-sortable-label renders: initial 1`] = `
   <div class="text-nowrap">
     <a class="header pointer">
       Random
-      <span class="glyphicon glyphicon-sort-by-alphabet"></span>
+      <span class="glyphicon glyphicon-sort"></span>
     </a>
   </div>
 </kiwi-sortable-label>

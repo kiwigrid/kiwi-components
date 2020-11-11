@@ -18,7 +18,6 @@ import {
 
 @Component({
   tag: 'kiwi-pager',
-  styleUrl: 'kiwi-pager.css',
   shadow: false,
 })
 export class KiwiPager implements ComponentInterface {

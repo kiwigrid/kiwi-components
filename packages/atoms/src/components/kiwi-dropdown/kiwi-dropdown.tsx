@@ -12,7 +12,6 @@ import {
 
 @Component({
   tag: 'kiwi-dropdown',
-  styleUrl: 'kiwi-dropdown.css',
   shadow: false,
 })
 export class KiwiDropdown implements ComponentInterface {

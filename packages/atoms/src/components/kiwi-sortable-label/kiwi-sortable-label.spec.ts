@@ -2,10 +2,6 @@ import { newSpecPage } from '@stencil/core/testing';
 import { KiwiSortableLabel } from './kiwi-sortable-label';
 
 describe('kiwi-sortable-label', () => {
-  it('builds', () => {
-    expect(new KiwiSortableLabel()).toBeTruthy();
-  });
-
   it('renders', async () => {
     const label = await newSpecPage({
       components: [KiwiSortableLabel],

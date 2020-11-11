@@ -26,11 +26,22 @@
           "error",
           { "varsIgnorePattern": "h" }
         ],
+        "@typescript-eslint/no-non-null-assertion": 0,
         "@stencil/decorators-style": [
           "error",
           {
             "prop": "multiline"
           }
+        ],
+        "@stencil/strict-boolean-conditions": [
+          "warn",
+          [
+            "allow-null-union",
+            "allow-undefined-union",
+            "allow-boolean-or-undefined",
+            "allow-string",
+            "allow-number"
+          ]
         ],
         "react/jsx-uses-vars": "error"
       }

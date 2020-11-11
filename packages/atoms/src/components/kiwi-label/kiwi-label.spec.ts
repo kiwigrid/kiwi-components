@@ -11,10 +11,6 @@ const testCases: { [Key in LabelKind]: Key } = {
 };
 
 describe('kiwi-label', () => {
-  it('builds', () => {
-    expect(new KiwiLabel()).toBeTruthy();
-  });
-
   it.each(toPairs(testCases))('renders %s', async (name, kind) => {
     const label = await newSpecPage({
       components: [KiwiLabel],

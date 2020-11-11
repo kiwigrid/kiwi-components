@@ -2,10 +2,6 @@ import { newSpecPage } from '@stencil/core/testing';
 import { KiwiInput } from './kiwi-input';
 
 describe('kiwi-input', () => {
-  it('builds', () => {
-    expect(new KiwiInput()).toBeTruthy();
-  });
-
   it('renders', async () => {
     const input = await newSpecPage({
       components: [KiwiInput],

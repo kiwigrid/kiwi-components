@@ -10,7 +10,7 @@ export default {
 export const basic = (args) => {
   const { debounce, total, ofLabel } = args;
 
-  return html` <div class="panel panel-default">
+  return html`<div class="panel panel-default">
     <div class="panel-body">
       <kiwi-pager
         debounce=${debounce}

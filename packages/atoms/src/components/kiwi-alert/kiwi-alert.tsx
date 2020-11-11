@@ -1,8 +1,14 @@
-import { Component, ComponentInterface, h, JSX, Prop } from '@stencil/core';
+import {
+  Component,
+  ComponentInterface,
+  h,
+  Host,
+  JSX,
+  Prop,
+} from '@stencil/core';
 
 @Component({
   tag: 'kiwi-alert',
-  styleUrl: 'kiwi-alert.css',
   shadow: false,
 })
 export class KiwiAlert implements ComponentInterface {
@@ -29,9 +35,9 @@ export class KiwiAlert implements ComponentInterface {
         break;
     }
     return (
-      <div class={`alert ${alertClass}`}>
+      <Host class={`alert ${alertClass}`}>
         <slot />
-      </div>
+      </Host>
     );
   }
 }

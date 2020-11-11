@@ -4,12 +4,6 @@ import { KiwiInput } from '../kiwi-input/kiwi-input';
 import { KiwiSearchbar } from './kiwi-searchbar';
 
 describe('kiwi-searchbar', () => {
-  it('builds', () => {
-    const searchbar = new KiwiSearchbar();
-    expect(searchbar).toBeTruthy();
-    expect(searchbar.debounce).toEqual(400);
-  });
-
   it('renders', async () => {
     const searchbar = await newSpecPage({
       components: [KiwiSearchbar, KiwiInput],

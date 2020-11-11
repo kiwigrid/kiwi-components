@@ -2,10 +2,6 @@ import { KiwiLoading } from './kiwi-loading';
 import { newSpecPage } from '@stencil/core/testing';
 
 describe('kiwi-loading', () => {
-  it('builds', () => {
-    expect(new KiwiLoading()).toBeTruthy();
-  });
-
   it('renders', async () => {
     const loading = await newSpecPage({
       components: [KiwiLoading],

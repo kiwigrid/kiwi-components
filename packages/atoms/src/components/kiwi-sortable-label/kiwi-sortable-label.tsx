@@ -12,7 +12,6 @@ export type SortDirection = 'asc' | 'desc' | 'off';
 
 @Component({
   tag: 'kiwi-sortable-label',
-  styleUrl: 'kiwi-sortable-label.css',
   shadow: false,
 })
 export class KiwiSortableLabel implements ComponentInterface {
@@ -41,10 +40,12 @@ export class KiwiSortableLabel implements ComponentInterface {
   sort!: EventEmitter<string>;
 
   render(): JSX.Element {
-    const sortIcon =
-      this.sortDirection === 'desc'
-        ? 'glyphicon-sort-by-alphabet-alt'
-        : 'glyphicon-sort-by-alphabet';
+    const availableIcons = {
+      off: 'glyphicon-sort',
+      desc: 'glyphicon-sort-by-alphabet-alt',
+      asc: 'glyphicon-sort-by-alphabet',
+    };
+    const sortIcon = availableIcons[this.sortDirection];
 
     return (
       <div class="text-nowrap">

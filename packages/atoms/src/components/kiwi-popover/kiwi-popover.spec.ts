@@ -2,17 +2,6 @@ import { newSpecPage } from '@stencil/core/testing';
 import { KiwiPopover } from './kiwi-popover';
 
 describe('kiwi-popover', () => {
-  it('builds', async () => {
-    const popover = await newSpecPage({
-      components: [KiwiPopover],
-      html: `
-        <kiwi-popover>
-        </kiwi-popover>
-      `,
-    });
-    expect(popover.root).toBeTruthy();
-  });
-
   it('renders', async () => {
     const popover = await newSpecPage({
       components: [KiwiPopover],

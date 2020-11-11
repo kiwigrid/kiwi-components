@@ -2,10 +2,6 @@ import { KiwiSidebar } from './kiwi-sidebar';
 import { newSpecPage } from '@stencil/core/testing';
 
 describe('kiwi-sidebar', () => {
-  it('builds', () => {
-    expect(new KiwiSidebar()).toBeTruthy();
-  });
-
   it('renders', async () => {
     const sidebarLeft = await newSpecPage({
       components: [KiwiSidebar],

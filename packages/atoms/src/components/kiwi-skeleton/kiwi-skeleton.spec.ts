@@ -2,10 +2,6 @@ import { newSpecPage } from '@stencil/core/testing';
 import { KiwiSkeleton } from './kiwi-skeleton';
 
 describe('kiwi-skeleton', () => {
-  it('builds', () => {
-    expect(new KiwiSkeleton()).toBeTruthy();
-  });
-
   describe('paragraph', () => {
     it('renders', async () => {
       const skeleton = await newSpecPage({
