@@ -26,7 +26,6 @@
           "error",
           { "varsIgnorePattern": "h" }
         ],
-        "@typescript-eslint/no-non-null-assertion": 0,
         "@stencil/decorators-style": [
           "error",
           {
@@ -39,8 +38,7 @@
             "allow-null-union",
             "allow-undefined-union",
             "allow-boolean-or-undefined",
-            "allow-string",
-            "allow-number"
+            "allow-string"
           ]
         ],
         "react/jsx-uses-vars": "error"

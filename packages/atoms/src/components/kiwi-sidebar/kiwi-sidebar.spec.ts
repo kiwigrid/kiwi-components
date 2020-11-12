@@ -52,10 +52,7 @@ describe('kiwi-sidebar', () => {
 
     jest.spyOn(sidebarInst.requestClose, 'emit');
 
-    const backdrop: HTMLDivElement = sidebarElem!.querySelector(
-      '.nav-backdrop',
-    ) as HTMLDivElement;
-    backdrop.click();
+    sidebarElem?.querySelector<HTMLDivElement>('.nav-backdrop')?.click();
 
     expect(sidebarInst.requestClose.emit).toBeCalled();
   });

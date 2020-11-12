@@ -1,4 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
+import { expectDefined } from '../util/testing';
 import { KiwiSortableLabel } from './kiwi-sortable-label';
 
 describe('kiwi-sortable-label', () => {
@@ -12,8 +13,6 @@ describe('kiwi-sortable-label', () => {
           sort-key="random"
         ></kiwi-sortable-label>`,
     });
-
-    // cycle through each sort state and finally click remove sorting
 
     expect(label.root).toMatchSnapshot('initial');
   });
@@ -29,10 +28,12 @@ describe('kiwi-sortable-label', () => {
     });
 
     const sortSpy = jest.fn();
-    label.root!.addEventListener('sort', sortSpy);
+    const rootElement = label.root;
+    expectDefined(rootElement);
+    rootElement.addEventListener('sort', sortSpy);
 
-    const a = label.root!.querySelector('a');
-    a!.click();
+    const a = rootElement.querySelector('a');
+    a?.click();
     expect(sortSpy).toHaveBeenCalledWith(
       expect.objectContaining({
         type: 'sort',

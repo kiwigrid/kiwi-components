@@ -1,4 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
+import { expectDefined } from '../util/testing';
 import { KiwiInput } from './kiwi-input';
 
 describe('kiwi-input', () => {
@@ -24,7 +25,9 @@ describe('kiwi-input', () => {
       </kiwi-input>
     `);
 
-    input.root!.querySelector('input')!.value = '123';
+    const inputElement = input.root?.querySelector('input');
+    expectDefined(inputElement);
+    inputElement.value = '123';
 
     await input.waitForChanges();
 

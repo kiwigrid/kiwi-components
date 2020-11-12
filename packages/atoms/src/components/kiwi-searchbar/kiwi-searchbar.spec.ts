@@ -1,6 +1,7 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { fakeSchedulers } from 'rxjs-marbles/jest';
 import { KiwiInput } from '../kiwi-input/kiwi-input';
+import { expectDefined } from '../util/testing';
 import { KiwiSearchbar } from './kiwi-searchbar';
 
 describe('kiwi-searchbar', () => {
@@ -23,10 +24,12 @@ describe('kiwi-searchbar', () => {
 
     jest.spyOn(searchbarInstance.triggerSearch, 'emit');
 
-    searchbar.root!.querySelector('input')!.value = 'abc';
-    searchbar
-      .root!.querySelector<HTMLButtonElement>('button[aria-label="Search"]')!
-      .click();
+    const inputElement = searchbar.root?.querySelector('input');
+    expectDefined(inputElement);
+    inputElement.value = 'abc';
+    searchbar.root
+      ?.querySelector<HTMLButtonElement>('button[aria-label="Search"]')
+      ?.click();
 
     expect(searchbarInstance.triggerSearch.emit).toHaveBeenCalled();
   });
@@ -41,9 +44,9 @@ describe('kiwi-searchbar', () => {
 
     jest.spyOn(searchbarInstance.triggerSearch, 'emit');
 
-    searchbar
-      .root!.querySelector<HTMLButtonElement>('button[aria-label="Clear"]')!
-      .click();
+    searchbar.root
+      ?.querySelector<HTMLButtonElement>('button[aria-label="Clear"]')
+      ?.click();
 
     expect(searchbarInstance.triggerSearch.emit).toBeCalledWith('');
   });
@@ -60,11 +63,14 @@ describe('kiwi-searchbar', () => {
         });
 
         const triggerSearchSpy = jest.fn();
-        searchbar.root!.addEventListener('triggerSearch', triggerSearchSpy);
+        const rootElement = searchbar.root;
+        expectDefined(rootElement);
+        rootElement.addEventListener('triggerSearch', triggerSearchSpy);
 
-        const input = searchbar.root!.querySelector('kiwi-input');
-        input!.value = '123';
-        input!.dispatchEvent(new Event('input'));
+        const input = searchbar.root?.querySelector('kiwi-input');
+        expectDefined(input);
+        input.value = '123';
+        input.dispatchEvent(new Event('input'));
         await searchbar.waitForChanges();
 
         expect(triggerSearchSpy).not.toHaveBeenCalled();
