@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kiwi-skeleton paragraph renders 6 rows: 6 rows 1`] = `
+<kiwi-skeleton rows="6">
+  <div class="loading-skeleton paragraph">
+    <h3></h3>
+    <ul class="list-unstyled">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+</kiwi-skeleton>
+`;
+
+exports[`kiwi-skeleton paragraph renders: default rows 1`] = `
+<kiwi-skeleton>
+  <div class="loading-skeleton paragraph">
+    <h3></h3>
+    <ul class="list-unstyled">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+</kiwi-skeleton>
+`;
+
+exports[`kiwi-skeleton table renders 1`] = `
+<kiwi-skeleton type="table">
+  <div class="loading-skeleton table">
+    <h3>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </h3>
+    <ul class="list-unstyled">
+      <li>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </li>
+      <li>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </li>
+      <li>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </li>
+      <li>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </li>
+    </ul>
+  </div>
+</kiwi-skeleton>
+`;

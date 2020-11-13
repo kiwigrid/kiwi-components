@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kiwi-sidebar renders: closed 1`] = `
+<kiwi-sidebar position="left">
+  <!---->
+  <div aria-hidden="true" aria-label="Close Sidebar" class="nav-backdrop" style="z-index: -1;"></div>
+  <div aria-hidden="true" class="bg-gray p-2 sidebar-left sidebar-offcanvas">
+    <div class="sidebar-inner">
+      <span>
+        Content
+      </span>
+    </div>
+  </div>
+</kiwi-sidebar>
+`;
+
+exports[`kiwi-sidebar renders: left 1`] = `
+<kiwi-sidebar class="offcanvas-left" position="left" visible="">
+  <!---->
+  <div aria-hidden="true" aria-label="Close Sidebar" class="nav-backdrop" style="z-index: 30;"></div>
+  <div aria-hidden="false" class="bg-gray p-2 sidebar-left sidebar-offcanvas">
+    <div class="sidebar-inner">
+      <span>
+        Content
+      </span>
+    </div>
+  </div>
+</kiwi-sidebar>
+`;
+
+exports[`kiwi-sidebar renders: right 1`] = `
+<kiwi-sidebar class="offcanvas-right" position="right" visible="">
+  <!---->
+  <div aria-hidden="true" aria-label="Close Sidebar" class="nav-backdrop" style="z-index: 30;"></div>
+  <div aria-hidden="false" class="bg-gray p-2 sidebar-offcanvas sidebar-right">
+    <div class="sidebar-inner">
+      <span>
+        Content
+      </span>
+    </div>
+  </div>
+</kiwi-sidebar>
+`;

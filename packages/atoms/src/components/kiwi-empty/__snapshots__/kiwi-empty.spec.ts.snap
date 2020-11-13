@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kiwi-empty renders content 1`] = `
+<kiwi-empty with-content="true">
+  <!---->
+  <div class="mt-3 text-center" style="color: #9d9d9d;">
+    <span class="glyphicon glyphicon-inbox" style="font-size: 600%;"></span>
+    <p class="mt-2">
+      No data
+    </p>
+  </div>
+</kiwi-empty>
+`;
+
+exports[`kiwi-empty renders custom class 1`] = `
+<kiwi-empty icon="icon icon-beer">
+  <!---->
+  <div class="mt-3 text-center" style="color: #9d9d9d;">
+    <span class="icon icon-beer" style="font-size: 600%;"></span>
+  </div>
+</kiwi-empty>
+`;
+
+exports[`kiwi-empty renders default 1`] = `
+<kiwi-empty undefined="undefined">
+  <!---->
+  <div class="mt-3 text-center" style="color: #9d9d9d;">
+    <span class="glyphicon glyphicon-inbox" style="font-size: 600%;"></span>
+  </div>
+</kiwi-empty>
+`;
+
+exports[`kiwi-empty renders glyphicon suffix 1`] = `
+<kiwi-empty glyphicon="kittens">
+  <!---->
+  <div class="mt-3 text-center" style="color: #9d9d9d;">
+    <span class="glyphicon glyphicon-kittens" style="font-size: 600%;"></span>
+  </div>
+</kiwi-empty>
+`;
+
+exports[`kiwi-empty renders size: large 1`] = `
+<kiwi-empty size="large">
+  <!---->
+  <div class="mt-3 text-center" style="color: #9d9d9d;">
+    <span class="glyphicon glyphicon-inbox" style="font-size: 600%;"></span>
+  </div>
+</kiwi-empty>
+`;
+
+exports[`kiwi-empty renders size: medium 1`] = `
+<kiwi-empty size="medium">
+  <!---->
+  <div class="mt-3 text-center" style="color: #9d9d9d;">
+    <span class="glyphicon glyphicon-inbox" style="font-size: 300%;"></span>
+  </div>
+</kiwi-empty>
+`;
+
+exports[`kiwi-empty renders size: small 1`] = `
+<kiwi-empty size="small">
+  <!---->
+  <div class="mt-3 text-center" style="color: #9d9d9d;">
+    <span class="glyphicon glyphicon-inbox" style="font-size: 150%;"></span>
+  </div>
+</kiwi-empty>
+`;

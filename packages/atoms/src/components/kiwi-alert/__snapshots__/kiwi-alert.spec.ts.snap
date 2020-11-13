@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kiwi-alert renders error: error 1`] = `
+<kiwi-alert class="alert alert-danger" type="error">
+  <!---->
+  <span>
+    error
+  </span>
+</kiwi-alert>
+`;
+
+exports[`kiwi-alert renders info: info 1`] = `
+<kiwi-alert class="alert alert-info" type="info">
+  <!---->
+  <span>
+    info
+  </span>
+</kiwi-alert>
+`;
+
+exports[`kiwi-alert renders warn: warn 1`] = `
+<kiwi-alert class="alert alert-warning" type="warn">
+  <!---->
+  <span>
+    warn
+  </span>
+</kiwi-alert>
+`;

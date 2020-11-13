@@ -32,6 +32,15 @@
             "prop": "multiline"
           }
         ],
+        "@stencil/strict-boolean-conditions": [
+          "warn",
+          [
+            "allow-null-union",
+            "allow-undefined-union",
+            "allow-boolean-or-undefined",
+            "allow-string"
+          ]
+        ],
         "react/jsx-uses-vars": "error"
       }
     }

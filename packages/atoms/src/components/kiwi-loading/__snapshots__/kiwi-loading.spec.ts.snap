@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kiwi-loading renders: loading 1`] = `
+<kiwi-loading class="text-info" loading="" text="Windows is starting">
+  <div class="loading-spinner mr-xs-1 pull-left">
+    <div class="inline-block small spinner"></div>
+  </div>
+  <span>
+    Windows is starting
+  </span>
+</kiwi-loading>
+`;
+
+exports[`kiwi-loading renders: not loading 1`] = `<kiwi-loading text="Windows is starting"></kiwi-loading>`;

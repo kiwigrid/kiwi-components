@@ -13,16 +13,6 @@ const newKiwiDropdown = (): Promise<SpecPage> =>
   });
 
 describe('kiwi-dropdown', () => {
-  it('builds', async () => {
-    const dropdown = await newSpecPage({
-      components: [KiwiDropdown],
-      html: `
-        <kiwi-dropdown></kiwi-dropdown>
-      `,
-    });
-    expect(dropdown.root).toBeTruthy();
-  });
-
   it('renders', async () => {
     const dropdown = await newKiwiDropdown();
 

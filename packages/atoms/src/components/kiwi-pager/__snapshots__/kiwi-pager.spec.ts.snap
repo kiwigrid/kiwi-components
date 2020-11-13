@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kiwi-pager renders 1`] = `
+<kiwi-pager of-label="vong" page="1" total="3">
+  <div class="pager" style="max-width: 250px;">
+    <nav aria-label="Pagination Navigation" class="input-group" role="navigation">
+      <div class="input-group-btn pager-buttons">
+        <button aria-label="Previous Page" class="btn btn-default" type="button">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </button>
+      </div>
+      <div>
+        <input arial-label="Current Page" class="form-control pager-input" max="3" min="1" type="text" value="2">
+      </div>
+      <span class="input-group-addon">
+        vong 3
+      </span>
+      <div class="input-group-btn pager-buttons">
+        <button aria-label="Next Page" class="btn btn-default" type="button">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+</kiwi-pager>
+`;
+
+exports[`kiwi-pager renders empty 1`] = `<kiwi-pager oflabel="vong" page="0" total="0"></kiwi-pager>`;
