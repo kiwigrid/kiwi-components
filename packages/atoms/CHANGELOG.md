@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-atoms@0.2.2...@kiwigrid/kiwi-atoms@0.3.0) (2020-11-13)
+
+
+### Features
+
+* **kiwi-atoms:** add more atoms ([2f60532](https://github.com/kiwigrid/kiwi-components/commit/2f60532118266f6258cf29a967436281ccfa1351))
+* **kiwi-atoms:** added kiwi-empty component ([6764eb6](https://github.com/kiwigrid/kiwi-components/commit/6764eb616775c014a774ca87d9a12de4e6994a64))
+
+
+
+
+
 ## [0.2.2](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-atoms@0.2.1...@kiwigrid/kiwi-atoms@0.2.2) (2020-09-13)
 
 **Note:** Version bump only for package @kiwigrid/kiwi-atoms
