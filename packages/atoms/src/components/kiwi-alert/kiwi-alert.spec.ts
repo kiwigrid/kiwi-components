@@ -2,7 +2,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { KiwiAlert } from './kiwi-alert';
 
 describe('kiwi-alert', () => {
-  ['info', 'warn', 'error'].forEach((type) => {
+  ['info', 'warn', 'error', 'success'].forEach((type) => {
     it(`renders ${type}`, async () => {
       const alert = await newSpecPage({
         components: [KiwiAlert],

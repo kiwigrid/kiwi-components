@@ -18,6 +18,15 @@ exports[`kiwi-alert renders info: info 1`] = `
 </kiwi-alert>
 `;
 
+exports[`kiwi-alert renders success: success 1`] = `
+<kiwi-alert class="alert alert-success" type="success">
+  <!---->
+  <span>
+    success
+  </span>
+</kiwi-alert>
+`;
+
 exports[`kiwi-alert renders warn: warn 1`] = `
 <kiwi-alert class="alert alert-warning" type="warn">
   <!---->

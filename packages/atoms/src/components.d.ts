@@ -17,7 +17,7 @@ export namespace Components {
         /**
           * The type of the alert.
          */
-        "type": 'info' | 'warn' | 'error';
+        "type": 'info' | 'warn' | 'error' | 'success';
     }
     interface KiwiBreadcrumb {
     }
@@ -285,6 +285,8 @@ export namespace Components {
          */
         "sortKey": string;
     }
+    interface KiwiToasts {
+    }
 }
 declare global {
     interface HTMLKiwiAlertElement extends Components.KiwiAlert, HTMLStencilElement {
@@ -425,6 +427,12 @@ declare global {
         prototype: HTMLKiwiSortableLabelElement;
         new (): HTMLKiwiSortableLabelElement;
     };
+    interface HTMLKiwiToastsElement extends Components.KiwiToasts, HTMLStencilElement {
+    }
+    var HTMLKiwiToastsElement: {
+        prototype: HTMLKiwiToastsElement;
+        new (): HTMLKiwiToastsElement;
+    };
     interface HTMLElementTagNameMap {
         "kiwi-alert": HTMLKiwiAlertElement;
         "kiwi-breadcrumb": HTMLKiwiBreadcrumbElement;
@@ -449,6 +457,7 @@ declare global {
         "kiwi-sidebar": HTMLKiwiSidebarElement;
         "kiwi-skeleton": HTMLKiwiSkeletonElement;
         "kiwi-sortable-label": HTMLKiwiSortableLabelElement;
+        "kiwi-toasts": HTMLKiwiToastsElement;
     }
 }
 declare namespace LocalJSX {
@@ -456,7 +465,7 @@ declare namespace LocalJSX {
         /**
           * The type of the alert.
          */
-        "type"?: 'info' | 'warn' | 'error';
+        "type"?: 'info' | 'warn' | 'error' | 'success';
     }
     interface KiwiBreadcrumb {
     }
@@ -764,6 +773,8 @@ declare namespace LocalJSX {
          */
         "sortKey": string;
     }
+    interface KiwiToasts {
+    }
     interface IntrinsicElements {
         "kiwi-alert": KiwiAlert;
         "kiwi-breadcrumb": KiwiBreadcrumb;
@@ -788,6 +799,7 @@ declare namespace LocalJSX {
         "kiwi-sidebar": KiwiSidebar;
         "kiwi-skeleton": KiwiSkeleton;
         "kiwi-sortable-label": KiwiSortableLabel;
+        "kiwi-toasts": KiwiToasts;
     }
 }
 export { LocalJSX as JSX };
@@ -817,6 +829,7 @@ declare module "@stencil/core" {
             "kiwi-sidebar": LocalJSX.KiwiSidebar & JSXBase.HTMLAttributes<HTMLKiwiSidebarElement>;
             "kiwi-skeleton": LocalJSX.KiwiSkeleton & JSXBase.HTMLAttributes<HTMLKiwiSkeletonElement>;
             "kiwi-sortable-label": LocalJSX.KiwiSortableLabel & JSXBase.HTMLAttributes<HTMLKiwiSortableLabelElement>;
+            "kiwi-toasts": LocalJSX.KiwiToasts & JSXBase.HTMLAttributes<HTMLKiwiToastsElement>;
         }
     }
 }

@@ -16,7 +16,7 @@ export class KiwiAlert implements ComponentInterface {
    * The type of the alert.
    */
   @Prop()
-  type: 'info' | 'warn' | 'error' = 'info';
+  type: 'info' | 'warn' | 'error' | 'success' = 'info';
 
   render(): JSX.Element {
     let alertClass = '';
@@ -29,6 +29,9 @@ export class KiwiAlert implements ComponentInterface {
         break;
       case 'error':
         alertClass = 'alert-danger';
+        break;
+      case 'success':
+        alertClass = 'alert-success';
         break;
       default:
         const exhaustive: never = this.type;
