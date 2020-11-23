@@ -25,7 +25,7 @@ describe('kiwi-toasts', () => {
     });
 
     expectDefined(page.root);
-    page.root.dispatchEvent(
+    page.doc.dispatchEvent(
       new CustomEvent('kiwiToast', { detail: event.error }),
     );
     await page.waitForChanges();
@@ -40,7 +40,7 @@ describe('kiwi-toasts', () => {
     });
 
     expectDefined(page.root);
-    page.root.dispatchEvent(
+    page.doc.dispatchEvent(
       new CustomEvent('kiwiToast', { detail: event.success }),
     );
     await page.waitForChanges();
@@ -60,7 +60,7 @@ describe('kiwi-toasts', () => {
     });
 
     expectDefined(page.root);
-    page.root.dispatchEvent(
+    page.doc.dispatchEvent(
       new CustomEvent('kiwiToast', { detail: event.error }),
     );
     await page.waitForChanges();

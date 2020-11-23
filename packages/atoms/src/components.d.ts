@@ -142,7 +142,7 @@ export namespace Components {
     }
     interface KiwiModal {
         /**
-          * Set this text to show the cancel button, remember to set "withFooter" to show the cancel button
+          * Set this text to show the cancel button
          */
         "cancelText"?: string;
         /**
@@ -150,7 +150,11 @@ export namespace Components {
          */
         "escape"?: boolean;
         /**
-          * Sets the text of the ok button, remember to set "withFooter" to show the ok button
+          * Set this text to show the next button
+         */
+        "nextText"?: string;
+        /**
+          * Set this text to show the ok button
          */
         "okText"?: string;
         /**
@@ -158,9 +162,9 @@ export namespace Components {
          */
         "open"?: boolean;
         /**
-          * Set this to true if you want to show the footer
+          * Set this text to show the previous button
          */
-        "withFooter"?: boolean;
+        "previousText"?: string;
         /**
           * Set this to true if you want to show the header
          */
@@ -606,7 +610,7 @@ declare namespace LocalJSX {
     }
     interface KiwiModal {
         /**
-          * Set this text to show the cancel button, remember to set "withFooter" to show the cancel button
+          * Set this text to show the cancel button
          */
         "cancelText"?: string;
         /**
@@ -614,7 +618,11 @@ declare namespace LocalJSX {
          */
         "escape"?: boolean;
         /**
-          * Sets the text of the ok button, remember to set "withFooter" to show the ok button
+          * Set this text to show the next button
+         */
+        "nextText"?: string;
+        /**
+          * Set this text to show the ok button
          */
         "okText"?: string;
         /**
@@ -626,13 +634,21 @@ declare namespace LocalJSX {
          */
         "onConfirmed"?: (event: CustomEvent<any>) => void;
         /**
+          * This event is emitted on click on the "next" button
+         */
+        "onNext"?: (event: CustomEvent<any>) => void;
+        /**
+          * This event is emitted on click on the "previous" button
+         */
+        "onPrevious"?: (event: CustomEvent<any>) => void;
+        /**
           * Set this to true to show the modal or alternatively set an id to this element and dispatch a 'showKiwiModal' CustomEvent with the id as event.detail
          */
         "open"?: boolean;
         /**
-          * Set this to true if you want to show the footer
+          * Set this text to show the previous button
          */
-        "withFooter"?: boolean;
+        "previousText"?: string;
         /**
           * Set this to true if you want to show the header
          */

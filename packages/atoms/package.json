@@ -31,20 +31,20 @@
   "dependencies": {
     "@popperjs/core": "2.5.4",
     "date-fns": "^2.16.1",
-    "i18next": "^19.8.3",
+    "i18next": "^19.8.4",
     "i18next-xhr-backend": "^3.2.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.3",
-    "@stencil/core": "^2.2.0",
+    "@babel/core": "^7.12.7",
+    "@stencil/core": "^2.3.0",
     "@stencil/eslint-plugin": "0.3.1",
     "@stencil/store": "1.3.0",
-    "@storybook/addon-a11y": "^6.0.28",
-    "@storybook/addon-actions": "^6.0.28",
+    "@storybook/addon-a11y": "^6.1.2",
+    "@storybook/addon-actions": "^6.1.2",
     "@storybook/addon-console": "^1.2.2",
-    "@storybook/addon-essentials": "^6.0.28",
-    "@storybook/addon-links": "^6.0.28",
-    "@storybook/web-components": "^6.0.28",
+    "@storybook/addon-essentials": "^6.1.2",
+    "@storybook/addon-links": "^6.1.2",
+    "@storybook/web-components": "^6.1.2",
     "@types/events": "^3.0.0",
     "@types/jest": "26.0.15",
     "@types/lodash-es": "4.17.3",
@@ -67,7 +67,7 @@
     "puppeteer": "5.4.1",
     "rimraf": "3.0.2",
     "rxjs-marbles": "^6.0.1",
-    "typescript": "4.0.5"
+    "typescript": "4.1.2"
   },
   "license": "MIT"
 }

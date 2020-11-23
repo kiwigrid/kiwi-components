@@ -8,6 +8,7 @@ import {
   Listen,
   Element,
 } from '@stencil/core';
+import { some } from 'lodash-es';
 
 @Component({
   tag: 'kiwi-modal',
@@ -24,15 +25,18 @@ export class KiwiModal {
   /** Set this to true if you want to show the header */
   @Prop()
   withHeader?: boolean = false;
-  /** Set this to true if you want to show the footer */
-  @Prop()
-  withFooter?: boolean = false;
-  /** Set this text to show the cancel button, remember to set "withFooter" to show the cancel button */
+  /** Set this text to show the cancel button */
   @Prop()
   cancelText?: string;
-  /** Sets the text of the ok button, remember to set "withFooter" to show the ok button */
+  /** Set this text to show the previous button */
   @Prop()
-  okText?: string = 'Ok';
+  previousText?: string;
+  /** Set this text to show the next button */
+  @Prop()
+  nextText?: string;
+  /** Set this text to show the ok button */
+  @Prop()
+  okText?: string;
   /** Set to true if the modal should be closed on Escape press */
   @Prop()
   escape?: boolean = false;
@@ -42,6 +46,12 @@ export class KiwiModal {
   /** This event is emitted after the modal was closed */
   @Event()
   closed!: EventEmitter;
+  /** This event is emitted on click on the "previous" button  */
+  @Event()
+  previous!: EventEmitter;
+  /** This event is emitted on click on the "next" button */
+  @Event()
+  next!: EventEmitter;
   /** This event is emitted on click on the "ok" button  */
   @Event()
   confirmed!: EventEmitter;
@@ -68,6 +78,12 @@ export class KiwiModal {
   private handleClose = (): void => {
     this.open = false;
     this.closed.emit();
+  };
+  private handlePrevious = (): void => {
+    this.previous.emit();
+  };
+  private handleNext = (): void => {
+    this.next.emit();
   };
   private handleConfirmation = (): void => {
     this.confirmed.emit();
@@ -106,19 +122,36 @@ export class KiwiModal {
             <div class="modal-body">
               <slot name="modal-body"></slot>
             </div>
-            {this.withFooter && (
+            {some([
+              this.cancelText,
+              this.previousText,
+              this.nextText,
+              this.okText,
+            ]) && (
               <div class="modal-footer">
                 {this.cancelText && (
                   <button class="btn btn-link" onClick={this.handleClose}>
                     {this.cancelText}
                   </button>
                 )}
-                <button
-                  class="btn btn-primary"
-                  onClick={this.handleConfirmation}
-                >
-                  {this.okText}
-                </button>
+                {this.previousText && (
+                  <button class="btn btn-link" onClick={this.handlePrevious}>
+                    {this.previousText}
+                  </button>
+                )}
+                {this.nextText && (
+                  <button class="btn btn-primary" onClick={this.handleNext}>
+                    {this.nextText}
+                  </button>
+                )}
+                {this.okText && (
+                  <button
+                    class="btn btn-primary"
+                    onClick={this.handleConfirmation}
+                  >
+                    {this.okText}
+                  </button>
+                )}
               </div>
             )}
           </div>
