@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`kiwi-alert renders error: error 1`] = `
-<kiwi-alert class="alert alert-danger" type="error" style="display: block;">
+<kiwi-alert class="alert alert-danger" type="error">
   <!---->
   <span>
     error
@@ -10,7 +10,7 @@ exports[`kiwi-alert renders error: error 1`] = `
 `;
 
 exports[`kiwi-alert renders info: info 1`] = `
-<kiwi-alert class="alert alert-info" type="info" style="display: block;">
+<kiwi-alert class="alert alert-info" type="info">
   <!---->
   <span>
     info
@@ -19,7 +19,7 @@ exports[`kiwi-alert renders info: info 1`] = `
 `;
 
 exports[`kiwi-alert renders success: success 1`] = `
-<kiwi-alert class="alert alert-success" type="success" style="display: block;">
+<kiwi-alert class="alert alert-success" type="success">
   <!---->
   <span>
     success
@@ -28,7 +28,7 @@ exports[`kiwi-alert renders success: success 1`] = `
 `;
 
 exports[`kiwi-alert renders warn: warn 1`] = `
-<kiwi-alert class="alert alert-warning" type="warn" style="display: block;">
+<kiwi-alert class="alert alert-warning" type="warn">
   <!---->
   <span>
     warn

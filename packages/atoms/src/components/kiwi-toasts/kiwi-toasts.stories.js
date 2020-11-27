@@ -8,19 +8,18 @@ export default {
 };
 
 export const basic = () => {
-  document.addEventListener('DOMContentLoaded', () => {
-    const toastsElement = document.querySelector('kiwi-toasts');
-    toastsElement.dispatchEvent(
+  window.setTimeout(() => {
+    document.dispatchEvent(
       new CustomEvent('kiwiToast', {
         detail: {
           title: 'SUCCESS',
-          description: 'This message will self-destruct after 5 seconds',
+          description: 'This message will self-destruct after 10 seconds',
           type: 'success',
-          timeout: 5000,
+          timeout: 10000,
         },
       }),
     );
-    toastsElement.dispatchEvent(
+    document.dispatchEvent(
       new CustomEvent('kiwiToast', {
         detail: {
           title: 'ERROR',
@@ -31,6 +30,20 @@ export const basic = () => {
         },
       }),
     );
-  });
+  }, 100 /* so they definitely show up */);
+  window.setTimeout(() => {
+    document.dispatchEvent(
+      new CustomEvent('kiwiToast', {
+        detail: {
+          title: 'SUCCESS',
+          description:
+            'This message should have appeared after 5 seconds and will self-destruct after 10 seconds',
+          type: 'success',
+          timeout: 10000,
+        },
+      }),
+    );
+  }, 5000);
+
   return html`<kiwi-toasts />`;
 };

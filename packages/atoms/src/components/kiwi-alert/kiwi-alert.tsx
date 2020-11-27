@@ -9,6 +9,7 @@ import {
 
 @Component({
   tag: 'kiwi-alert',
+  styleUrl: 'kiwi-alert.css',
   shadow: false,
 })
 export class KiwiAlert implements ComponentInterface {
@@ -38,7 +39,7 @@ export class KiwiAlert implements ComponentInterface {
         break;
     }
     return (
-      <Host class={`alert ${alertClass}`} style={{ display: 'block' }}>
+      <Host class={`alert ${alertClass}`}>
         <slot />
       </Host>
     );
