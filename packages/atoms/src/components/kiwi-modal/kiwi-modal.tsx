@@ -22,36 +22,46 @@ export class KiwiModal {
     reflect: true,
   })
   open?: boolean = false;
+
   /** Set this to true if you want to show the header */
   @Prop()
   withHeader?: boolean = false;
+
   /** Set this text to show the cancel button */
   @Prop()
   cancelText?: string;
+
   /** Set this text to show the previous button */
   @Prop()
   previousText?: string;
+
   /** Set this text to show the next button */
   @Prop()
   nextText?: string;
+
   /** Set this text to show the ok button */
   @Prop()
   okText?: string;
+
   /** Set to true if the modal should be closed on Escape press */
   @Prop()
   escape?: boolean = false;
 
-  @Element() host!: HTMLKiwiModalElement;
+  @Element()
+  host!: HTMLKiwiModalElement;
 
   /** This event is emitted after the modal was closed */
   @Event()
   closed!: EventEmitter;
+
   /** This event is emitted on click on the "previous" button  */
   @Event()
   previous!: EventEmitter;
+
   /** This event is emitted on click on the "next" button */
   @Event()
   next!: EventEmitter;
+
   /** This event is emitted on click on the "ok" button  */
   @Event()
   confirmed!: EventEmitter;
@@ -129,14 +139,17 @@ export class KiwiModal {
               this.okText,
             ]) && (
               <div class="modal-footer">
+                {this.previousText && (
+                  <button
+                    class="btn btn-link pull-left"
+                    onClick={this.handlePrevious}
+                  >
+                    {this.previousText}
+                  </button>
+                )}
                 {this.cancelText && (
                   <button class="btn btn-link" onClick={this.handleClose}>
                     {this.cancelText}
-                  </button>
-                )}
-                {this.previousText && (
-                  <button class="btn btn-link" onClick={this.handlePrevious}>
-                    {this.previousText}
                   </button>
                 )}
                 {this.nextText && (

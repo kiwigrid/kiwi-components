@@ -47,7 +47,7 @@ export const stepped = () => {
   const setStep2 = (event) => {
     if (event.target.id === 'steppedModal') {
       event.target.nextText = undefined;
-      event.target.cancelText = undefined;
+      event.target.cancelText = 'Cancel';
       event.target.previousText = 'Back';
       event.target.okText = 'Finish';
       event.target.querySelector('[slot="modal-body"]').textContent = 'Step 2';
