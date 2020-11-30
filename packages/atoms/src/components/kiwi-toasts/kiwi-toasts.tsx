@@ -8,10 +8,6 @@ export interface Toast {
   timeout?: number; // 0 means no automatic disappearing
 }
 
-interface ToastWithKey extends Toast {
-  key: string;
-}
-
 const DEFAULT_DURATION = 5000;
 
 @Component({
@@ -21,7 +17,7 @@ const DEFAULT_DURATION = 5000;
 })
 export class KiwiToasts {
   @State()
-  private toasts: ToastWithKey[] = [];
+  private toasts: (Toast & { key: string })[] = [];
 
   @Listen('kiwiToast', { target: 'document' })
   private handleKiwiToastEvent(event: CustomEvent<Toast>): void {
