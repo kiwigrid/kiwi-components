@@ -7,12 +7,12 @@ import {
   Watch,
   Listen,
   Element,
+  Host,
 } from '@stencil/core';
 import { some } from 'lodash-es';
 
 @Component({
   tag: 'kiwi-modal',
-  styleUrl: 'kiwi-modal.css',
   shadow: false,
 })
 export class KiwiModal {
@@ -66,12 +66,37 @@ export class KiwiModal {
   @Event()
   confirmed!: EventEmitter;
 
-  private modalElement?: HTMLDivElement;
+  private modalElement!: HTMLDivElement;
+
+  private backdropElement!: HTMLDivElement;
 
   @Listen('showKiwiModal', { target: 'document' })
   private showKiwiModalHandler(event: CustomEvent<string>): void {
     if (event.detail === this.host.id) {
       this.open = true;
+    }
+  }
+
+  @Watch('open')
+  private onOpenChange(newValue: boolean): void {
+    if (newValue) {
+      document.body.classList.add('modal-open');
+      this.modalElement.classList.add('show', 'fade');
+      this.backdropElement.classList.add('show', 'fade');
+      window.setTimeout(() => {
+        this.modalElement.classList.add('in');
+        this.backdropElement.classList.add('in');
+      }, 150);
+    } else {
+      this.modalElement.classList.remove('in');
+      window.setTimeout(() => {
+        this.modalElement.classList.remove('show', 'fade');
+        this.backdropElement.classList.remove('in');
+      }, 250);
+      window.setTimeout(() => {
+        this.backdropElement.classList.remove('show', 'fade');
+        document.body.classList.remove('modal-open');
+      }, 500);
     }
   }
 
@@ -107,69 +132,76 @@ export class KiwiModal {
 
   render(): void {
     return (
-      <div
-        class={{ modal: true, show: this.open ?? false }}
-        onClick={this.handleClickOutside}
-        ref={(el) => (this.modalElement = el)}
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            {this.withHeader && (
-              <div class="modal-header modal-default">
-                <button
-                  class="close"
-                  type="close"
-                  aria-hidden="true"
-                  onClick={this.handleClose}
-                >
-                  ×
-                </button>
-                <h4 class="modal-title">
-                  <slot name="modal-title"></slot>
-                </h4>
+      <Host>
+        <div
+          class="modal"
+          onClick={this.handleClickOutside}
+          ref={(el) => (this.modalElement = el as HTMLDivElement)}
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              {this.withHeader && (
+                <div class="modal-header modal-default">
+                  <button
+                    class="close"
+                    type="close"
+                    aria-hidden="true"
+                    onClick={this.handleClose}
+                  >
+                    ×
+                  </button>
+                  <h4 class="modal-title">
+                    <slot name="modal-title"></slot>
+                  </h4>
+                </div>
+              )}
+              <div class="modal-body">
+                <slot name="modal-body"></slot>
               </div>
-            )}
-            <div class="modal-body">
-              <slot name="modal-body"></slot>
+              {some([
+                this.cancelText,
+                this.previousText,
+                this.nextText,
+                this.okText,
+              ]) && (
+                <div class="modal-footer">
+                  {this.previousText && (
+                    <button
+                      class="btn btn-link pull-left"
+                      onClick={this.handlePrevious}
+                    >
+                      {this.previousText}
+                    </button>
+                  )}
+                  {this.cancelText && (
+                    <button class="btn btn-link" onClick={this.handleClose}>
+                      {this.cancelText}
+                    </button>
+                  )}
+                  {this.nextText && (
+                    <button class="btn btn-primary" onClick={this.handleNext}>
+                      {this.nextText}
+                    </button>
+                  )}
+                  {this.okText && (
+                    <button
+                      class="btn btn-primary"
+                      onClick={this.handleConfirmation}
+                    >
+                      {this.okText}
+                    </button>
+                  )}
+                </div>
+              )}
             </div>
-            {some([
-              this.cancelText,
-              this.previousText,
-              this.nextText,
-              this.okText,
-            ]) && (
-              <div class="modal-footer">
-                {this.previousText && (
-                  <button
-                    class="btn btn-link pull-left"
-                    onClick={this.handlePrevious}
-                  >
-                    {this.previousText}
-                  </button>
-                )}
-                {this.cancelText && (
-                  <button class="btn btn-link" onClick={this.handleClose}>
-                    {this.cancelText}
-                  </button>
-                )}
-                {this.nextText && (
-                  <button class="btn btn-primary" onClick={this.handleNext}>
-                    {this.nextText}
-                  </button>
-                )}
-                {this.okText && (
-                  <button
-                    class="btn btn-primary"
-                    onClick={this.handleConfirmation}
-                  >
-                    {this.okText}
-                  </button>
-                )}
-              </div>
-            )}
           </div>
         </div>
-      </div>
+        <div
+          class="modal-backdrop"
+          style={{ display: 'none' }}
+          ref={(el) => (this.backdropElement = el as HTMLDivElement)}
+        />
+      </Host>
     );
   }
 }
