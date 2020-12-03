@@ -21,11 +21,11 @@ export class KiwiModal {
     mutable: true,
     reflect: true,
   })
-  open?: boolean = false;
+  open = false;
 
   /** Set this to true if you want to show the header */
   @Prop()
-  withHeader?: boolean = false;
+  withHeader = false;
 
   /** Set this text to show the cancel button */
   @Prop()
@@ -45,7 +45,7 @@ export class KiwiModal {
 
   /** Set to true if the modal should be closed on Escape press */
   @Prop()
-  escape?: boolean = false;
+  escape = false;
 
   @Element()
   host!: HTMLKiwiModalElement;
@@ -80,23 +80,9 @@ export class KiwiModal {
   @Watch('open')
   private onOpenChange(newValue: boolean): void {
     if (newValue) {
-      document.body.classList.add('modal-open');
-      this.modalElement.classList.add('show', 'fade');
-      this.backdropElement.classList.add('show', 'fade');
-      window.setTimeout(() => {
-        this.modalElement.classList.add('in');
-        this.backdropElement.classList.add('in');
-      }, 150);
+      this.handleOpeningCssClasses();
     } else {
-      this.modalElement.classList.remove('in');
-      window.setTimeout(() => {
-        this.modalElement.classList.remove('show', 'fade');
-        this.backdropElement.classList.remove('in');
-      }, 250);
-      window.setTimeout(() => {
-        this.backdropElement.classList.remove('show', 'fade');
-        document.body.classList.remove('modal-open');
-      }, 500);
+      this.handleClosingCssClasses();
     }
   }
 
@@ -108,7 +94,35 @@ export class KiwiModal {
         }
       });
     }
+
+    this.onOpenChange(this.open);
   }
+
+  disconnectedCallback(): void {
+    this.handleClosingCssClasses();
+  }
+
+  private handleOpeningCssClasses = (): void => {
+    document.body.classList.add('modal-open');
+    this.modalElement.classList.add('show', 'fade');
+    this.backdropElement.classList.add('show', 'fade');
+    window.setTimeout(() => {
+      this.modalElement.classList.add('in');
+      this.backdropElement.classList.add('in');
+    }, 150);
+  };
+
+  private handleClosingCssClasses = (): void => {
+    this.modalElement.classList.remove('in');
+    window.setTimeout(() => {
+      this.modalElement.classList.remove('show', 'fade');
+      this.backdropElement.classList.remove('in');
+    }, 250);
+    window.setTimeout(() => {
+      this.backdropElement.classList.remove('show', 'fade');
+      document.body.classList.remove('modal-open');
+    }, 500);
+  };
 
   private handleClose = (): void => {
     this.open = false;

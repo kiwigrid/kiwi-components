@@ -10,15 +10,15 @@ To show the modal there are two options:
 
 ## Properties
 
-| Property       | Attribute       | Description                                                                                                                                          | Type                   | Default     |
-| -------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------- |
-| `cancelText`   | `cancel-text`   | Set this text to show the cancel button                                                                                                              | `string \| undefined`  | `undefined` |
-| `escape`       | `escape`        | Set to true if the modal should be closed on Escape press                                                                                            | `boolean \| undefined` | `false`     |
-| `nextText`     | `next-text`     | Set this text to show the next button                                                                                                                | `string \| undefined`  | `undefined` |
-| `okText`       | `ok-text`       | Set this text to show the ok button                                                                                                                  | `string \| undefined`  | `undefined` |
-| `open`         | `open`          | Set this to true to show the modal or alternatively set an id to this element and dispatch a 'showKiwiModal' CustomEvent with the id as event.detail | `boolean \| undefined` | `false`     |
-| `previousText` | `previous-text` | Set this text to show the previous button                                                                                                            | `string \| undefined`  | `undefined` |
-| `withHeader`   | `with-header`   | Set this to true if you want to show the header                                                                                                      | `boolean \| undefined` | `false`     |
+| Property       | Attribute       | Description                                                                                                                                          | Type                  | Default     |
+| -------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
+| `cancelText`   | `cancel-text`   | Set this text to show the cancel button                                                                                                              | `string \| undefined` | `undefined` |
+| `escape`       | `escape`        | Set to true if the modal should be closed on Escape press                                                                                            | `boolean`             | `false`     |
+| `nextText`     | `next-text`     | Set this text to show the next button                                                                                                                | `string \| undefined` | `undefined` |
+| `okText`       | `ok-text`       | Set this text to show the ok button                                                                                                                  | `string \| undefined` | `undefined` |
+| `open`         | `open`          | Set this to true to show the modal or alternatively set an id to this element and dispatch a 'showKiwiModal' CustomEvent with the id as event.detail | `boolean`             | `false`     |
+| `previousText` | `previous-text` | Set this text to show the previous button                                                                                                            | `string \| undefined` | `undefined` |
+| `withHeader`   | `with-header`   | Set this to true if you want to show the header                                                                                                      | `boolean`             | `false`     |
 
 
 ## Events

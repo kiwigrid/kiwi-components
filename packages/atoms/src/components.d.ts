@@ -148,7 +148,7 @@ export namespace Components {
         /**
           * Set to true if the modal should be closed on Escape press
          */
-        "escape"?: boolean;
+        "escape": boolean;
         /**
           * Set this text to show the next button
          */
@@ -160,7 +160,7 @@ export namespace Components {
         /**
           * Set this to true to show the modal or alternatively set an id to this element and dispatch a 'showKiwiModal' CustomEvent with the id as event.detail
          */
-        "open"?: boolean;
+        "open": boolean;
         /**
           * Set this text to show the previous button
          */
@@ -168,7 +168,7 @@ export namespace Components {
         /**
           * Set this to true if you want to show the header
          */
-        "withHeader"?: boolean;
+        "withHeader": boolean;
     }
     interface KiwiPager {
         /**
