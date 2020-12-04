@@ -17,7 +17,7 @@ export namespace Components {
         /**
           * The type of the alert.
          */
-        "type": 'info' | 'warn' | 'error';
+        "type": 'info' | 'warn' | 'error' | 'success';
     }
     interface KiwiBreadcrumb {
     }
@@ -142,29 +142,33 @@ export namespace Components {
     }
     interface KiwiModal {
         /**
-          * Set this text to show the cancel button, remember to set "withFooter" to show the cancel button
+          * Set this text to show the cancel button
          */
         "cancelText"?: string;
         /**
           * Set to true if the modal should be closed on Escape press
          */
-        "escape"?: boolean;
+        "escape": boolean;
         /**
-          * Sets the text of the ok button, remember to set "withFooter" to show the ok button
+          * Set this text to show the next button
+         */
+        "nextText"?: string;
+        /**
+          * Set this text to show the ok button
          */
         "okText"?: string;
         /**
           * Set this to true to show the modal or alternatively set an id to this element and dispatch a 'showKiwiModal' CustomEvent with the id as event.detail
          */
-        "open"?: boolean;
+        "open": boolean;
         /**
-          * Set this to true if you want to show the footer
+          * Set this text to show the previous button
          */
-        "withFooter"?: boolean;
+        "previousText"?: string;
         /**
           * Set this to true if you want to show the header
          */
-        "withHeader"?: boolean;
+        "withHeader": boolean;
     }
     interface KiwiPager {
         /**
@@ -284,6 +288,8 @@ export namespace Components {
           * The key to be sent by sort event.
          */
         "sortKey": string;
+    }
+    interface KiwiToasts {
     }
 }
 declare global {
@@ -425,6 +431,12 @@ declare global {
         prototype: HTMLKiwiSortableLabelElement;
         new (): HTMLKiwiSortableLabelElement;
     };
+    interface HTMLKiwiToastsElement extends Components.KiwiToasts, HTMLStencilElement {
+    }
+    var HTMLKiwiToastsElement: {
+        prototype: HTMLKiwiToastsElement;
+        new (): HTMLKiwiToastsElement;
+    };
     interface HTMLElementTagNameMap {
         "kiwi-alert": HTMLKiwiAlertElement;
         "kiwi-breadcrumb": HTMLKiwiBreadcrumbElement;
@@ -449,6 +461,7 @@ declare global {
         "kiwi-sidebar": HTMLKiwiSidebarElement;
         "kiwi-skeleton": HTMLKiwiSkeletonElement;
         "kiwi-sortable-label": HTMLKiwiSortableLabelElement;
+        "kiwi-toasts": HTMLKiwiToastsElement;
     }
 }
 declare namespace LocalJSX {
@@ -456,7 +469,7 @@ declare namespace LocalJSX {
         /**
           * The type of the alert.
          */
-        "type"?: 'info' | 'warn' | 'error';
+        "type"?: 'info' | 'warn' | 'error' | 'success';
     }
     interface KiwiBreadcrumb {
     }
@@ -597,7 +610,7 @@ declare namespace LocalJSX {
     }
     interface KiwiModal {
         /**
-          * Set this text to show the cancel button, remember to set "withFooter" to show the cancel button
+          * Set this text to show the cancel button
          */
         "cancelText"?: string;
         /**
@@ -605,7 +618,11 @@ declare namespace LocalJSX {
          */
         "escape"?: boolean;
         /**
-          * Sets the text of the ok button, remember to set "withFooter" to show the ok button
+          * Set this text to show the next button
+         */
+        "nextText"?: string;
+        /**
+          * Set this text to show the ok button
          */
         "okText"?: string;
         /**
@@ -617,13 +634,21 @@ declare namespace LocalJSX {
          */
         "onConfirmed"?: (event: CustomEvent<any>) => void;
         /**
+          * This event is emitted on click on the "next" button
+         */
+        "onNext"?: (event: CustomEvent<any>) => void;
+        /**
+          * This event is emitted on click on the "previous" button
+         */
+        "onPrevious"?: (event: CustomEvent<any>) => void;
+        /**
           * Set this to true to show the modal or alternatively set an id to this element and dispatch a 'showKiwiModal' CustomEvent with the id as event.detail
          */
         "open"?: boolean;
         /**
-          * Set this to true if you want to show the footer
+          * Set this text to show the previous button
          */
-        "withFooter"?: boolean;
+        "previousText"?: string;
         /**
           * Set this to true if you want to show the header
          */
@@ -764,6 +789,8 @@ declare namespace LocalJSX {
          */
         "sortKey": string;
     }
+    interface KiwiToasts {
+    }
     interface IntrinsicElements {
         "kiwi-alert": KiwiAlert;
         "kiwi-breadcrumb": KiwiBreadcrumb;
@@ -788,6 +815,7 @@ declare namespace LocalJSX {
         "kiwi-sidebar": KiwiSidebar;
         "kiwi-skeleton": KiwiSkeleton;
         "kiwi-sortable-label": KiwiSortableLabel;
+        "kiwi-toasts": KiwiToasts;
     }
 }
 export { LocalJSX as JSX };
@@ -817,6 +845,7 @@ declare module "@stencil/core" {
             "kiwi-sidebar": LocalJSX.KiwiSidebar & JSXBase.HTMLAttributes<HTMLKiwiSidebarElement>;
             "kiwi-skeleton": LocalJSX.KiwiSkeleton & JSXBase.HTMLAttributes<HTMLKiwiSkeletonElement>;
             "kiwi-sortable-label": LocalJSX.KiwiSortableLabel & JSXBase.HTMLAttributes<HTMLKiwiSortableLabelElement>;
+            "kiwi-toasts": LocalJSX.KiwiToasts & JSXBase.HTMLAttributes<HTMLKiwiToastsElement>;
         }
     }
 }

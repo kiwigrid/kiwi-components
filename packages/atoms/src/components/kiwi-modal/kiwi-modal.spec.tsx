@@ -1,6 +1,7 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { KiwiModal } from './kiwi-modal';
 import { h } from '@stencil/core';
+import { expectDefined } from '../util/testing';
 
 describe('kiwi-modal', () => {
   it('renders', async () => {
@@ -21,9 +22,8 @@ describe('kiwi-modal', () => {
       ),
     });
 
-    page.doc.dispatchEvent(
-      new CustomEvent('showKiwiModal', { detail: 'modalId' }),
-    );
+    expectDefined(page.root);
+    page.root.open = true;
     await page.waitForChanges();
 
     expect(page.root).toHaveAttribute('open');

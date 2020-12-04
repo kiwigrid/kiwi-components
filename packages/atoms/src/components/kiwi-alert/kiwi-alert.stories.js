@@ -19,7 +19,7 @@ basic.argTypes = {
   type: {
     control: {
       type: 'select',
-      options: ['info', 'warn', 'error'],
+      options: ['info', 'warn', 'error', 'success'],
     },
     defaultValue: 'info',
   },
