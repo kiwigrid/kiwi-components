@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-atoms@0.3.0...@kiwigrid/kiwi-atoms@0.4.0) (2020-12-04)
+
+
+### Bug Fixes
+
+* **kiwi-atoms:** "previous"-button in kiwi-modal is now on the left side ([f1a3764](https://github.com/kiwigrid/kiwi-components/commit/f1a3764c7267c5143398ce0ff62abc2a25575cda))
+* **kiwi-atoms:** fix handling classes of kiwi-modal onLoad ([a7faa20](https://github.com/kiwigrid/kiwi-components/commit/a7faa2021d988fcf273d97f94a9007501ef10dcf))
+* **kiwi-atoms:** fixed scrolling for long kiwi-modals, added delays for class changes so css transitions can actually be seen ([0d52c5c](https://github.com/kiwigrid/kiwi-components/commit/0d52c5ce3f39c29f5f2bf1ab83e1c51ada6ae85a))
+* **kiwi-atoms:** kiwi-alert was missing "display: block;" css ([51f0114](https://github.com/kiwigrid/kiwi-components/commit/51f011404edc05f201b0489f3c8ff2d65899cae8))
+* **kiwi-atoms:** refactor kiwi-toast interfaces ([97dc9fd](https://github.com/kiwigrid/kiwi-components/commit/97dc9fd3000c9ceb99a71eea12932fa63c8f6054))
+* **kiwi-atoms:** refactored kiwi-toasts to use an array instead of object internally, toasts now get shown on the top of the page ([3e5420d](https://github.com/kiwigrid/kiwi-components/commit/3e5420dfbaeeda27249bed1ecaaca3910b93444c))
+* **kiwi-atoms:** update dependencies ([930abcd](https://github.com/kiwigrid/kiwi-components/commit/930abcd5409c1ad60d162e5a63156275b740dead))
+* **kiwi-atoms:** updated snapshots of kiwi-alert ([f830d6b](https://github.com/kiwigrid/kiwi-components/commit/f830d6b6786041b45334bab8e1bfdba3c19fc811))
+
+
+### Features
+
+* **kiwi-atoms:** added kiwi-toasts component, extended kiwi-alert with success type ([89fb7ad](https://github.com/kiwigrid/kiwi-components/commit/89fb7ad163359e6c3191679ee9be96a91f6e9601))
+* **kiwi-atoms:** added stepping to kiwi-modal ([e7e3bc9](https://github.com/kiwigrid/kiwi-components/commit/e7e3bc9847058641010ce2958dce35bc55df6207))
+
+
+
+
+
 # [0.3.0](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-atoms@0.2.2...@kiwigrid/kiwi-atoms@0.3.0) (2020-11-13)
 
 
