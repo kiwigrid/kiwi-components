@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kiwi-label renders danger 1`] = `
+<kiwi-label kind="danger">
+  <!---->
+  <span class="label label-danger">
+    danger
+  </span>
+</kiwi-label>
+`;
+
+exports[`kiwi-label renders default 1`] = `
+<kiwi-label kind="default">
+  <!---->
+  <span class="label label-default">
+    default
+  </span>
+</kiwi-label>
+`;
+
+exports[`kiwi-label renders info 1`] = `
+<kiwi-label kind="info">
+  <!---->
+  <span class="label label-info">
+    info
+  </span>
+</kiwi-label>
+`;
+
+exports[`kiwi-label renders success 1`] = `
+<kiwi-label kind="success">
+  <!---->
+  <span class="label label-success">
+    success
+  </span>
+</kiwi-label>
+`;
+
+exports[`kiwi-label renders warning 1`] = `
+<kiwi-label kind="warning">
+  <!---->
+  <span class="label label-warning">
+    warning
+  </span>
+</kiwi-label>
+`;

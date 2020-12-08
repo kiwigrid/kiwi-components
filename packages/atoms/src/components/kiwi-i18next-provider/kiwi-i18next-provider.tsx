@@ -5,8 +5,10 @@ import {
   ComponentWillLoad,
   Prop,
   Watch,
+  Event,
+  EventEmitter,
 } from '@stencil/core';
-import i18next from 'i18next';
+import i18next, { TFunction } from 'i18next';
 import i18nextXhrBackend, { BackendOptions } from 'i18next-xhr-backend';
 import store from './kiwi-i18next-provider.store';
 
@@ -33,10 +35,18 @@ export class KiwiI18nextProvider implements ComponentWillLoad {
   @Prop()
   public ns: string[] = ['common'];
 
+  /**
+   * This event is dispatched when i18nexts t function changes
+   * The t function is passed as data
+   */
+  @Event()
+  private tFunctionChanged!: EventEmitter<TFunction>;
+
   @Watch('lng')
   async onLanguageChange(newLng: string): Promise<void> {
     const t = await i18next.changeLanguage(newLng);
     store.set('t', t);
+    this.tFunctionChanged.emit(store.get('t'));
   }
 
   public async componentWillLoad(): Promise<void> {
@@ -55,6 +65,7 @@ export class KiwiI18nextProvider implements ComponentWillLoad {
     });
 
     store.set('t', t);
+    this.tFunctionChanged.emit(store.get('t'));
   }
 
   render(): JSX.Element {

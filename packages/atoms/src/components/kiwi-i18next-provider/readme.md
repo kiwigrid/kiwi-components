@@ -14,6 +14,13 @@
 | `ns`                        | --               | Namespaces to be loaded by i18next           | `string[]` | `['common']` |
 
 
+## Events
+
+| Event              | Description                                                                                | Type                     |
+| ------------------ | ------------------------------------------------------------------------------------------ | ------------------------ |
+| `tFunctionChanged` | This event is dispatched when i18nexts t function changes The t function is passed as data | `CustomEvent<TFunction>` |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

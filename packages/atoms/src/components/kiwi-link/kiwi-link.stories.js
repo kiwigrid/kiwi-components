@@ -1,20 +1,22 @@
-import { withKnobs, text } from '@storybook/addon-knobs';
 import { html } from 'lit-html';
 import notes from './readme.md';
 
 export default {
   title: 'KiwiComponents/Link',
-  parameters: { notes },
-  decorators: [withKnobs],
+  parameters: { docs: { description: { component: notes } } },
+  decorators: [],
 };
 
-export const basic = () => {
-  const to = text('to', 'https://www.kiwigrid.com');
-  const label = text('label', 'Click Me!');
+export const basic = (args) => {
+  const { to, label } = args;
 
   return html` <div class="panel panel-default">
     <div class="panel-body">
       <kiwi-link to="${to}">${label}</kiwi-link>
     </div>
   </div>`;
+};
+basic.args = {
+  to: 'https://www.kiwigrid.com',
+  label: 'Click Me!',
 };

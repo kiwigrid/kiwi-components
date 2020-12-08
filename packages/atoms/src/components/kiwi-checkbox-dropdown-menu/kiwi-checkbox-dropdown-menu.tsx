@@ -10,7 +10,6 @@ import {
 
 @Component({
   tag: 'kiwi-checkbox-dropdown-menu',
-  styleUrl: 'kiwi-checkbox-dropdown-menu.css',
   shadow: false,
 })
 export class KiwiCheckboxDropdownMenu implements ComponentInterface {
