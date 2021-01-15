@@ -19,7 +19,9 @@ describe('kiwi-blueprint', () => {
 
   it('should show message from attribute', async () => {
     const page = await newE2EPage();
-    await page.setContent('<kiwi-blueprint message="E2E Test!"></kiwi-blueprint>');
+    await page.setContent(
+      '<kiwi-blueprint message="E2E Test!"></kiwi-blueprint>',
+    );
 
     const element = await page.find('kiwi-blueprint');
     expect(element).toMatchSnapshot();

@@ -1,18 +1,16 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, JSX, Prop } from '@stencil/core';
 
 @Component({
   tag: 'kiwi-blueprint',
   styleUrl: 'blueprint.css',
-  shadow: true
+  shadow: true,
 })
 export class Blueprint {
+  /** Say something smart. */
   @Prop()
-  public message: string = "Hello!";
+  public message = 'Hello!';
 
-  render() {
-    return (
-      <p>Say '{this.message}' to awesome Web Components</p>
-    );
+  render(): JSX.Element {
+    return <p>Say '{this.message}' to awesome Web Components</p>;
   }
-
 }
