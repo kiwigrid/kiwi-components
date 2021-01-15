@@ -42,6 +42,7 @@ export class KiwiSidebar implements ComponentInterface {
   render(): JSX.Element {
     const offcanvas = this.visible ? `offcanvas-${this.position}` : '';
     const sidebar = `sidebar-offcanvas sidebar-${this.position} bg-gray p-2`;
+
     return (
       <Host class={offcanvas}>
         <div

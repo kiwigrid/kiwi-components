@@ -31,11 +31,13 @@ export class KiwiLink implements ComponentInterface {
 
   render(): JSX.Element {
     let href: string;
+
     if (typeof this.to !== 'string') {
       href = this.to.commands.join('/');
     } else {
       href = this.to;
     }
+
     return (
       <a href={href} onClick={this.handleNavigation}>
         <slot></slot>
@@ -45,6 +47,7 @@ export class KiwiLink implements ComponentInterface {
 
   private handleNavigation = (ev: MouseEvent): void => {
     let event: NavigateToEvent;
+
     if (typeof this.to === 'string') {
       event = {
         commands: [this.to],

@@ -26,6 +26,15 @@
           "error",
           { "varsIgnorePattern": "h" }
         ],
+        "padding-line-between-statements": [
+          "error",
+          { "blankLine": "always", "prev": ["case", "default"], "next": "*" },
+          {
+            "blankLine": "always",
+            "prev": "*",
+            "next": ["return", "block-like", "export"]
+          }
+        ],
         "@stencil/decorators-style": [
           "error",
           {

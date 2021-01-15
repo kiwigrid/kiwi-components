@@ -29,6 +29,7 @@ export class KiwiLabel implements ComponentInterface {
       invert([...this.classes, labelClass, 'label']),
       stubTrue,
     );
+
     return (
       <span class={classes}>
         <slot></slot>
