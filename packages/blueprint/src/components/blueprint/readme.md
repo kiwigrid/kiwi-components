@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property  | Attribute | Description | Type     | Default    |
-| --------- | --------- | ----------- | -------- | ---------- |
-| `message` | `message` |             | `string` | `"Hello!"` |
+| Property  | Attribute | Description          | Type     | Default    |
+| --------- | --------- | -------------------- | -------- | ---------- |
+| `message` | `message` | Say something smart. | `string` | `'Hello!'` |
 
 
 ----------------------------------------------

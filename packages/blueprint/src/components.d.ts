@@ -7,6 +7,9 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface KiwiBlueprint {
+        /**
+          * Say something smart.
+         */
         "message": string;
     }
 }
@@ -23,6 +26,9 @@ declare global {
 }
 declare namespace LocalJSX {
     interface KiwiBlueprint {
+        /**
+          * Say something smart.
+         */
         "message"?: string;
     }
     interface IntrinsicElements {

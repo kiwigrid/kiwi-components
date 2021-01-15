@@ -17,7 +17,7 @@ export namespace Components {
           * Array of route configuration.
           * @example [   {     routeKey: 'home',     label: 'Home',     url: '/home',     handler: () => {       location.href = '/home';        return [];     },   } ]
          */
-        "routes": RouteConfig<Record<string, any>>[];
+        "routes": RouteConfig<Record<string, unknown>>[];
     }
     interface KiwiShellBreadcrumb {
     }
@@ -72,7 +72,7 @@ declare namespace LocalJSX {
           * Array of route configuration.
           * @example [   {     routeKey: 'home',     label: 'Home',     url: '/home',     handler: () => {       location.href = '/home';        return [];     },   } ]
          */
-        "routes": RouteConfig<Record<string, any>>[];
+        "routes": RouteConfig<Record<string, unknown>>[];
     }
     interface KiwiShellBreadcrumb {
     }
