@@ -138,6 +138,7 @@ export class KiwiPager implements ComponentInterface {
   private handleInputChange: () => void = () => {
     try {
       const value: number = parseInt(this.input.value) - 1;
+
       if (value >= this.total || value < 0 || isNaN(value)) {
         this.error = true;
         this.cancelPageChange.next();

@@ -46,6 +46,7 @@ export class KiwiEmpty implements ComponentInterface {
     const iconClass = this.icon
       ? this.icon
       : `glyphicon glyphicon-${this.glyphicon}`;
+
     return (
       <div
         class={`text-center mt-3 ${this.containerClass}`}

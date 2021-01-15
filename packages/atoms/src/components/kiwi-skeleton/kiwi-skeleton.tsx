@@ -30,6 +30,7 @@ export class KiwiSkeleton implements ComponentInterface {
     switch (this.type) {
       case 'paragraph':
         return <Paragraph rows={this.rows} />;
+
       case 'table':
         return <Table rows={this.rows} />;
     }

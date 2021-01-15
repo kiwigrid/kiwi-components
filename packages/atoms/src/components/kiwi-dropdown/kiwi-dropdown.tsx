@@ -74,6 +74,7 @@ export class KiwiDropdown implements ComponentInterface {
 
   private set open(isOpen: boolean) {
     this._open = isOpen;
+
     if (!isOpen) {
       this.closeDropdown.emit();
     }

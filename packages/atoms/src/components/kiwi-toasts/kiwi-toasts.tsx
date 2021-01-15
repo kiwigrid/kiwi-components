@@ -24,6 +24,7 @@ export class KiwiToasts {
     const toast = event.detail;
     const key = toast.title + Date.now().toString();
     this.toasts = [...this.toasts, { ...toast, key: key }];
+
     if (toast.timeout !== 0) {
       window.setTimeout(() => {
         this.deleteToast(key);
