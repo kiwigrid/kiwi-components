@@ -5,45 +5,49 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { RouteHistory } from "./components/kiwi-navigation-shell/kiwi-navigation-shell.store";
+import { RouteConfig, RouteHistory } from "./components/kiwi-navigation-shell/kiwi-navigation-shell.store";
 export namespace Components {
-    interface KiwiBreadcrumb {
-    }
-    interface KiwiBreadcrumbItem {
-    }
     interface KiwiNavigationShell {
+        /**
+          * Initial breadcrumb.
+          * @example [   {     label: 'Categories',     to: { key: 'categories' },   },   {     label: 'Household & Kitchen',     to: { key: 'products', data: { categoryId: 'household+kitchen' } },   },   {     label: 'Nicer Dicer',   }, ]
+         */
         "breadcrumb": RouteHistory;
-        "layout": 'combined' | 'separated';
-        "routes": {
-    routeKey: string;
-    label: string;
-    url: (data?: any) => string;
-    handler: (data?: any) => RouteHistory;
-  }[];
+        /**
+          * Array of route configuration.
+          * @example [   {     routeKey: 'home',     label: 'Home',     url: '/home',     handler: () => {       location.href = '/home';        return [];     },   } ]
+         */
+        "routes": RouteConfig<Record<string, any>>[];
+    }
+    interface KiwiShellBreadcrumb {
     }
     interface KiwiShellLink {
-        "routeData"?: any;
+        /**
+          * Additional css to be applied to the underlying `a` element.
+         */
+        "customClass"?: string;
+        /**
+          * Data associated to this route.
+         */
+        "routeData": Record<string, unknown>;
+        /**
+          * The key of the route config this link should be built off of.
+         */
         "routeKey": string;
     }
 }
 declare global {
-    interface HTMLKiwiBreadcrumbElement extends Components.KiwiBreadcrumb, HTMLStencilElement {
-    }
-    var HTMLKiwiBreadcrumbElement: {
-        prototype: HTMLKiwiBreadcrumbElement;
-        new (): HTMLKiwiBreadcrumbElement;
-    };
-    interface HTMLKiwiBreadcrumbItemElement extends Components.KiwiBreadcrumbItem, HTMLStencilElement {
-    }
-    var HTMLKiwiBreadcrumbItemElement: {
-        prototype: HTMLKiwiBreadcrumbItemElement;
-        new (): HTMLKiwiBreadcrumbItemElement;
-    };
     interface HTMLKiwiNavigationShellElement extends Components.KiwiNavigationShell, HTMLStencilElement {
     }
     var HTMLKiwiNavigationShellElement: {
         prototype: HTMLKiwiNavigationShellElement;
         new (): HTMLKiwiNavigationShellElement;
+    };
+    interface HTMLKiwiShellBreadcrumbElement extends Components.KiwiShellBreadcrumb, HTMLStencilElement {
+    }
+    var HTMLKiwiShellBreadcrumbElement: {
+        prototype: HTMLKiwiShellBreadcrumbElement;
+        new (): HTMLKiwiShellBreadcrumbElement;
     };
     interface HTMLKiwiShellLinkElement extends Components.KiwiShellLink, HTMLStencilElement {
     }
@@ -52,35 +56,43 @@ declare global {
         new (): HTMLKiwiShellLinkElement;
     };
     interface HTMLElementTagNameMap {
-        "kiwi-breadcrumb": HTMLKiwiBreadcrumbElement;
-        "kiwi-breadcrumb-item": HTMLKiwiBreadcrumbItemElement;
         "kiwi-navigation-shell": HTMLKiwiNavigationShellElement;
+        "kiwi-shell-breadcrumb": HTMLKiwiShellBreadcrumbElement;
         "kiwi-shell-link": HTMLKiwiShellLinkElement;
     }
 }
 declare namespace LocalJSX {
-    interface KiwiBreadcrumb {
-    }
-    interface KiwiBreadcrumbItem {
-    }
     interface KiwiNavigationShell {
+        /**
+          * Initial breadcrumb.
+          * @example [   {     label: 'Categories',     to: { key: 'categories' },   },   {     label: 'Household & Kitchen',     to: { key: 'products', data: { categoryId: 'household+kitchen' } },   },   {     label: 'Nicer Dicer',   }, ]
+         */
         "breadcrumb"?: RouteHistory;
-        "layout"?: 'combined' | 'separated';
-        "routes": {
-    routeKey: string;
-    label: string;
-    url: (data?: any) => string;
-    handler: (data?: any) => RouteHistory;
-  }[];
+        /**
+          * Array of route configuration.
+          * @example [   {     routeKey: 'home',     label: 'Home',     url: '/home',     handler: () => {       location.href = '/home';        return [];     },   } ]
+         */
+        "routes": RouteConfig<Record<string, any>>[];
+    }
+    interface KiwiShellBreadcrumb {
     }
     interface KiwiShellLink {
-        "routeData"?: any;
+        /**
+          * Additional css to be applied to the underlying `a` element.
+         */
+        "customClass"?: string;
+        /**
+          * Data associated to this route.
+         */
+        "routeData"?: Record<string, unknown>;
+        /**
+          * The key of the route config this link should be built off of.
+         */
         "routeKey": string;
     }
     interface IntrinsicElements {
-        "kiwi-breadcrumb": KiwiBreadcrumb;
-        "kiwi-breadcrumb-item": KiwiBreadcrumbItem;
         "kiwi-navigation-shell": KiwiNavigationShell;
+        "kiwi-shell-breadcrumb": KiwiShellBreadcrumb;
         "kiwi-shell-link": KiwiShellLink;
     }
 }
@@ -88,9 +100,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "kiwi-breadcrumb": LocalJSX.KiwiBreadcrumb & JSXBase.HTMLAttributes<HTMLKiwiBreadcrumbElement>;
-            "kiwi-breadcrumb-item": LocalJSX.KiwiBreadcrumbItem & JSXBase.HTMLAttributes<HTMLKiwiBreadcrumbItemElement>;
             "kiwi-navigation-shell": LocalJSX.KiwiNavigationShell & JSXBase.HTMLAttributes<HTMLKiwiNavigationShellElement>;
+            "kiwi-shell-breadcrumb": LocalJSX.KiwiShellBreadcrumb & JSXBase.HTMLAttributes<HTMLKiwiShellBreadcrumbElement>;
             "kiwi-shell-link": LocalJSX.KiwiShellLink & JSXBase.HTMLAttributes<HTMLKiwiShellLinkElement>;
         }
     }

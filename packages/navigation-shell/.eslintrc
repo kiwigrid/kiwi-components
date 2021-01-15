@@ -1,0 +1,57 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@stencil/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
+  ],
+  "overrides": [
+    {
+      "files": ["*"],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": [
+          "error",
+          {
+            "allowExpressions": true
+          }
+        ],
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          { "varsIgnorePattern": "h" }
+        ],
+        "padding-line-between-statements": [
+          "error",
+          { "blankLine": "always", "prev": ["case", "default"], "next": "*" },
+          {
+            "blankLine": "always",
+            "prev": "*",
+            "next": ["return", "block-like", "export"]
+          }
+        ],
+        "@stencil/decorators-style": [
+          "error",
+          {
+            "prop": "multiline"
+          }
+        ],
+        "@stencil/strict-boolean-conditions": [
+          "warn",
+          [
+            "allow-null-union",
+            "allow-undefined-union",
+            "allow-boolean-or-undefined",
+            "allow-string"
+          ]
+        ],
+        "react/jsx-uses-vars": "error"
+      }
+    }
+  ]
+}

@@ -6,27 +6,31 @@ import { makeLink } from '../kiwi-navigation-shell/kiwi-navigation-shell.store';
   shadow: false,
 })
 export class KiwiShellLink {
+  /** The key of the route config this link should be built off of. */
   @Prop()
   public routeKey!: string;
 
+  /** Data associated to this route. */
   @Prop()
-  public routeData?: any;
+  public routeData: Record<string, unknown> = {};
 
-  render() {
-    console.log('making link', {
-      routeKey: this.routeKey,
-      routeData: this.routeData,
-    });
+  /** Additional css to be applied to the underlying `a` element. */
+  @Prop()
+  public customClass?: string;
+
+  render(): JSX.Element {
     try {
-      const [url, handler] = makeLink(this.routeKey, this.routeData);
+      const [url, label, handler] = makeLink(this.routeKey, this.routeData);
+
       return (
-        <a href={url} onClick={handler}>
-          <slot></slot>
+        <a href={url} onClick={handler} class={this.customClass}>
+          <slot>{label}</slot>
         </a>
       );
     } catch (e) {
       console.warn(e);
-      return null;
+
+      return <slot>{this.routeKey}</slot>;
     }
   }
 }
