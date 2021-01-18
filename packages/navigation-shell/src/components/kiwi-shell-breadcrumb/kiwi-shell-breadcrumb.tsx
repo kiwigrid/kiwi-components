@@ -6,8 +6,12 @@ import state from '../kiwi-navigation-shell/kiwi-navigation-shell.store';
   shadow: false,
 })
 export class KiwiShellBreadcrumb {
-  render(): JSX.Element {
-    return state.breadcrumb.length > 0 ? (
+  render(): JSX.Element | null {
+    if (state.breadcrumb.length === 0) {
+      return null;
+    }
+
+    return (
       <kiwi-breadcrumb>
         {state.breadcrumb.map((crumb) => {
           const { key, data } = crumb.to ?? {};
@@ -29,8 +33,6 @@ export class KiwiShellBreadcrumb {
           );
         })}
       </kiwi-breadcrumb>
-    ) : (
-      <slot></slot>
     );
   }
 }

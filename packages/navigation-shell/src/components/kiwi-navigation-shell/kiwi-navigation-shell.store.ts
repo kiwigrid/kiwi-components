@@ -113,7 +113,7 @@ export const makeLink = <RouteData extends Record<string, unknown>>(
 
 // STORE
 
-const { state } = createStore<{
+export const { state, dispose } = createStore<{
   routes: Route<Record<string, unknown>>[];
   breadcrumb: RouteHistory;
 }>({ routes: [], breadcrumb: [] });

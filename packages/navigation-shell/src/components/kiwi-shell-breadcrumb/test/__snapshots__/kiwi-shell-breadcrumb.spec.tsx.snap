@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kiwi-shell-breadcrumb renders initialBreadcrumb 1`] = `
+<kiwi-shell-breadcrumb>
+  <kiwi-breadcrumb>
+    <kiwi-breadcrumb-item>
+      white
+    </kiwi-breadcrumb-item>
+    <kiwi-breadcrumb-item>
+      rabbits
+    </kiwi-breadcrumb-item>
+    <kiwi-breadcrumb-item>
+      burrow
+    </kiwi-breadcrumb-item>
+  </kiwi-breadcrumb>
+</kiwi-shell-breadcrumb>
+`;
+
+exports[`kiwi-shell-breadcrumb renders updated breadcrumb 1`] = `
+<kiwi-shell-breadcrumb>
+  <kiwi-breadcrumb>
+    <kiwi-breadcrumb-item>
+      deep
+    </kiwi-breadcrumb-item>
+    <kiwi-breadcrumb-item>
+      down
+    </kiwi-breadcrumb-item>
+    <kiwi-breadcrumb-item>
+      the
+    </kiwi-breadcrumb-item>
+    <kiwi-breadcrumb-item>
+      rabbit-hole
+    </kiwi-breadcrumb-item>
+  </kiwi-breadcrumb>
+</kiwi-shell-breadcrumb>
+`;
