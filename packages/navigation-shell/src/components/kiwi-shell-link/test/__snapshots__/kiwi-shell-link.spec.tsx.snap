@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kiwi-shell-link renders 1`] = `
+<kiwi-shell-link>
+  <!---->
+  <a href="/route/66">
+    <slot-fb>
+      Route 66
+    </slot-fb>
+  </a>
+</kiwi-shell-link>
+`;
+
+exports[`kiwi-shell-link renders custom label 1`] = `
+<kiwi-shell-link>
+  <!---->
+  <a href="/route/66">
+    <span class="my-icon"></span>
+    <slot-fb hidden="">
+      Route 66
+    </slot-fb>
+  </a>
+</kiwi-shell-link>
+`;
+
+exports[`kiwi-shell-link renders dynamic label 1`] = `
+<kiwi-shell-link>
+  <!---->
+  <a href="/users/johndoe-42">
+    <slot-fb>
+      User johndoe-42
+    </slot-fb>
+  </a>
+</kiwi-shell-link>
+`;
