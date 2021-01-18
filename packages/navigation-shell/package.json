@@ -64,5 +64,8 @@
   "license": "MIT",
   "dependencies": {
     "rxjs": "^6.6.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
