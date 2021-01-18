@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-navigation-shell@0.1.2...@kiwigrid/kiwi-navigation-shell@0.1.3) (2021-01-18)
+
+**Note:** Version bump only for package @kiwigrid/kiwi-navigation-shell
+
+
+
+
+
 ## [0.1.2](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-navigation-shell@0.1.1...@kiwigrid/kiwi-navigation-shell@0.1.2) (2021-01-18)
 
 
