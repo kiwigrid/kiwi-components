@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Size } from "./components/kiwi-empty/kiwi-empty";
-import { TFunction } from "i18next";
+import { i18n, TOptions } from "i18next";
 import { LabelKind } from "./components/kiwi-label/kiwi-label";
 import { NavigateToEvent } from "./components/kiwi-link/kiwi-link";
 import { Placement } from "@popperjs/core/lib";
@@ -70,8 +70,16 @@ export namespace Components {
           * The key to translate
          */
         "msgKey": string;
+        /**
+          * Options passed to i18next's t function
+         */
+        "options"?: TOptions | string;
     }
     interface KiwiI18nextProvider {
+        /**
+          * Uninitialized i18next instance to use.
+         */
+        "i18next": i18n;
         /**
           * The language to use for i18n. en as default.
          */
@@ -530,8 +538,16 @@ declare namespace LocalJSX {
           * The key to translate
          */
         "msgKey": string;
+        /**
+          * Options passed to i18next's t function
+         */
+        "options"?: TOptions | string;
     }
     interface KiwiI18nextProvider {
+        /**
+          * Uninitialized i18next instance to use.
+         */
+        "i18next": i18n;
         /**
           * The language to use for i18n. en as default.
          */
@@ -545,10 +561,6 @@ declare namespace LocalJSX {
           * Namespaces to be loaded by i18next
          */
         "ns"?: string[];
-        /**
-          * This event is dispatched when i18nexts t function changes The t function is passed as data
-         */
-        "onTFunctionChanged"?: (event: CustomEvent<TFunction>) => void;
     }
     interface KiwiInput {
         /**

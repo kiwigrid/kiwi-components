@@ -1,4 +1,5 @@
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core';
+import { TOptions } from 'i18next';
 import store from '../kiwi-i18next-provider/kiwi-i18next-provider.store';
 
 @Component({
@@ -10,7 +11,11 @@ export class KiwiI18next implements ComponentInterface {
   @Prop()
   msgKey!: string;
 
+  /** Options passed to i18next's t function */
+  @Prop()
+  options?: TOptions | string;
+
   render(): JSX.Element {
-    return <Host>{store.get('t')(this.msgKey)}</Host>;
+    return <Host>{store.get('t')(this.msgKey, this.options)}</Host>;
   }
 }
