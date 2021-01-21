@@ -49,8 +49,12 @@ export class KiwiNavigationShell implements ComponentInterface {
   @Prop()
   public breadcrumb: RouteHistory = [];
 
+  /** Initial active route. */
+  @Prop()
+  public activeRoute = '';
+
   componentWillLoad(): void {
-    init(this.routes, this.breadcrumb);
+    init(this.routes, this.breadcrumb, this.activeRoute);
   }
 
   render(): JSX.Element {

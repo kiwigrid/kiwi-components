@@ -64,10 +64,11 @@ Related:
 
 ## Properties
 
-| Property              | Attribute | Description                   | Type                                     | Default     |
-| --------------------- | --------- | ----------------------------- | ---------------------------------------- | ----------- |
-| `breadcrumb`          | --        | Initial breadcrumb.           | `RouteLink[]`                            | `[]`        |
-| `routes` _(required)_ | --        | Array of route configuration. | `RouteConfig<Record<string, unknown>>[]` | `undefined` |
+| Property              | Attribute      | Description                   | Type                                     | Default     |
+| --------------------- | -------------- | ----------------------------- | ---------------------------------------- | ----------- |
+| `activeRoute`         | `active-route` | Initial active route.         | `string`                                 | `''`        |
+| `breadcrumb`          | --             | Initial breadcrumb.           | `RouteLink[]`                            | `[]`        |
+| `routes` _(required)_ | --             | Array of route configuration. | `RouteConfig<Record<string, unknown>>[]` | `undefined` |
 
 
 ----------------------------------------------

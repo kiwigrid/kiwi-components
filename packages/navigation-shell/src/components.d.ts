@@ -9,6 +9,10 @@ import { RouteConfig, RouteHistory } from "./components/kiwi-navigation-shell/ki
 export namespace Components {
     interface KiwiNavigationShell {
         /**
+          * Initial active route.
+         */
+        "activeRoute": string;
+        /**
           * Initial breadcrumb.
           * @example [   {     label: 'Categories',     to: { key: 'categories' },   },   {     label: 'Household & Kitchen',     to: { key: 'products', data: { categoryId: 'household+kitchen' } },   },   {     label: 'Nicer Dicer',   }, ]
          */
@@ -23,6 +27,10 @@ export namespace Components {
     }
     interface KiwiShellLink {
         /**
+          * If set to true will append class 'active' to the `a` element. Alternatively provide a string which is used as active class instead. When set to false, no class will be attached (default).
+         */
+        "activeClass": boolean | string;
+        /**
           * Additional css to be applied to the underlying `a` element.
          */
         "customClass"?: string;
@@ -34,6 +42,16 @@ export namespace Components {
           * The key of the route config this link should be built off of.
          */
         "routeKey": string;
+    }
+    interface KiwiShellLinkDecorator {
+        /**
+          * Class added to elements marked with `data-shell-active="your-route"`
+         */
+        "activeClass": string;
+        /**
+          * Route data keyed by route key. Will be passed as route data.
+         */
+        "routeData": Record<string, Record<string, unknown>>;
     }
 }
 declare global {
@@ -55,14 +73,25 @@ declare global {
         prototype: HTMLKiwiShellLinkElement;
         new (): HTMLKiwiShellLinkElement;
     };
+    interface HTMLKiwiShellLinkDecoratorElement extends Components.KiwiShellLinkDecorator, HTMLStencilElement {
+    }
+    var HTMLKiwiShellLinkDecoratorElement: {
+        prototype: HTMLKiwiShellLinkDecoratorElement;
+        new (): HTMLKiwiShellLinkDecoratorElement;
+    };
     interface HTMLElementTagNameMap {
         "kiwi-navigation-shell": HTMLKiwiNavigationShellElement;
         "kiwi-shell-breadcrumb": HTMLKiwiShellBreadcrumbElement;
         "kiwi-shell-link": HTMLKiwiShellLinkElement;
+        "kiwi-shell-link-decorator": HTMLKiwiShellLinkDecoratorElement;
     }
 }
 declare namespace LocalJSX {
     interface KiwiNavigationShell {
+        /**
+          * Initial active route.
+         */
+        "activeRoute"?: string;
         /**
           * Initial breadcrumb.
           * @example [   {     label: 'Categories',     to: { key: 'categories' },   },   {     label: 'Household & Kitchen',     to: { key: 'products', data: { categoryId: 'household+kitchen' } },   },   {     label: 'Nicer Dicer',   }, ]
@@ -78,6 +107,10 @@ declare namespace LocalJSX {
     }
     interface KiwiShellLink {
         /**
+          * If set to true will append class 'active' to the `a` element. Alternatively provide a string which is used as active class instead. When set to false, no class will be attached (default).
+         */
+        "activeClass"?: boolean | string;
+        /**
           * Additional css to be applied to the underlying `a` element.
          */
         "customClass"?: string;
@@ -90,10 +123,21 @@ declare namespace LocalJSX {
          */
         "routeKey": string;
     }
+    interface KiwiShellLinkDecorator {
+        /**
+          * Class added to elements marked with `data-shell-active="your-route"`
+         */
+        "activeClass"?: string;
+        /**
+          * Route data keyed by route key. Will be passed as route data.
+         */
+        "routeData"?: Record<string, Record<string, unknown>>;
+    }
     interface IntrinsicElements {
         "kiwi-navigation-shell": KiwiNavigationShell;
         "kiwi-shell-breadcrumb": KiwiShellBreadcrumb;
         "kiwi-shell-link": KiwiShellLink;
+        "kiwi-shell-link-decorator": KiwiShellLinkDecorator;
     }
 }
 export { LocalJSX as JSX };
@@ -103,6 +147,7 @@ declare module "@stencil/core" {
             "kiwi-navigation-shell": LocalJSX.KiwiNavigationShell & JSXBase.HTMLAttributes<HTMLKiwiNavigationShellElement>;
             "kiwi-shell-breadcrumb": LocalJSX.KiwiShellBreadcrumb & JSXBase.HTMLAttributes<HTMLKiwiShellBreadcrumbElement>;
             "kiwi-shell-link": LocalJSX.KiwiShellLink & JSXBase.HTMLAttributes<HTMLKiwiShellLinkElement>;
+            "kiwi-shell-link-decorator": LocalJSX.KiwiShellLinkDecorator & JSXBase.HTMLAttributes<HTMLKiwiShellLinkDecoratorElement>;
         }
     }
 }

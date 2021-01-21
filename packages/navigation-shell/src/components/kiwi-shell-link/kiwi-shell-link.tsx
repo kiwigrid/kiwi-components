@@ -1,5 +1,8 @@
 import { Component, h, Prop } from '@stencil/core';
-import { makeLink } from '../kiwi-navigation-shell/kiwi-navigation-shell.store';
+import {
+  isActive,
+  makeLink,
+} from '../kiwi-navigation-shell/kiwi-navigation-shell.store';
 
 @Component({
   tag: 'kiwi-shell-link',
@@ -18,12 +21,22 @@ export class KiwiShellLink {
   @Prop()
   public customClass?: string;
 
+  /**
+   * If set to true will append class 'active' to the `a` element. Alternatively
+   * provide a string which is used as active class instead.
+   * When set to false, no class will be attached (default).
+   */
+  @Prop()
+  public activeClass: boolean | string = false;
+
   render(): JSX.Element {
+    console.log(this.activeClass);
+
     try {
       const [url, label, handler] = makeLink(this.routeKey, this.routeData);
 
       return (
-        <a href={url} onClick={handler} class={this.customClass}>
+        <a href={url} onClick={handler} class={this.classMap}>
           <slot>{label}</slot>
         </a>
       );
@@ -32,5 +45,15 @@ export class KiwiShellLink {
 
       return <slot>{this.routeKey}</slot>;
     }
+  }
+
+  private get classMap(): Record<string, boolean> {
+    const activeClass =
+      this.activeClass === true ? 'active' : `${this.activeClass}`;
+
+    return {
+      [this.customClass ?? '']: typeof this.customClass === 'string',
+      [activeClass]: this.activeClass !== false && isActive(this.routeKey),
+    };
   }
 }

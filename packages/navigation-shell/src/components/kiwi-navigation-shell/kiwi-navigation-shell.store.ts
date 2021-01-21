@@ -107,24 +107,35 @@ export const makeLink = <RouteData extends Record<string, unknown>>(
     (event: Event) => {
       event.preventDefault();
       state.breadcrumb = [...route(data), { label }];
+      state.activeRoute = key;
     },
   ];
 };
 
 // STORE
 
-export const { state, dispose } = createStore<{
+export const { state, dispose, onChange } = createStore<{
   routes: Route<Record<string, unknown>>[];
   breadcrumb: RouteHistory;
-}>({ routes: [], breadcrumb: [] });
+  activeRoute: string;
+  routeChangeListeners: ((activeRoute: string) => void)[];
+}>({ routes: [], breadcrumb: [], activeRoute: '', routeChangeListeners: [] });
 
 export const init = (
   routes: RouteConfig<Record<string, unknown>>[],
   breadcrumb: RouteHistory,
+  activeRoute: string,
 ): void => {
   state.routes = routes.map((routeConfig) => makeRoute(routeConfig));
   state.breadcrumb = breadcrumb;
+  state.activeRoute = activeRoute;
 };
+
+onChange('activeRoute', (activeRoute) => {
+  Object.values(state.routeChangeListeners).forEach((listener) =>
+    listener?.(activeRoute),
+  );
+});
 
 export const getRoute = <RouteData extends Record<string, unknown>>(
   key: string,
@@ -133,5 +144,21 @@ export const getRoute = <RouteData extends Record<string, unknown>>(
 
 export const hasRoute = (key: string): boolean =>
   state.routes?.some((route) => route.key === key);
+
+export const isActive = (key: string): boolean => state.activeRoute === key;
+
+export const registerRouteChangeListener = (
+  listener: (activeRoute: string) => void,
+): void => {
+  state.routeChangeListeners = [...state.routeChangeListeners, listener];
+};
+
+export const unregisterRouteChangeListener = (
+  listener: (activeRoute: string) => void,
+): void => {
+  state.routeChangeListeners = state.routeChangeListeners.filter(
+    (l) => l !== listener,
+  );
+};
 
 export default state;
