@@ -30,8 +30,6 @@ export class KiwiShellLink {
   public activeClass: boolean | string = false;
 
   render(): JSX.Element {
-    console.log(this.activeClass);
-
     try {
       const [url, label, handler] = makeLink(this.routeKey, this.routeData);
 

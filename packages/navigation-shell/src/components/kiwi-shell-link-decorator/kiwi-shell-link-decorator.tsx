@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Prop } from '@stencil/core';
+import { Component, Element, h, Prop } from '@stencil/core';
 import navShellState, {
   makeLink,
   registerRouteChangeListener,
@@ -23,7 +23,7 @@ export class KiwiShellLinkDecorator {
 
   private unregisterFunctions: (() => void)[] = [];
 
-  componentDidLoad(): void {
+  connectedCallback(): void {
     registerRouteChangeListener(this.handleRouteChange);
 
     this.ref?.querySelectorAll('a[data-shell-route]').forEach((a) => {
@@ -56,11 +56,7 @@ export class KiwiShellLinkDecorator {
   }
 
   render(): JSX.Element {
-    return (
-      <Host>
-        <slot></slot>
-      </Host>
-    );
+    return <slot></slot>;
   }
 
   disconnectedCallback(): void {
