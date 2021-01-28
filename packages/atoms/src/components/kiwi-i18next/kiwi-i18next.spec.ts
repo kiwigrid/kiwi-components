@@ -1,10 +1,10 @@
-import { KiwiI18next } from './kiwi-i18next';
 import { newSpecPage } from '@stencil/core/testing';
 import store from '../kiwi-i18next-provider/kiwi-i18next-provider.store';
+import { KiwiI18next } from './kiwi-i18next';
 
 describe('kiwi-i18next', () => {
   beforeEach(() => {
-    store.reset();
+    store.dispose();
   });
 
   it('renders', async () => {
