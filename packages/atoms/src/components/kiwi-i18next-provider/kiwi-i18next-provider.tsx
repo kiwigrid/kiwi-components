@@ -7,7 +7,7 @@ import {
   Watch,
 } from '@stencil/core';
 import { i18n } from 'i18next';
-import Fetch from 'i18next-fetch-backend';
+import HttpApi, { BackendOptions } from 'i18next-http-backend';
 import store from './kiwi-i18next-provider.store';
 
 @Component({
@@ -44,15 +44,18 @@ export class KiwiI18nextProvider implements ComponentWillLoad {
   }
 
   public async componentWillLoad(): Promise<void> {
-    const t = await this.i18next.use(Fetch).init({
+    const backend: BackendOptions = {
+      loadPath: `${this.loadBasePath}/{{lng}}/{{ns}}.json`,
+      crossDomain: true,
+    };
+
+    const t = await this.i18next.use(HttpApi).init({
       lng: this.lng,
       fallbackLng: 'en',
       // debug: true,
       ns: this.ns,
       defaultNS: 'common',
-      backend: {
-        loadPath: `${this.loadBasePath}/{{lng}}/{{ns}}.json`,
-      },
+      backend,
     });
 
     store.set('t', t);
