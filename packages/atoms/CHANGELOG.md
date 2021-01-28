@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-atoms@0.4.1...@kiwigrid/kiwi-atoms@0.5.0) (2021-01-28)
+
+
+### Features
+
+* **kiwi-atoms:** make i18next instance a prop ([87a080e](https://github.com/kiwigrid/kiwi-components/commit/87a080eff8962996df845726c3c0ce3be2ef592e))
+
+
+
+
+
 ## [0.4.1](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-atoms@0.4.0...@kiwigrid/kiwi-atoms@0.4.1) (2021-01-15)
 
 **Note:** Version bump only for package @kiwigrid/kiwi-atoms
