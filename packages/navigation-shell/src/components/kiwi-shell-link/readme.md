@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property                | Attribute      | Description                                                   | Type                        | Default     |
-| ----------------------- | -------------- | ------------------------------------------------------------- | --------------------------- | ----------- |
-| `customClass`           | `custom-class` | Additional css to be applied to the underlying `a` element.   | `string \| undefined`       | `undefined` |
-| `routeData`             | --             | Data associated to this route.                                | `{ [x: string]: unknown; }` | `{}`        |
-| `routeKey` _(required)_ | `route-key`    | The key of the route config this link should be built off of. | `string`                    | `undefined` |
+| Property                | Attribute      | Description                                                   | Type                                                                         | Default     |
+| ----------------------- | -------------- | ------------------------------------------------------------- | ---------------------------------------------------------------------------- | ----------- |
+| `customClass`           | `custom-class` | Additional css to be applied to the underlying `a` element.   | `string \| undefined`                                                        | `undefined` |
+| `routeData`             | --             | Data associated to this route.                                | `Promise<Record<string, unknown>> \| undefined \| { [x: string]: unknown; }` | `undefined` |
+| `routeKey` _(required)_ | `route-key`    | The key of the route config this link should be built off of. | `string`                                                                     | `undefined` |
 
 
 ## Dependencies

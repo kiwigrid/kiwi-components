@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, State } from '@stencil/core';
 import { makeLink } from '../kiwi-navigation-shell/kiwi-navigation-shell.store';
 
 @Component({
@@ -12,15 +12,26 @@ export class KiwiShellLink {
 
   /** Data associated to this route. */
   @Prop()
-  public routeData: Record<string, unknown> = {};
+  public routeData?: Record<string, unknown> | Promise<Record<string, unknown>>;
 
   /** Additional css to be applied to the underlying `a` element. */
   @Prop()
   public customClass?: string;
 
-  render(): JSX.Element {
+  @State()
+  private resolvedData?: Record<string, unknown>;
+
+  async componentWillLoad(): Promise<void> {
+    this.resolvedData = await Promise.resolve(this.routeData ?? {});
+  }
+
+  render(): JSX.Element | undefined {
+    if (this.resolvedData === undefined) {
+      return;
+    }
+
     try {
-      const [url, label, handler] = makeLink(this.routeKey, this.routeData);
+      const [url, label, handler] = makeLink(this.routeKey, this.resolvedData);
 
       return (
         <a href={url} onClick={handler} class={this.customClass}>
