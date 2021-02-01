@@ -75,7 +75,10 @@ export type RouteHistory = RouteLink[];
 
 interface RouteLink {
   label?: string;
-  to?: { key: string; data?: Record<string, unknown> };
+  to?: {
+    key: string;
+    data?: Record<string, unknown> | Promise<Record<string, unknown>>;
+  };
 }
 
 /**

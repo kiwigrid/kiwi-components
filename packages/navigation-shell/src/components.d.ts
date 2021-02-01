@@ -29,7 +29,7 @@ export namespace Components {
         /**
           * Data associated to this route.
          */
-        "routeData": Record<string, unknown>;
+        "routeData"?: Record<string, unknown> | Promise<Record<string, unknown>>;
         /**
           * The key of the route config this link should be built off of.
          */
@@ -84,7 +84,7 @@ declare namespace LocalJSX {
         /**
           * Data associated to this route.
          */
-        "routeData"?: Record<string, unknown>;
+        "routeData"?: Record<string, unknown> | Promise<Record<string, unknown>>;
         /**
           * The key of the route config this link should be built off of.
          */
