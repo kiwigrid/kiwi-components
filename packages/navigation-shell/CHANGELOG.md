@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-navigation-shell@0.1.3...@kiwigrid/kiwi-navigation-shell@0.2.0) (2021-02-01)
+
+
+### Features
+
+* **kiwi-navigation-shell:** add capability to handle async route data ([d46c61e](https://github.com/kiwigrid/kiwi-components/commit/d46c61e5a862cafc2054da3a79c1ccd038fef9bb))
+
+
+
+
+
 ## [0.1.3](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-navigation-shell@0.1.2...@kiwigrid/kiwi-navigation-shell@0.1.3) (2021-01-18)
 
 **Note:** Version bump only for package @kiwigrid/kiwi-navigation-shell
