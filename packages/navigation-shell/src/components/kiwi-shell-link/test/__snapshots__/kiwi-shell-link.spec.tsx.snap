@@ -33,3 +33,14 @@ exports[`kiwi-shell-link renders dynamic label 1`] = `
   </a>
 </kiwi-shell-link>
 `;
+
+exports[`kiwi-shell-link renders dynamic label with async data 1`] = `
+<kiwi-shell-link>
+  <!---->
+  <a href="/users/johndoe-42">
+    <slot-fb>
+      User johndoe-42
+    </slot-fb>
+  </a>
+</kiwi-shell-link>
+`;

@@ -1,15 +1,13 @@
 import {
   Component,
-  Host,
-  h,
   ComponentWillLoad,
+  h,
+  Host,
   Prop,
   Watch,
-  Event,
-  EventEmitter,
 } from '@stencil/core';
-import i18next, { TFunction } from 'i18next';
-import i18nextXhrBackend, { BackendOptions } from 'i18next-xhr-backend';
+import { i18n } from 'i18next';
+import HttpApi, { BackendOptions } from 'i18next-http-backend';
 import store from './kiwi-i18next-provider.store';
 
 @Component({
@@ -17,11 +15,9 @@ import store from './kiwi-i18next-provider.store';
   shadow: false,
 })
 export class KiwiI18nextProvider implements ComponentWillLoad {
-  /**
-   * The language to use for i18n. en as default.
-   */
+  /** Uninitialized i18next instance to use. */
   @Prop()
-  public lng = 'en';
+  public i18next!: i18n;
 
   /**
    * Base path used to configure i18next backend.
@@ -31,31 +27,29 @@ export class KiwiI18nextProvider implements ComponentWillLoad {
   @Prop()
   public loadBasePath!: string;
 
+  /**
+   * The language to use for i18n. en as default.
+   */
+  @Prop()
+  public lng = 'en';
+
   /** Namespaces to be loaded by i18next */
   @Prop()
   public ns: string[] = ['common'];
 
-  /**
-   * This event is dispatched when i18nexts t function changes
-   * The t function is passed as data
-   */
-  @Event()
-  private tFunctionChanged!: EventEmitter<TFunction>;
-
   @Watch('lng')
   async onLanguageChange(newLng: string): Promise<void> {
-    const t = await i18next.changeLanguage(newLng);
+    const t = await this.i18next.changeLanguage(newLng);
     store.set('t', t);
-    this.tFunctionChanged.emit(store.get('t'));
   }
 
   public async componentWillLoad(): Promise<void> {
     const backend: BackendOptions = {
-      loadPath: () => `${this.loadBasePath}/{{lng}}/{{ns}}.json`,
+      loadPath: `${this.loadBasePath}/{{lng}}/{{ns}}.json`,
       crossDomain: true,
     };
 
-    const t = await i18next.use(i18nextXhrBackend).init({
+    const t = await this.i18next.use(HttpApi).init({
       lng: this.lng,
       fallbackLng: 'en',
       // debug: true,
@@ -65,7 +59,6 @@ export class KiwiI18nextProvider implements ComponentWillLoad {
     });
 
     store.set('t', t);
-    this.tFunctionChanged.emit(store.get('t'));
   }
 
   render(): JSX.Element {

@@ -70,6 +70,20 @@ describe('kiwi-shell-link', () => {
     expect(link.root).toMatchSnapshot();
   });
 
+  it('renders dynamic label with async data', async () => {
+    const link = await newSpecPage({
+      components: [KiwiShellLink],
+      template: () => (
+        <kiwi-shell-link
+          routeKey="dynamic-label"
+          routeData={Promise.resolve({ userId: 'johndoe-42' })}
+        ></kiwi-shell-link>
+      ),
+    });
+
+    expect(link.root).toMatchSnapshot();
+  });
+
   it('calls handler', async () => {
     const link = await newSpecPage({
       components: [KiwiShellLink],

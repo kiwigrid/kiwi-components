@@ -5,9 +5,10 @@
 
 ## Properties
 
-| Property              | Attribute | Description          | Type     | Default     |
-| --------------------- | --------- | -------------------- | -------- | ----------- |
-| `msgKey` _(required)_ | `msg-key` | The key to translate | `string` | `undefined` |
+| Property              | Attribute | Description                            | Type                                              | Default     |
+| --------------------- | --------- | -------------------------------------- | ------------------------------------------------- | ----------- |
+| `msgKey` _(required)_ | `msg-key` | The key to translate                   | `string`                                          | `undefined` |
+| `options`             | `options` | Options passed to i18next's t function | `TOptionsBase & StringMap \| string \| undefined` | `undefined` |
 
 
 ----------------------------------------------

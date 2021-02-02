@@ -1,16 +1,24 @@
-import { KiwiI18nextProvider } from './kiwi-i18next-provider';
+import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
+import i18next from 'i18next';
+import { KiwiI18nextProvider } from './kiwi-i18next-provider';
 import store from './kiwi-i18next-provider.store';
 
 describe('kiwi-i18next-provider', () => {
   beforeEach(() => {
-    store.reset();
+    store.dispose();
   });
 
   it('renders', async () => {
     const page = await newSpecPage({
       components: [KiwiI18nextProvider],
-      html: `<kiwi-i18next-provider lng="de"></kiwi-i18next-provider>`,
+      template: () => (
+        <kiwi-i18next-provider
+          i18next={i18next}
+          lng="de"
+          loadBasePath=""
+        ></kiwi-i18next-provider>
+      ),
     });
 
     expect(page.root).toMatchSnapshot();
@@ -19,7 +27,13 @@ describe('kiwi-i18next-provider', () => {
   it('reacts to changes', async () => {
     const page = await newSpecPage({
       components: [KiwiI18nextProvider],
-      html: `<kiwi-i18next-provider lng="de"></kiwi-i18next-provider>`,
+      template: () => (
+        <kiwi-i18next-provider
+          i18next={i18next}
+          lng="de"
+          loadBasePath=""
+        ></kiwi-i18next-provider>
+      ),
     });
 
     expect(store.get('t')('common:hello')).toEqual('Hallo');
