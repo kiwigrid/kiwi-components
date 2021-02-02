@@ -23,4 +23,7 @@ export const config: Config = {
       file: 'custom-elements.json',
     },
   ],
+  devServer: {
+    openBrowser: false,
+  },
 };

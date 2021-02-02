@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kiwi-shell-link-decorator renders 1`] = `
+<kiwi-shell-link-decorator>
+  <!---->
+  <ul class="nav nav-pills">
+    <li class="active" data-shell-active="route-66">
+      <a data-shell-route="route-66" href="/route/66">
+        Home
+      </a>
+    </li>
+    <li data-shell-active="dynamic-label">
+      <a data-shell-route="dynamic-label" href="/users/foo">
+        Products
+      </a>
+    </li>
+  </ul>
+</kiwi-shell-link-decorator>
+`;

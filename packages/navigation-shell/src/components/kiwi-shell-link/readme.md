@@ -2,6 +2,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property                | Attribute      | Description                                                                                                                                                                                 | Type                                                                         | Default     |
@@ -11,20 +12,20 @@
 | `routeData`             | --             | Data associated to this route.                                                                                                                                                              | `Promise<Record<string, unknown>> \| undefined \| { [x: string]: unknown; }` | `undefined` |
 | `routeKey` _(required)_ | `route-key`    | The key of the route config this link should be built off of.                                                                                                                               | `string`                                                                     | `undefined` |
 
+
 ## Dependencies
 
 ### Used by
 
-- [kiwi-shell-breadcrumb](../kiwi-shell-breadcrumb)
+ - [kiwi-shell-breadcrumb](../kiwi-shell-breadcrumb)
 
 ### Graph
-
 ```mermaid
 graph TD;
   kiwi-shell-breadcrumb --> kiwi-shell-link
   style kiwi-shell-link fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*
