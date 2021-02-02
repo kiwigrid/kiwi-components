@@ -6,13 +6,37 @@ export default {
   title: 'Navigation Shell',
 };
 
-const Root = (): TemplateResult => html`
-  <kiwi-shell-link route-key="root.devices"></kiwi-shell-link>
-  <kiwi-shell-link route-key="root.customers"></kiwi-shell-link>
-  <kiwi-shell-link route-key="root.apps"></kiwi-shell-link>
+const Layout: Story<{ children: TemplateResult }> = ({ children }) => html`
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <kiwi-shell-link
+        route-key="root.devices"
+        custom-class="btn btn-default"
+        active-class="btn-primary"
+      ></kiwi-shell-link>
+      <kiwi-shell-link
+        route-key="root.customers"
+        custom-class="btn btn-default"
+        active-class="btn-primary"
+      ></kiwi-shell-link>
+      <kiwi-shell-link
+        route-key="root.apps"
+        custom-class="btn btn-default"
+        active-class="btn-primary"
+      ></kiwi-shell-link>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-body">${children}</div>
+  </div>
 `;
 
-const Customers = (): TemplateResult => html`
+const Root = Layout.bind({}, { children: html`<h2>Root</h2>` });
+
+const Customers = Layout.bind(
+  {},
+  {
+    children: html`
   <p>Customers:
     <ul>
       <li>
@@ -31,9 +55,14 @@ const Customers = (): TemplateResult => html`
       </li>
     </ul>
   </p>
-`;
+`,
+  },
+);
 
-const Devices = (): TemplateResult => html`
+const Devices = Layout.bind(
+  {},
+  {
+    children: html`
   <p>Devices:
     <ul>
       <li>
@@ -52,7 +81,9 @@ const Devices = (): TemplateResult => html`
       </li>
     </ul>
   </p>
-`;
+`,
+  },
+);
 
 const routes = [
   {
@@ -116,7 +147,7 @@ const routes = [
     label: 'Apps',
     url: () => `/apps`,
     handler: () => {
-      navigateTo(() => html`<p>Apps</p>`);
+      navigateTo(Layout.bind({}, { children: html`<p>Apps</p>` }));
 
       return [{ to: { key: 'root' } }];
     },
@@ -134,6 +165,7 @@ const Template = (): TemplateResult => {
   return html`<kiwi-navigation-shell
     .routes="${routes}"
     .breadcrumb="${[{ label: 'Root' }]}"
+    active-route="root"
   >
     <div class="panel panel-default">
       <div class="panel-heading"><h2>Navigation Shell</h2></div>

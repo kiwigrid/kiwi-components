@@ -27,6 +27,7 @@ describe('kiwi-shell-link', () => {
         },
       ],
       [],
+      'route-66',
     );
   });
 

@@ -1,0 +1,60 @@
+{
+  "version": 1.1,
+  "tags": [
+    {
+      "name": "kiwi-navigation-shell",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "active-route",
+          "description": "Initial active route."
+        }
+      ]
+    },
+    {
+      "name": "kiwi-shell-breadcrumb",
+      "description": {
+        "kind": "markdown",
+        "value": "Renders a breadcrumb based on the current route history.\n\nSee the [Navigation Shell Example](../kiwi-navigation-shell/readme.md) for how to manipulate the breadcrumb."
+      },
+      "attributes": []
+    },
+    {
+      "name": "kiwi-shell-link",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "active-class",
+          "description": "If set to true will append class 'active' to the `a` element. Alternatively\nprovide a string which is used as active class instead.\nWhen set to false, no class will be attached (default)."
+        },
+        {
+          "name": "custom-class",
+          "description": "Additional css to be applied to the underlying `a` element."
+        },
+        {
+          "name": "route-key",
+          "description": "The key of the route config this link should be built off of."
+        }
+      ]
+    },
+    {
+      "name": "kiwi-shell-link-decorator",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "active-class",
+          "description": "Class added to elements marked with `data-shell-active=\"your-route\"`"
+        }
+      ]
+    }
+  ]
+}
