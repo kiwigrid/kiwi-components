@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-navigation-shell@0.2.0...@kiwigrid/kiwi-navigation-shell@0.3.0) (2021-02-02)
+
+
+### Bug Fixes
+
+* **kiwi-navigation-shell:** create links from within connected callback ([bd96220](https://github.com/kiwigrid/kiwi-components/commit/bd96220a60c8ea5bf35548928d5b0c5a0279be6c))
+
+
+### Features
+
+* **kiwi-navigation-shell:** add decorator version of shell-link (poc) ([d586756](https://github.com/kiwigrid/kiwi-components/commit/d58675637bbcd0b874b80fd211aa3e127cd97f62))
+
+
+
+
+
 # [0.2.0](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-navigation-shell@0.1.3...@kiwigrid/kiwi-navigation-shell@0.2.0) (2021-02-01)
 
 
