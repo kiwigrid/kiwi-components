@@ -117,12 +117,14 @@ export const makeLink = <RouteData extends Record<string, unknown>>(
 
 // STORE
 
-export const { state, dispose, onChange } = createStore<{
+const { state, dispose, onChange } = createStore<{
   routes: Route<Record<string, unknown>>[];
   breadcrumb: RouteHistory;
   activeRoute: string;
   routeChangeListeners: ((activeRoute: string) => void)[];
 }>({ routes: [], breadcrumb: [], activeRoute: '', routeChangeListeners: [] });
+
+export { state, dispose };
 
 export const init = (
   routes: RouteConfig<Record<string, unknown>>[],
