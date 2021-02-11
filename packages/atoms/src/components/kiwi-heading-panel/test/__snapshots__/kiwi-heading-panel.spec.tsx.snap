@@ -1,0 +1,561 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kiwi-heading-panel renders [top: false], [left: false], [right: false], [secondary: false] 1`] = `
+<kiwi-heading-panel class="panel panel-default">
+  <span slot="kiwi-heading-primary">
+    Primary
+  </span>
+  <span slot="kiwi-heading-top">
+    Top
+  </span>
+  <span slot="kiwi-heading-left">
+    Left
+  </span>
+  <span slot="kiwi-heading-right">
+    Right
+  </span>
+  <span slot="kiwi-heading-secondary">
+    Secondary
+  </span>
+  <div class="panel-heading py-2" hidden="">
+    <div></div>
+  </div>
+  <div class="align-items-center d-flex panel-body">
+    <div class="mr-2" hidden=""></div>
+    <h1 class="h2 m-0" style="flex: 1 0 auto;">
+      <div></div>
+      <div class="mt-1" hidden="">
+        <small>
+          <div></div>
+        </small>
+      </div>
+    </h1>
+    <div hidden=""></div>
+  </div>
+</kiwi-heading-panel>
+`;
+
+exports[`kiwi-heading-panel renders [top: false], [left: false], [right: false], [secondary: true] 1`] = `
+<kiwi-heading-panel class="panel panel-default">
+  <span slot="kiwi-heading-primary">
+    Primary
+  </span>
+  <span slot="kiwi-heading-top">
+    Top
+  </span>
+  <span slot="kiwi-heading-left">
+    Left
+  </span>
+  <span slot="kiwi-heading-right">
+    Right
+  </span>
+  <span slot="kiwi-heading-secondary">
+    Secondary
+  </span>
+  <div class="panel-heading py-2" hidden="">
+    <div></div>
+  </div>
+  <div class="align-items-center d-flex panel-body">
+    <div class="align-self-start mr-2 mt-1" hidden=""></div>
+    <h1 class="h2 m-0" style="flex: 1 0 auto;">
+      <div></div>
+      <div class="mt-1">
+        <small>
+          <div></div>
+        </small>
+      </div>
+    </h1>
+    <div hidden=""></div>
+  </div>
+</kiwi-heading-panel>
+`;
+
+exports[`kiwi-heading-panel renders [top: false], [left: false], [right: true], [secondary: false] 1`] = `
+<kiwi-heading-panel class="panel panel-default">
+  <span slot="kiwi-heading-primary">
+    Primary
+  </span>
+  <span slot="kiwi-heading-top">
+    Top
+  </span>
+  <span slot="kiwi-heading-left">
+    Left
+  </span>
+  <span slot="kiwi-heading-right">
+    Right
+  </span>
+  <span slot="kiwi-heading-secondary">
+    Secondary
+  </span>
+  <div class="panel-heading py-2" hidden="">
+    <div></div>
+  </div>
+  <div class="align-items-center d-flex panel-body">
+    <div class="mr-2" hidden=""></div>
+    <h1 class="h2 m-0" style="flex: 1 0 auto;">
+      <div></div>
+      <div class="mt-1" hidden="">
+        <small>
+          <div></div>
+        </small>
+      </div>
+    </h1>
+    <div></div>
+  </div>
+</kiwi-heading-panel>
+`;
+
+exports[`kiwi-heading-panel renders [top: false], [left: false], [right: true], [secondary: true] 1`] = `
+<kiwi-heading-panel class="panel panel-default">
+  <span slot="kiwi-heading-primary">
+    Primary
+  </span>
+  <span slot="kiwi-heading-top">
+    Top
+  </span>
+  <span slot="kiwi-heading-left">
+    Left
+  </span>
+  <span slot="kiwi-heading-right">
+    Right
+  </span>
+  <span slot="kiwi-heading-secondary">
+    Secondary
+  </span>
+  <div class="panel-heading py-2" hidden="">
+    <div></div>
+  </div>
+  <div class="align-items-center d-flex panel-body">
+    <div class="align-self-start mr-2 mt-1" hidden=""></div>
+    <h1 class="h2 m-0" style="flex: 1 0 auto;">
+      <div></div>
+      <div class="mt-1">
+        <small>
+          <div></div>
+        </small>
+      </div>
+    </h1>
+    <div></div>
+  </div>
+</kiwi-heading-panel>
+`;
+
+exports[`kiwi-heading-panel renders [top: false], [left: true], [right: false], [secondary: false] 1`] = `
+<kiwi-heading-panel class="panel panel-default">
+  <span slot="kiwi-heading-primary">
+    Primary
+  </span>
+  <span slot="kiwi-heading-top">
+    Top
+  </span>
+  <span slot="kiwi-heading-left">
+    Left
+  </span>
+  <span slot="kiwi-heading-right">
+    Right
+  </span>
+  <span slot="kiwi-heading-secondary">
+    Secondary
+  </span>
+  <div class="panel-heading py-2" hidden="">
+    <div></div>
+  </div>
+  <div class="align-items-center d-flex panel-body">
+    <div class="mr-2"></div>
+    <h1 class="h2 m-0" style="flex: 1 0 auto;">
+      <div></div>
+      <div class="mt-1" hidden="">
+        <small>
+          <div></div>
+        </small>
+      </div>
+    </h1>
+    <div hidden=""></div>
+  </div>
+</kiwi-heading-panel>
+`;
+
+exports[`kiwi-heading-panel renders [top: false], [left: true], [right: false], [secondary: true] 1`] = `
+<kiwi-heading-panel class="panel panel-default">
+  <span slot="kiwi-heading-primary">
+    Primary
+  </span>
+  <span slot="kiwi-heading-top">
+    Top
+  </span>
+  <span slot="kiwi-heading-left">
+    Left
+  </span>
+  <span slot="kiwi-heading-right">
+    Right
+  </span>
+  <span slot="kiwi-heading-secondary">
+    Secondary
+  </span>
+  <div class="panel-heading py-2" hidden="">
+    <div></div>
+  </div>
+  <div class="align-items-center d-flex panel-body">
+    <div class="align-self-start mr-2 mt-1"></div>
+    <h1 class="h2 m-0" style="flex: 1 0 auto;">
+      <div></div>
+      <div class="mt-1">
+        <small>
+          <div></div>
+        </small>
+      </div>
+    </h1>
+    <div hidden=""></div>
+  </div>
+</kiwi-heading-panel>
+`;
+
+exports[`kiwi-heading-panel renders [top: false], [left: true], [right: true], [secondary: false] 1`] = `
+<kiwi-heading-panel class="panel panel-default">
+  <span slot="kiwi-heading-primary">
+    Primary
+  </span>
+  <span slot="kiwi-heading-top">
+    Top
+  </span>
+  <span slot="kiwi-heading-left">
+    Left
+  </span>
+  <span slot="kiwi-heading-right">
+    Right
+  </span>
+  <span slot="kiwi-heading-secondary">
+    Secondary
+  </span>
+  <div class="panel-heading py-2" hidden="">
+    <div></div>
+  </div>
+  <div class="align-items-center d-flex panel-body">
+    <div class="mr-2"></div>
+    <h1 class="h2 m-0" style="flex: 1 0 auto;">
+      <div></div>
+      <div class="mt-1" hidden="">
+        <small>
+          <div></div>
+        </small>
+      </div>
+    </h1>
+    <div></div>
+  </div>
+</kiwi-heading-panel>
+`;
+
+exports[`kiwi-heading-panel renders [top: false], [left: true], [right: true], [secondary: true] 1`] = `
+<kiwi-heading-panel class="panel panel-default">
+  <span slot="kiwi-heading-primary">
+    Primary
+  </span>
+  <span slot="kiwi-heading-top">
+    Top
+  </span>
+  <span slot="kiwi-heading-left">
+    Left
+  </span>
+  <span slot="kiwi-heading-right">
+    Right
+  </span>
+  <span slot="kiwi-heading-secondary">
+    Secondary
+  </span>
+  <div class="panel-heading py-2" hidden="">
+    <div></div>
+  </div>
+  <div class="align-items-center d-flex panel-body">
+    <div class="align-self-start mr-2 mt-1"></div>
+    <h1 class="h2 m-0" style="flex: 1 0 auto;">
+      <div></div>
+      <div class="mt-1">
+        <small>
+          <div></div>
+        </small>
+      </div>
+    </h1>
+    <div></div>
+  </div>
+</kiwi-heading-panel>
+`;
+
+exports[`kiwi-heading-panel renders [top: true], [left: false], [right: false], [secondary: false] 1`] = `
+<kiwi-heading-panel class="panel panel-default">
+  <span slot="kiwi-heading-primary">
+    Primary
+  </span>
+  <span slot="kiwi-heading-top">
+    Top
+  </span>
+  <span slot="kiwi-heading-left">
+    Left
+  </span>
+  <span slot="kiwi-heading-right">
+    Right
+  </span>
+  <span slot="kiwi-heading-secondary">
+    Secondary
+  </span>
+  <div class="panel-heading py-2">
+    <div></div>
+  </div>
+  <div class="align-items-center d-flex panel-body">
+    <div class="mr-2" hidden=""></div>
+    <h1 class="h2 m-0" style="flex: 1 0 auto;">
+      <div></div>
+      <div class="mt-1" hidden="">
+        <small>
+          <div></div>
+        </small>
+      </div>
+    </h1>
+    <div hidden=""></div>
+  </div>
+</kiwi-heading-panel>
+`;
+
+exports[`kiwi-heading-panel renders [top: true], [left: false], [right: false], [secondary: true] 1`] = `
+<kiwi-heading-panel class="panel panel-default">
+  <span slot="kiwi-heading-primary">
+    Primary
+  </span>
+  <span slot="kiwi-heading-top">
+    Top
+  </span>
+  <span slot="kiwi-heading-left">
+    Left
+  </span>
+  <span slot="kiwi-heading-right">
+    Right
+  </span>
+  <span slot="kiwi-heading-secondary">
+    Secondary
+  </span>
+  <div class="panel-heading py-2">
+    <div></div>
+  </div>
+  <div class="align-items-center d-flex panel-body">
+    <div class="align-self-start mr-2 mt-1" hidden=""></div>
+    <h1 class="h2 m-0" style="flex: 1 0 auto;">
+      <div></div>
+      <div class="mt-1">
+        <small>
+          <div></div>
+        </small>
+      </div>
+    </h1>
+    <div hidden=""></div>
+  </div>
+</kiwi-heading-panel>
+`;
+
+exports[`kiwi-heading-panel renders [top: true], [left: false], [right: true], [secondary: false] 1`] = `
+<kiwi-heading-panel class="panel panel-default">
+  <span slot="kiwi-heading-primary">
+    Primary
+  </span>
+  <span slot="kiwi-heading-top">
+    Top
+  </span>
+  <span slot="kiwi-heading-left">
+    Left
+  </span>
+  <span slot="kiwi-heading-right">
+    Right
+  </span>
+  <span slot="kiwi-heading-secondary">
+    Secondary
+  </span>
+  <div class="panel-heading py-2">
+    <div></div>
+  </div>
+  <div class="align-items-center d-flex panel-body">
+    <div class="mr-2" hidden=""></div>
+    <h1 class="h2 m-0" style="flex: 1 0 auto;">
+      <div></div>
+      <div class="mt-1" hidden="">
+        <small>
+          <div></div>
+        </small>
+      </div>
+    </h1>
+    <div></div>
+  </div>
+</kiwi-heading-panel>
+`;
+
+exports[`kiwi-heading-panel renders [top: true], [left: false], [right: true], [secondary: true] 1`] = `
+<kiwi-heading-panel class="panel panel-default">
+  <span slot="kiwi-heading-primary">
+    Primary
+  </span>
+  <span slot="kiwi-heading-top">
+    Top
+  </span>
+  <span slot="kiwi-heading-left">
+    Left
+  </span>
+  <span slot="kiwi-heading-right">
+    Right
+  </span>
+  <span slot="kiwi-heading-secondary">
+    Secondary
+  </span>
+  <div class="panel-heading py-2">
+    <div></div>
+  </div>
+  <div class="align-items-center d-flex panel-body">
+    <div class="align-self-start mr-2 mt-1" hidden=""></div>
+    <h1 class="h2 m-0" style="flex: 1 0 auto;">
+      <div></div>
+      <div class="mt-1">
+        <small>
+          <div></div>
+        </small>
+      </div>
+    </h1>
+    <div></div>
+  </div>
+</kiwi-heading-panel>
+`;
+
+exports[`kiwi-heading-panel renders [top: true], [left: true], [right: false], [secondary: false] 1`] = `
+<kiwi-heading-panel class="panel panel-default">
+  <span slot="kiwi-heading-primary">
+    Primary
+  </span>
+  <span slot="kiwi-heading-top">
+    Top
+  </span>
+  <span slot="kiwi-heading-left">
+    Left
+  </span>
+  <span slot="kiwi-heading-right">
+    Right
+  </span>
+  <span slot="kiwi-heading-secondary">
+    Secondary
+  </span>
+  <div class="panel-heading py-2">
+    <div></div>
+  </div>
+  <div class="align-items-center d-flex panel-body">
+    <div class="mr-2"></div>
+    <h1 class="h2 m-0" style="flex: 1 0 auto;">
+      <div></div>
+      <div class="mt-1" hidden="">
+        <small>
+          <div></div>
+        </small>
+      </div>
+    </h1>
+    <div hidden=""></div>
+  </div>
+</kiwi-heading-panel>
+`;
+
+exports[`kiwi-heading-panel renders [top: true], [left: true], [right: false], [secondary: true] 1`] = `
+<kiwi-heading-panel class="panel panel-default">
+  <span slot="kiwi-heading-primary">
+    Primary
+  </span>
+  <span slot="kiwi-heading-top">
+    Top
+  </span>
+  <span slot="kiwi-heading-left">
+    Left
+  </span>
+  <span slot="kiwi-heading-right">
+    Right
+  </span>
+  <span slot="kiwi-heading-secondary">
+    Secondary
+  </span>
+  <div class="panel-heading py-2">
+    <div></div>
+  </div>
+  <div class="align-items-center d-flex panel-body">
+    <div class="align-self-start mr-2 mt-1"></div>
+    <h1 class="h2 m-0" style="flex: 1 0 auto;">
+      <div></div>
+      <div class="mt-1">
+        <small>
+          <div></div>
+        </small>
+      </div>
+    </h1>
+    <div hidden=""></div>
+  </div>
+</kiwi-heading-panel>
+`;
+
+exports[`kiwi-heading-panel renders [top: true], [left: true], [right: true], [secondary: false] 1`] = `
+<kiwi-heading-panel class="panel panel-default">
+  <span slot="kiwi-heading-primary">
+    Primary
+  </span>
+  <span slot="kiwi-heading-top">
+    Top
+  </span>
+  <span slot="kiwi-heading-left">
+    Left
+  </span>
+  <span slot="kiwi-heading-right">
+    Right
+  </span>
+  <span slot="kiwi-heading-secondary">
+    Secondary
+  </span>
+  <div class="panel-heading py-2">
+    <div></div>
+  </div>
+  <div class="align-items-center d-flex panel-body">
+    <div class="mr-2"></div>
+    <h1 class="h2 m-0" style="flex: 1 0 auto;">
+      <div></div>
+      <div class="mt-1" hidden="">
+        <small>
+          <div></div>
+        </small>
+      </div>
+    </h1>
+    <div></div>
+  </div>
+</kiwi-heading-panel>
+`;
+
+exports[`kiwi-heading-panel renders [top: true], [left: true], [right: true], [secondary: true] 1`] = `
+<kiwi-heading-panel class="panel panel-default">
+  <span slot="kiwi-heading-primary">
+    Primary
+  </span>
+  <span slot="kiwi-heading-top">
+    Top
+  </span>
+  <span slot="kiwi-heading-left">
+    Left
+  </span>
+  <span slot="kiwi-heading-right">
+    Right
+  </span>
+  <span slot="kiwi-heading-secondary">
+    Secondary
+  </span>
+  <div class="panel-heading py-2">
+    <div></div>
+  </div>
+  <div class="align-items-center d-flex panel-body">
+    <div class="align-self-start mr-2 mt-1"></div>
+    <h1 class="h2 m-0" style="flex: 1 0 auto;">
+      <div></div>
+      <div class="mt-1">
+        <small>
+          <div></div>
+        </small>
+      </div>
+    </h1>
+    <div></div>
+  </div>
+</kiwi-heading-panel>
+`;

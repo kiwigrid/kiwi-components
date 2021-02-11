@@ -1,4 +1,4 @@
-import { Component, Host, h, Listen, State } from '@stencil/core';
+import { Component, h, Host, Listen, State } from '@stencil/core';
 import { reject } from 'lodash-es';
 
 export interface Toast {
@@ -20,7 +20,7 @@ export class KiwiToasts {
   private toasts: (Toast & { key: string })[] = [];
 
   @Listen('kiwiToast', { target: 'document' })
-  private handleKiwiToastEvent(event: CustomEvent<Toast>): void {
+  handleKiwiToastEvent(event: CustomEvent<Toast>): void {
     const toast = event.detail;
     const key = toast.title + Date.now().toString();
     this.toasts = [...this.toasts, { ...toast, key: key }];

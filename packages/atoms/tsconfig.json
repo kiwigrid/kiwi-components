@@ -10,12 +10,10 @@
     "moduleResolution": "node",
     "module": "esnext",
     "target": "es2017",
-    // "noUnusedLocals": true,
-    // "noUnusedParameters": true,
     "jsx": "react",
     "jsxFactory": "h",
     "strict": true
   },
-  "include": ["src", "types/jsx.d.ts"],
+  "include": ["src", "types/jsx.d.ts", "global.d.ts"],
   "exclude": ["node_modules"]
 }

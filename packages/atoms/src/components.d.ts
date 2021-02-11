@@ -65,6 +65,24 @@ export namespace Components {
          */
         "withContent": boolean;
     }
+    interface KiwiHeadingPanel {
+        /**
+          * Show slot `kiwi-heading-left`.
+         */
+        "withLeft": boolean;
+        /**
+          * Show slot `kiwi-heading-right`.
+         */
+        "withRight": boolean;
+        /**
+          * Show slot `kiwi-heading-secondary`.
+         */
+        "withSecondary": boolean;
+        /**
+          * Show slot `kiwi-heading-top`.
+         */
+        "withTop": boolean;
+    }
     interface KiwiI18next {
         /**
           * The key to translate
@@ -86,7 +104,7 @@ export namespace Components {
         "lng": string;
         /**
           * Base path used to configure i18next backend.
-          * @see {BackendOptions#loadPath}
+          * @see {BackendOptions #loadPath}
          */
         "loadBasePath": string;
         /**
@@ -349,6 +367,12 @@ declare global {
         prototype: HTMLKiwiEmptyElement;
         new (): HTMLKiwiEmptyElement;
     };
+    interface HTMLKiwiHeadingPanelElement extends Components.KiwiHeadingPanel, HTMLStencilElement {
+    }
+    var HTMLKiwiHeadingPanelElement: {
+        prototype: HTMLKiwiHeadingPanelElement;
+        new (): HTMLKiwiHeadingPanelElement;
+    };
     interface HTMLKiwiI18nextElement extends Components.KiwiI18next, HTMLStencilElement {
     }
     var HTMLKiwiI18nextElement: {
@@ -454,6 +478,7 @@ declare global {
         "kiwi-checkbox-menu-item": HTMLKiwiCheckboxMenuItemElement;
         "kiwi-dropdown": HTMLKiwiDropdownElement;
         "kiwi-empty": HTMLKiwiEmptyElement;
+        "kiwi-heading-panel": HTMLKiwiHeadingPanelElement;
         "kiwi-i18next": HTMLKiwiI18nextElement;
         "kiwi-i18next-provider": HTMLKiwiI18nextProviderElement;
         "kiwi-input": HTMLKiwiInputElement;
@@ -533,6 +558,24 @@ declare namespace LocalJSX {
          */
         "withContent"?: boolean;
     }
+    interface KiwiHeadingPanel {
+        /**
+          * Show slot `kiwi-heading-left`.
+         */
+        "withLeft"?: boolean;
+        /**
+          * Show slot `kiwi-heading-right`.
+         */
+        "withRight"?: boolean;
+        /**
+          * Show slot `kiwi-heading-secondary`.
+         */
+        "withSecondary"?: boolean;
+        /**
+          * Show slot `kiwi-heading-top`.
+         */
+        "withTop"?: boolean;
+    }
     interface KiwiI18next {
         /**
           * The key to translate
@@ -554,7 +597,7 @@ declare namespace LocalJSX {
         "lng"?: string;
         /**
           * Base path used to configure i18next backend.
-          * @see {BackendOptions#loadPath}
+          * @see {BackendOptions #loadPath}
          */
         "loadBasePath": string;
         /**
@@ -812,6 +855,7 @@ declare namespace LocalJSX {
         "kiwi-checkbox-menu-item": KiwiCheckboxMenuItem;
         "kiwi-dropdown": KiwiDropdown;
         "kiwi-empty": KiwiEmpty;
+        "kiwi-heading-panel": KiwiHeadingPanel;
         "kiwi-i18next": KiwiI18next;
         "kiwi-i18next-provider": KiwiI18nextProvider;
         "kiwi-input": KiwiInput;
@@ -842,6 +886,7 @@ declare module "@stencil/core" {
             "kiwi-checkbox-menu-item": LocalJSX.KiwiCheckboxMenuItem & JSXBase.HTMLAttributes<HTMLKiwiCheckboxMenuItemElement>;
             "kiwi-dropdown": LocalJSX.KiwiDropdown & JSXBase.HTMLAttributes<HTMLKiwiDropdownElement>;
             "kiwi-empty": LocalJSX.KiwiEmpty & JSXBase.HTMLAttributes<HTMLKiwiEmptyElement>;
+            "kiwi-heading-panel": LocalJSX.KiwiHeadingPanel & JSXBase.HTMLAttributes<HTMLKiwiHeadingPanelElement>;
             "kiwi-i18next": LocalJSX.KiwiI18next & JSXBase.HTMLAttributes<HTMLKiwiI18nextElement>;
             "kiwi-i18next-provider": LocalJSX.KiwiI18nextProvider & JSXBase.HTMLAttributes<HTMLKiwiI18nextProviderElement>;
             "kiwi-input": LocalJSX.KiwiInput & JSXBase.HTMLAttributes<HTMLKiwiInputElement>;
