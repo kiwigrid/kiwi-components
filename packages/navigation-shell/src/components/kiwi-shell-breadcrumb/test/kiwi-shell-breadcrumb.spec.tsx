@@ -30,6 +30,7 @@ describe('kiwi-shell-breadcrumb', () => {
         },
       ],
       initialBreadcrumb,
+      'rabbit-hole',
     );
   });
 
@@ -52,7 +53,7 @@ describe('kiwi-shell-breadcrumb', () => {
 
     expect(state.breadcrumb).toEqual(initialBreadcrumb);
 
-    const [, , onClick] = makeLink('rabbit-hole', {});
+    const [, , onClick] = await makeLink('rabbit-hole', {});
     onClick(new MouseEvent('click'));
 
     await crumb.waitForChanges();

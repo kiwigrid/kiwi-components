@@ -44,3 +44,14 @@ exports[`kiwi-shell-link renders dynamic label with async data 1`] = `
   </a>
 </kiwi-shell-link>
 `;
+
+exports[`kiwi-shell-link renders using data from resolver 1`] = `
+<kiwi-shell-link>
+  <!---->
+  <a href="/greet/World">
+    <slot-fb>
+      Hello World
+    </slot-fb>
+  </a>
+</kiwi-shell-link>
+`;

@@ -25,7 +25,7 @@
     "lint": "eslint --fix '*/**/*.{ts,tsx}'",
     "build": "run-s build:stencil-ci build:storybook",
     "build:stencil": "stencil build --docs",
-    "build:stencil-ci": "stencil build --ci",
+    "build:stencil-ci": "stencil build --ci -c stencil.build.config.ts",
     "build:watch": "stencil build --watch",
     "build:storybook": "build-storybook"
   },

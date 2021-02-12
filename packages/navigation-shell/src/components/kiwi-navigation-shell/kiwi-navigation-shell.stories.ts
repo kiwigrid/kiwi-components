@@ -85,7 +85,7 @@ const Devices = Layout.bind(
   },
 );
 
-const routes = [
+const routes: RouteConfig<Record<string, string>>[] = [
   {
     routeKey: 'root',
     label: 'Root',
@@ -98,8 +98,9 @@ const routes = [
   },
   {
     routeKey: 'root.devices',
-    label: 'Devices',
     url: () => `/devices`,
+    label: ({ amount }) => `${amount} Devices`,
+    resolver: () => Promise.resolve({ amount: '10' }),
     handler: () => {
       navigateTo(Devices);
 
@@ -118,7 +119,7 @@ const routes = [
         { label: 'Devices', to: { key: 'root.devices' } },
       ];
     },
-  } as RouteConfig<{ guid: string }>,
+  },
   {
     routeKey: 'root.customers',
     label: 'Customers',
@@ -141,7 +142,7 @@ const routes = [
         { label: 'Customers', to: { key: 'root.customers' } },
       ];
     },
-  } as RouteConfig<{ userId: string }>,
+  },
   {
     routeKey: 'root.apps',
     label: 'Apps',

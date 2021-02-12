@@ -53,6 +53,7 @@ describe('kiwi-shell-link-decorator', () => {
         </kiwi-shell-link-decorator>
       ),
     });
+
     expect(page.root).toMatchSnapshot();
   });
 });
