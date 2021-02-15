@@ -1,9 +1,18 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 import { KiwiNavigationShell } from '../kiwi-navigation-shell';
-import state, { getRoute, hasRoute } from '../kiwi-navigation-shell.store';
+import state, {
+  dispose,
+  getRoute,
+  hasRoute,
+  RouteHistory,
+} from '../kiwi-navigation-shell.store';
 
 describe('kiwi-navigation-shell', () => {
+  afterEach(() => {
+    dispose();
+  });
+
   it('renders children', async () => {
     const shell = await newSpecPage({
       components: [KiwiNavigationShell],
@@ -18,7 +27,7 @@ describe('kiwi-navigation-shell', () => {
   });
 
   it('inits store', async () => {
-    const breadcrumb = [{ label: 'Initial', to: { key: 'key' } }];
+    const breadcrumb: RouteHistory = [{ routeKey: 'key' }];
     const routes = [
       {
         routeKey: 'key',

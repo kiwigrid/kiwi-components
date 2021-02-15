@@ -10,6 +10,16 @@ const Layout: Story<{ children: TemplateResult }> = ({ children }) => html`
   <div class="panel panel-default">
     <div class="panel-body">
       <kiwi-shell-link
+        route-key="root"
+        custom-class="btn btn-default"
+        active-class="btn-primary"
+      >
+        <span slot="kiwi-shell-link-content">
+          <span class="glyphicon glyphicon-home"></span>
+          <span class="sr-only">Root</span>
+        </span>
+      </kiwi-shell-link>
+      <kiwi-shell-link
         route-key="root.devices"
         custom-class="btn btn-default"
         active-class="btn-primary"
@@ -85,7 +95,7 @@ const Devices = Layout.bind(
   },
 );
 
-const routes: RouteConfig<Record<string, string>>[] = [
+const routes: RouteConfig<Record<string, string>, Record<string, string>>[] = [
   {
     routeKey: 'root',
     label: 'Root',
@@ -104,7 +114,7 @@ const routes: RouteConfig<Record<string, string>>[] = [
     handler: () => {
       navigateTo(Devices);
 
-      return [{ to: { key: 'root' } }];
+      return [{ routeKey: 'root' }];
     },
   },
   {
@@ -114,10 +124,7 @@ const routes: RouteConfig<Record<string, string>>[] = [
     handler: ({ guid }) => {
       navigateTo(() => html`<p>Device: ${guid}</p>`);
 
-      return [
-        { to: { key: 'root' } },
-        { label: 'Devices', to: { key: 'root.devices' } },
-      ];
+      return [{ routeKey: 'root' }, { routeKey: 'root.devices' }];
     },
   },
   {
@@ -127,7 +134,7 @@ const routes: RouteConfig<Record<string, string>>[] = [
     handler: () => {
       navigateTo(Customers);
 
-      return [{ to: { key: 'root' } }];
+      return [{ routeKey: 'root' }];
     },
   },
   {
@@ -138,8 +145,8 @@ const routes: RouteConfig<Record<string, string>>[] = [
       navigateTo(() => html`<p>Customer: ${userId}</p>`);
 
       return [
-        { to: { key: 'root' } },
-        { label: 'Customers', to: { key: 'root.customers' } },
+        { routeKey: 'root' },
+        { routeKey: 'root.customers', label: 'Customers' },
       ];
     },
   },
@@ -150,7 +157,7 @@ const routes: RouteConfig<Record<string, string>>[] = [
     handler: () => {
       navigateTo(Layout.bind({}, { children: html`<p>Apps</p>` }));
 
-      return [{ to: { key: 'root' } }];
+      return [{ routeKey: 'root' }];
     },
   },
 ];

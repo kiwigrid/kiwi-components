@@ -22,7 +22,10 @@ export namespace Components {
           * Array of route configuration.
           * @example [   {     routeKey: 'home',     label: 'Home',     url: '/home',     handler: () => {       location.href = '/home';        return [];     },   } ]
          */
-        "routes": RouteConfig<Record<string, unknown>>[];
+        "routes": RouteConfig<
+    Record<string, unknown>,
+    Record<string, unknown>
+  >[];
     }
     interface KiwiShellBreadcrumb {
     }
@@ -35,6 +38,10 @@ export namespace Components {
           * Additional css to be applied to the underlying `a` element.
          */
         "customClass"?: string;
+        /**
+          * Render only the label, without a link.
+         */
+        "labelOnly"?: true;
         /**
           * Data associated to this route.
          */
@@ -106,7 +113,10 @@ declare namespace LocalJSX {
           * Array of route configuration.
           * @example [   {     routeKey: 'home',     label: 'Home',     url: '/home',     handler: () => {       location.href = '/home';        return [];     },   } ]
          */
-        "routes": RouteConfig<Record<string, unknown>>[];
+        "routes": RouteConfig<
+    Record<string, unknown>,
+    Record<string, unknown>
+  >[];
     }
     interface KiwiShellBreadcrumb {
     }
@@ -119,6 +129,10 @@ declare namespace LocalJSX {
           * Additional css to be applied to the underlying `a` element.
          */
         "customClass"?: string;
+        /**
+          * Render only the label, without a link.
+         */
+        "labelOnly"?: true;
         /**
           * Data associated to this route.
          */

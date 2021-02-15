@@ -38,6 +38,10 @@
           "description": "Additional css to be applied to the underlying `a` element."
         },
         {
+          "name": "label-only",
+          "description": "Render only the label, without a link."
+        },
+        {
           "name": "route-key",
           "description": "The key of the route config this link should be built off of."
         }

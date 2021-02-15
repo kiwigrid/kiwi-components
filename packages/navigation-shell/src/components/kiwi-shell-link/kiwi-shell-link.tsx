@@ -1,10 +1,13 @@
-import { Component, h, Prop, State } from '@stencil/core';
+import { Component, FunctionalComponent, h, Prop, State } from '@stencil/core';
 import { MaybeAsync } from '../../utils/maybe-async';
 import {
   isActive,
   makeLink,
 } from '../kiwi-navigation-shell/kiwi-navigation-shell.store';
 
+/**
+ * @slot kiwi-shell-link-content - Content slot to replace link label.
+ */
 @Component({
   tag: 'kiwi-shell-link',
   shadow: false,
@@ -31,6 +34,10 @@ export class KiwiShellLink {
   @Prop()
   public activeClass: boolean | string = false;
 
+  /** Render only the label, without a link. */
+  @Prop()
+  public labelOnly?: true;
+
   @State()
   private link?: { url: string; label: string; handler: (e: Event) => void };
 
@@ -39,22 +46,25 @@ export class KiwiShellLink {
 
     try {
       const [url, label, handler] = await makeLink(this.routeKey, resolvedData);
+
       this.link = { url, label, handler };
     } catch (e) {
       console.warn(e);
     }
   }
 
-  render(): JSX.Element {
+  render(): JSX.Element | null {
     if (this.link === undefined) {
-      return <slot>{this.routeKey}</slot>;
+      return null;
     }
 
     const { url, label, handler } = this.link;
 
-    return (
-      <a href={url} onClick={handler} class={this.classMap} key={this.routeKey}>
-        <slot>{label}</slot>
+    return this.labelOnly ? (
+      <ContentSlot label={label ?? this.routeKey} />
+    ) : (
+      <a href={url} onClick={handler} class={this.classMap}>
+        <ContentSlot label={label ?? this.routeKey} />
       </a>
     );
   }
@@ -69,3 +79,7 @@ export class KiwiShellLink {
     };
   }
 }
+
+const ContentSlot: FunctionalComponent<{ label: string }> = ({ label }) => (
+  <slot name="kiwi-shell-link-content">{label}</slot>
+);

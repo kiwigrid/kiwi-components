@@ -7,14 +7,11 @@ import { MaybeAsync } from '../../utils/maybe-async';
  * The initial route configuration passed to the navigation shell component.
  * It is used to initialize the actual routes.
  */
-export type RouteConfig<
-  RouteData extends Record<string, unknown>,
-  ResolvedRouteData extends RouteData = RouteData
-> = {
+export type RouteConfig<RouteData, ResolvedRouteData> = {
   routeKey: string;
-  label: RouteLabel<RouteData>;
-  url: RouteUrl<RouteData>;
-  handler: RouteHandler<RouteData>;
+  label: RouteLabel<RouteData & ResolvedRouteData>;
+  url: RouteUrl<RouteData & ResolvedRouteData>;
+  handler: RouteHandler<RouteData & ResolvedRouteData>;
   resolver?: RouteDataResolver<RouteData, ResolvedRouteData>;
 };
 
@@ -45,7 +42,7 @@ type RouteLabel<RouteData> = string | ((data: RouteData) => string);
  */
 type RouteUrl<RouteData> = string | ((data: RouteData) => string);
 
-type RouteDataResolver<RouteData, ResolvedData extends RouteData> = (
+type RouteDataResolver<RouteData, ResolvedData> = (
   data: RouteData,
 ) => MaybeAsync<ResolvedData>;
 
@@ -59,11 +56,10 @@ type RouteDataResolver<RouteData, ResolvedData extends RouteData> = (
 export type RouteHistory = RouteLink[];
 
 interface RouteLink {
+  routeKey: string;
+  data?: Record<string, unknown> | Promise<Record<string, unknown>>;
   label?: string;
-  to?: {
-    key: string;
-    data?: Record<string, unknown> | Promise<Record<string, unknown>>;
-  };
+  labelOnly?: true;
 }
 
 /**
@@ -71,17 +67,17 @@ interface RouteLink {
  * effective url, label and the onClick handler which invokes the navigation
  * handler for this route and updates the breadcrumb (aka RouteHistory).
  *
- * @param key The route key
+ * @param routeKey The route key
  * @param data The data associated with this route
  */
-export const makeLink = async <RouteData extends Record<string, unknown>>(
-  key: string,
-  data: RouteData,
+export const makeLink = async (
+  routeKey: string,
+  data: Record<string, unknown>,
 ): Promise<[url: string, label: string, onClick: (event: Event) => void]> => {
-  const route = getRoute(key);
+  const route = getRoute(routeKey);
 
   if (route == undefined) {
-    throw new Error(`No handler registered for ${key}`);
+    throw new Error(`No handler registered for ${routeKey}`);
   }
 
   const resolvedData = await Promise.resolve(
@@ -99,8 +95,11 @@ export const makeLink = async <RouteData extends Record<string, unknown>>(
     label,
     (event: Event) => {
       event.preventDefault();
-      state.breadcrumb = [...route.handler(resolvedData), { label }];
-      state.activeRoute = key;
+      state.breadcrumb = [
+        ...route.handler(resolvedData),
+        { routeKey, label, data, labelOnly: true },
+      ];
+      state.activeRoute = routeKey;
     },
   ];
 };
@@ -108,7 +107,7 @@ export const makeLink = async <RouteData extends Record<string, unknown>>(
 // STORE
 
 const { state, dispose, onChange } = createStore<{
-  routes: RouteConfig<Record<string, unknown>>[];
+  routes: RouteConfig<Record<string, unknown>, Record<string, unknown>>[];
   breadcrumb: RouteHistory;
   activeRoute: string;
   routeChangeListeners: ((activeRoute: string) => void)[];
@@ -117,7 +116,7 @@ const { state, dispose, onChange } = createStore<{
 export { state, dispose };
 
 export const init = (
-  routes: RouteConfig<Record<string, unknown>>[],
+  routes: RouteConfig<Record<string, unknown>, Record<string, unknown>>[],
   breadcrumb: RouteHistory,
   activeRoute: string,
 ): void => {
@@ -134,7 +133,7 @@ onChange('activeRoute', (activeRoute) => {
 
 export const getRoute = (
   key: string,
-): RouteConfig<Record<string, unknown>> | undefined =>
+): RouteConfig<Record<string, unknown>, Record<string, unknown>> | undefined =>
   state.routes?.find((route) => route.routeKey === key);
 
 export const hasRoute = (key: string): boolean =>
