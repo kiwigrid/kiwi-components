@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-navigation-shell@0.3.1...@kiwigrid/kiwi-navigation-shell@0.4.0) (2021-02-16)
+
+
+### Features
+
+* **kiwi-navigation-shell:** fix slot bug ([aeb88a4](https://github.com/kiwigrid/kiwi-components/commit/aeb88a4d624ca3f87e32defbb677ba78c00c2bd7))
+* **navigation-shell:** add resolver to route config ([6ec4486](https://github.com/kiwigrid/kiwi-components/commit/6ec4486ae13ab565555b29c22542fd9ea5709695))
+
+
+
+
+
 ## [0.3.1](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-navigation-shell@0.3.0...@kiwigrid/kiwi-navigation-shell@0.3.1) (2021-02-02)
 
 
