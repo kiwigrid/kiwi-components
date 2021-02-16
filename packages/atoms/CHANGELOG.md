@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-atoms@0.5.0...@kiwigrid/kiwi-atoms@0.6.0) (2021-02-16)
+
+
+### Features
+
+* **kiwi-atoms:** add heading panel ([175ac17](https://github.com/kiwigrid/kiwi-components/commit/175ac17c74aee21cf1ce9f12dbf9acf627f271ae))
+
+
+
+
+
 # [0.5.0](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-atoms@0.4.1...@kiwigrid/kiwi-atoms@0.5.0) (2021-01-28)
 
 
