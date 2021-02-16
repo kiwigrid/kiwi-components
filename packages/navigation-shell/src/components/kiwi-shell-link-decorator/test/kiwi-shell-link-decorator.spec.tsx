@@ -1,12 +1,17 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
-import { init } from '../../kiwi-navigation-shell/kiwi-navigation-shell.store';
+import {
+  dispose,
+  init,
+} from '../../kiwi-navigation-shell/kiwi-navigation-shell.store';
 import { KiwiShellLinkDecorator } from '../kiwi-shell-link-decorator';
 
 describe('kiwi-shell-link-decorator', () => {
   let handler: jest.Mock;
 
-  beforeAll(async () => {
+  beforeEach(() => {
+    handler = jest.fn(() => []);
+
     init(
       [
         {
@@ -31,8 +36,8 @@ describe('kiwi-shell-link-decorator', () => {
     );
   });
 
-  beforeEach(() => {
-    handler = jest.fn(() => []);
+  afterEach(() => {
+    dispose();
   });
 
   it('renders', async () => {
@@ -53,6 +58,7 @@ describe('kiwi-shell-link-decorator', () => {
         </kiwi-shell-link-decorator>
       ),
     });
+
     expect(page.root).toMatchSnapshot();
   });
 });

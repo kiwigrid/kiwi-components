@@ -25,7 +25,10 @@ export class KiwiNavigationShell implements ComponentInterface {
    * ]
    */
   @Prop()
-  public routes!: RouteConfig<Record<string, unknown>>[];
+  public routes!: RouteConfig<
+    Record<string, unknown>,
+    Record<string, unknown>
+  >[];
 
   /**
    * Initial breadcrumb.

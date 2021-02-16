@@ -1,0 +1,4 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": ["node_modules", "globals.d.ts", "src/**/*.stories.ts"]
+}

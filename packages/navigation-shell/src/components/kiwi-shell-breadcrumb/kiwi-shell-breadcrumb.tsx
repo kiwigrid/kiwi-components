@@ -14,20 +14,24 @@ export class KiwiShellBreadcrumb {
     return (
       <kiwi-breadcrumb>
         {state.breadcrumb.map((crumb) => {
-          const { key, data } = crumb.to ?? {};
+          const { routeKey, data, label, labelOnly } = crumb ?? {};
 
           return (
-            <kiwi-breadcrumb-item key={key}>
-              {key ? (
-                crumb.label ? (
-                  <kiwi-shell-link routeKey={key} routeData={data}>
-                    {crumb.label}
-                  </kiwi-shell-link>
-                ) : (
-                  <kiwi-shell-link routeKey={key} routeData={data} />
-                )
+            <kiwi-breadcrumb-item key={`kiwi-breadrumb-item-${routeKey}`}>
+              {label !== undefined ? (
+                <kiwi-shell-link
+                  routeKey={routeKey}
+                  routeData={data}
+                  labelOnly={labelOnly}
+                >
+                  <span slot="kiwi-shell-link-content">{label}</span>
+                </kiwi-shell-link>
               ) : (
-                crumb.label
+                <kiwi-shell-link
+                  routeKey={routeKey}
+                  routeData={data}
+                  labelOnly={labelOnly}
+                />
               )}
             </kiwi-breadcrumb-item>
           );

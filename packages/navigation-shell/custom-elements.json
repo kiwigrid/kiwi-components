@@ -31,11 +31,15 @@
       "attributes": [
         {
           "name": "active-class",
-          "description": "If set to true will append class 'active' to the `a` element. Alternatively\nprovide a string which is used as active class instead.\nWhen set to false, no class will be attached (default)."
+          "description": "If set to true will append class 'active' to the `a` element if the current\nroute equals `routeKey`. Alternatively provide a string which is used as\nactive class instead.\nWhen set to false, no class will be attached (default)."
         },
         {
           "name": "custom-class",
           "description": "Additional css to be applied to the underlying `a` element."
+        },
+        {
+          "name": "label-only",
+          "description": "Render only the label, without a link."
         },
         {
           "name": "route-key",

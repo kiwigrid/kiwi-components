@@ -4,13 +4,10 @@ exports[`kiwi-shell-breadcrumb renders initialBreadcrumb 1`] = `
 <kiwi-shell-breadcrumb>
   <kiwi-breadcrumb>
     <kiwi-breadcrumb-item>
-      white
+      <kiwi-shell-link routekey="deep"></kiwi-shell-link>
     </kiwi-breadcrumb-item>
     <kiwi-breadcrumb-item>
-      rabbits
-    </kiwi-breadcrumb-item>
-    <kiwi-breadcrumb-item>
-      burrow
+      <kiwi-shell-link routekey="down"></kiwi-shell-link>
     </kiwi-breadcrumb-item>
   </kiwi-breadcrumb>
 </kiwi-shell-breadcrumb>
@@ -20,16 +17,17 @@ exports[`kiwi-shell-breadcrumb renders updated breadcrumb 1`] = `
 <kiwi-shell-breadcrumb>
   <kiwi-breadcrumb>
     <kiwi-breadcrumb-item>
-      deep
+      <kiwi-shell-link routekey="deep"></kiwi-shell-link>
     </kiwi-breadcrumb-item>
     <kiwi-breadcrumb-item>
-      down
+      <kiwi-shell-link routekey="down"></kiwi-shell-link>
     </kiwi-breadcrumb-item>
     <kiwi-breadcrumb-item>
-      the
-    </kiwi-breadcrumb-item>
-    <kiwi-breadcrumb-item>
-      rabbit-hole
+      <kiwi-shell-link labelonly="" routekey="rabbit-hole">
+        <span slot="kiwi-shell-link-content">
+          The Rabbit Hole
+        </span>
+      </kiwi-shell-link>
     </kiwi-breadcrumb-item>
   </kiwi-breadcrumb>
 </kiwi-shell-breadcrumb>

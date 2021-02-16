@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { RouteConfig, RouteHistory } from "./components/kiwi-navigation-shell/kiwi-navigation-shell.store";
+import { MaybeAsync } from "./utils/maybe-async";
 export namespace Components {
     interface KiwiNavigationShell {
         /**
@@ -21,13 +22,16 @@ export namespace Components {
           * Array of route configuration.
           * @example [   {     routeKey: 'home',     label: 'Home',     url: '/home',     handler: () => {       location.href = '/home';        return [];     },   } ]
          */
-        "routes": RouteConfig<Record<string, unknown>>[];
+        "routes": RouteConfig<
+    Record<string, unknown>,
+    Record<string, unknown>
+  >[];
     }
     interface KiwiShellBreadcrumb {
     }
     interface KiwiShellLink {
         /**
-          * If set to true will append class 'active' to the `a` element. Alternatively provide a string which is used as active class instead. When set to false, no class will be attached (default).
+          * If set to true will append class 'active' to the `a` element if the current route equals `routeKey`. Alternatively provide a string which is used as active class instead. When set to false, no class will be attached (default).
          */
         "activeClass": boolean | string;
         /**
@@ -35,9 +39,13 @@ export namespace Components {
          */
         "customClass"?: string;
         /**
+          * Render only the label, without a link.
+         */
+        "labelOnly"?: true;
+        /**
           * Data associated to this route.
          */
-        "routeData"?: Record<string, unknown> | Promise<Record<string, unknown>>;
+        "routeData"?: MaybeAsync<Record<string, unknown>>;
         /**
           * The key of the route config this link should be built off of.
          */
@@ -48,6 +56,10 @@ export namespace Components {
           * Class added to elements marked with `data-shell-active="your-route"`
          */
         "activeClass": string;
+        /**
+          * Cleanup listeners.
+         */
+        "cleanup": () => Promise<void>;
         /**
           * Route data keyed by route key. Will be passed as route data.
          */
@@ -101,13 +113,16 @@ declare namespace LocalJSX {
           * Array of route configuration.
           * @example [   {     routeKey: 'home',     label: 'Home',     url: '/home',     handler: () => {       location.href = '/home';        return [];     },   } ]
          */
-        "routes": RouteConfig<Record<string, unknown>>[];
+        "routes": RouteConfig<
+    Record<string, unknown>,
+    Record<string, unknown>
+  >[];
     }
     interface KiwiShellBreadcrumb {
     }
     interface KiwiShellLink {
         /**
-          * If set to true will append class 'active' to the `a` element. Alternatively provide a string which is used as active class instead. When set to false, no class will be attached (default).
+          * If set to true will append class 'active' to the `a` element if the current route equals `routeKey`. Alternatively provide a string which is used as active class instead. When set to false, no class will be attached (default).
          */
         "activeClass"?: boolean | string;
         /**
@@ -115,9 +130,13 @@ declare namespace LocalJSX {
          */
         "customClass"?: string;
         /**
+          * Render only the label, without a link.
+         */
+        "labelOnly"?: true;
+        /**
           * Data associated to this route.
          */
-        "routeData"?: Record<string, unknown> | Promise<Record<string, unknown>>;
+        "routeData"?: MaybeAsync<Record<string, unknown>>;
         /**
           * The key of the route config this link should be built off of.
          */

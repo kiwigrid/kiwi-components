@@ -1,4 +1,4 @@
-import { Component, Element, h, Prop } from '@stencil/core';
+import { Component, Element, h, Method, Prop } from '@stencil/core';
 import navShellState, {
   makeLink,
   registerRouteChangeListener,
@@ -23,34 +23,39 @@ export class KiwiShellLinkDecorator {
 
   private unregisterFunctions: (() => void)[] = [];
 
-  connectedCallback(): void {
+  async componentWillLoad(): Promise<void> {
     registerRouteChangeListener(this.handleRouteChange);
 
-    this.ref?.querySelectorAll('a[data-shell-route]').forEach((a) => {
-      const key = a.getAttribute('data-shell-route');
+    const makeLinkPromises = Array.from(
+      this.ref?.querySelectorAll('a[data-shell-route]') ?? [],
+      async (a) => {
+        const key = a.getAttribute('data-shell-route');
 
-      if (!key) {
-        return;
-      }
+        if (!key) {
+          return;
+        }
 
-      const data = this.routeData[key] ?? {};
+        const data = this.routeData[key] ?? {};
 
-      try {
-        const [url, , onClick] = makeLink(key, data);
+        try {
+          const [url, , onClick] = await makeLink(key, data);
 
-        a.setAttribute('href', url);
-        a.addEventListener('click', onClick);
+          a.setAttribute('href', url);
+          a.addEventListener('click', onClick);
 
-        this.unregisterFunctions = [
-          ...this.unregisterFunctions,
-          () => {
-            a.removeEventListener('click', onClick);
-          },
-        ];
-      } catch (e) {
-        console.warn(e);
-      }
-    });
+          this.unregisterFunctions = [
+            ...this.unregisterFunctions,
+            () => {
+              a.removeEventListener('click', onClick);
+            },
+          ];
+        } catch (e) {
+          console.warn(e);
+        }
+      },
+    );
+
+    await Promise.all(makeLinkPromises);
 
     this.handleRouteChange(navShellState.activeRoute);
   }
@@ -59,7 +64,11 @@ export class KiwiShellLinkDecorator {
     return <slot></slot>;
   }
 
-  disconnectedCallback(): void {
+  /**
+   * Cleanup listeners.
+   */
+  @Method()
+  async cleanup(): Promise<void> {
     this.unregisterFunctions.forEach((unregister) => unregister());
     unregisterRouteChangeListener(this.handleRouteChange);
   }

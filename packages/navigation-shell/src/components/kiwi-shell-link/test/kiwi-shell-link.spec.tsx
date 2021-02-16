@@ -1,12 +1,17 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
-import { init } from '../../kiwi-navigation-shell/kiwi-navigation-shell.store';
+import {
+  dispose,
+  init,
+} from '../../kiwi-navigation-shell/kiwi-navigation-shell.store';
 import { KiwiShellLink } from '../kiwi-shell-link';
 
 describe('kiwi-shell-link', () => {
   let handler: jest.Mock;
 
-  beforeAll(async () => {
+  beforeEach(() => {
+    handler = jest.fn(() => []);
+
     init(
       [
         {
@@ -25,14 +30,24 @@ describe('kiwi-shell-link', () => {
             return handler(data);
           },
         },
+        {
+          routeKey: 'greeting-resolver',
+          label: ({ greeting }) => `${greeting}`,
+          url: ({ name }) => `/greet/${name}`,
+          resolver: ({ name }) =>
+            Promise.resolve({ greeting: `Hello ${name}` }),
+          handler: (data) => {
+            return handler(data);
+          },
+        },
       ],
       [],
       'route-66',
     );
   });
 
-  beforeEach(() => {
-    handler = jest.fn(() => []);
+  afterEach(() => {
+    dispose();
   });
 
   it('renders', async () => {
@@ -44,12 +59,23 @@ describe('kiwi-shell-link', () => {
     expect(link.root).toMatchSnapshot();
   });
 
+  it('renders label only', async () => {
+    const link = await newSpecPage({
+      components: [KiwiShellLink],
+      template: () => (
+        <kiwi-shell-link routeKey="route-66" labelOnly></kiwi-shell-link>
+      ),
+    });
+
+    expect(link.root).toMatchSnapshot();
+  });
+
   it('renders custom label', async () => {
     const link = await newSpecPage({
       components: [KiwiShellLink],
       template: () => (
         <kiwi-shell-link routeKey="route-66">
-          <span class="my-icon"></span>
+          <span class="my-icon" slot="kiwi-shell-link-content"></span>
         </kiwi-shell-link>
       ),
     });
@@ -85,12 +111,26 @@ describe('kiwi-shell-link', () => {
     expect(link.root).toMatchSnapshot();
   });
 
+  it('renders using data from resolver', async () => {
+    const link = await newSpecPage({
+      components: [KiwiShellLink],
+      template: () => (
+        <kiwi-shell-link
+          routeKey="greeting-resolver"
+          routeData={{ name: 'World' }}
+        ></kiwi-shell-link>
+      ),
+    });
+
+    expect(link.root).toMatchSnapshot();
+  });
+
   it('calls handler', async () => {
     const link = await newSpecPage({
       components: [KiwiShellLink],
       template: () => (
         <kiwi-shell-link routeKey="route-66" routeData={{ route: 66 }}>
-          <span class="my-icon"></span>
+          <span class="my-icon" slot="kiwi-shell-link-content"></span>
         </kiwi-shell-link>
       ),
     });

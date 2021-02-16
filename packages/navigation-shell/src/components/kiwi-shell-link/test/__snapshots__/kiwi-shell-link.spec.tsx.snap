@@ -2,9 +2,8 @@
 
 exports[`kiwi-shell-link renders 1`] = `
 <kiwi-shell-link>
-  <!---->
   <a href="/route/66">
-    <slot-fb>
+    <slot-fb name="kiwi-shell-link-content">
       Route 66
     </slot-fb>
   </a>
@@ -13,10 +12,9 @@ exports[`kiwi-shell-link renders 1`] = `
 
 exports[`kiwi-shell-link renders custom label 1`] = `
 <kiwi-shell-link>
-  <!---->
+  <span class="my-icon" slot="kiwi-shell-link-content"></span>
   <a href="/route/66">
-    <span class="my-icon"></span>
-    <slot-fb hidden="">
+    <slot-fb name="kiwi-shell-link-content">
       Route 66
     </slot-fb>
   </a>
@@ -25,9 +23,8 @@ exports[`kiwi-shell-link renders custom label 1`] = `
 
 exports[`kiwi-shell-link renders dynamic label 1`] = `
 <kiwi-shell-link>
-  <!---->
   <a href="/users/johndoe-42">
-    <slot-fb>
+    <slot-fb name="kiwi-shell-link-content">
       User johndoe-42
     </slot-fb>
   </a>
@@ -36,10 +33,27 @@ exports[`kiwi-shell-link renders dynamic label 1`] = `
 
 exports[`kiwi-shell-link renders dynamic label with async data 1`] = `
 <kiwi-shell-link>
-  <!---->
   <a href="/users/johndoe-42">
-    <slot-fb>
+    <slot-fb name="kiwi-shell-link-content">
       User johndoe-42
+    </slot-fb>
+  </a>
+</kiwi-shell-link>
+`;
+
+exports[`kiwi-shell-link renders label only 1`] = `
+<kiwi-shell-link>
+  <slot-fb name="kiwi-shell-link-content">
+    Route 66
+  </slot-fb>
+</kiwi-shell-link>
+`;
+
+exports[`kiwi-shell-link renders using data from resolver 1`] = `
+<kiwi-shell-link>
+  <a href="/greet/World">
+    <slot-fb name="kiwi-shell-link-content">
+      Hello World
     </slot-fb>
   </a>
 </kiwi-shell-link>

@@ -12,8 +12,6 @@ export default {
 const Template: Story<{
   children: TemplateResult;
 }> = ({ children }) => {
-  console.log({ children });
-
   return html` <kiwi-navigation-shell
     .routes="${[
       {
@@ -28,8 +26,9 @@ const Template: Story<{
       },
       {
         routeKey: 'products',
-        label: 'Products',
+        label: ({ amount }: Record<string, string>) => `${amount} Products`,
         url: '/products',
+        resolver: () => Promise.resolve({ amount: '10' }),
         handler: () => {
           console.log('navigate to products');
 
@@ -38,7 +37,7 @@ const Template: Story<{
       },
       {
         routeKey: 'contact',
-        label: 'Contact',
+        label: () => 'Contact',
         url: '/contact',
         handler: () => {
           console.log('navigate to contact');

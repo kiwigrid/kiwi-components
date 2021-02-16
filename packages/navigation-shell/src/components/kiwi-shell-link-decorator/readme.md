@@ -13,6 +13,19 @@
 | `routeData`   | --             | Route data keyed by route key. Will be passed as route data.         | `{ [x: string]: Record<string, unknown>; }` | `{}`       |
 
 
+## Methods
+
+### `cleanup() => Promise<void>`
+
+Cleanup listeners.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
