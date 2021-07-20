@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-atoms@0.6.0...@kiwigrid/kiwi-atoms@0.7.0) (2021-07-20)
+
+
+### Features
+
+* **kiwi-atoms:** add size parameter to kiwi-modal ([ce43424](https://github.com/kiwigrid/kiwi-components/commit/ce434249338484fc143693b534ae9e742259b919))
+
+
+
+
+
 # [0.6.0](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-atoms@0.5.0...@kiwigrid/kiwi-atoms@0.6.0) (2021-02-16)
 
 
