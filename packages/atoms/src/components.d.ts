@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { TFunction } from "i18next";
 import { NavigateToEvent } from "./components/kiwi-link/kiwi-link";
+import { Size } from "./components/kiwi-modal/kiwi-modal";
 import { Placement } from "@popperjs/core/lib";
 import { Modifier } from "@popperjs/core/lib/types";
 export namespace Components {
@@ -92,6 +93,10 @@ export namespace Components {
           * Set this to true to show the modal or alternatively set an id to this element and dispatch a 'showKiwiModal' CustomEvent with the id as event.detail
          */
         "open"?: boolean;
+        /**
+          * Set the size of the modal
+         */
+        "size": Size;
         /**
           * Set this to true if you want to show the footer
          */
@@ -348,6 +353,10 @@ declare namespace LocalJSX {
           * Set this to true to show the modal or alternatively set an id to this element and dispatch a 'showKiwiModal' CustomEvent with the id as event.detail
          */
         "open"?: boolean;
+        /**
+          * Set the size of the modal
+         */
+        "size"?: Size;
         /**
           * Set this to true if you want to show the footer
          */

@@ -34,3 +34,43 @@ exports[`kiwi-modal renders 1`] = `
   </div>
 </kiwi-modal>
 `;
+
+exports[`kiwi-modal renders with size large 1`] = `
+<kiwi-modal>
+  <!---->
+  <i hidden="" slot="modal-title">
+    Italic Modal Header
+  </i>
+  <div class="modal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div slot="modal-body">
+            large
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</kiwi-modal>
+`;
+
+exports[`kiwi-modal renders with size small 1`] = `
+<kiwi-modal>
+  <!---->
+  <i hidden="" slot="modal-title">
+    Italic Modal Header
+  </i>
+  <div class="modal">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div slot="modal-body">
+            small
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</kiwi-modal>
+`;

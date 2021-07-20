@@ -29,4 +29,22 @@ describe('kiwi-modal', () => {
     expect(page.root).toHaveAttribute('open');
     expect(page.root).toMatchSnapshot();
   });
+
+  it.each`
+    size
+    ${'small'}
+    ${'large'}
+  `('renders with size $size', async ({ size }) => {
+    const page = await newSpecPage({
+      components: [KiwiModal],
+      template: () => (
+        <kiwi-modal size={size}>
+          <i slot="modal-title">Italic Modal Header</i>
+          <div slot="modal-body">{size}</div>
+        </kiwi-modal>
+      ),
+    });
+
+    expect(page.root).toMatchSnapshot();
+  });
 });
