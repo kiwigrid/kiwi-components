@@ -1,15 +1,22 @@
 import {
   Component,
-  h,
-  Prop,
+  Element,
   Event,
   EventEmitter,
-  Watch,
-  Listen,
-  Element,
+  h,
   Host,
+  Listen,
+  Prop,
+  Watch,
 } from '@stencil/core';
 import { some } from 'lodash-es';
+
+export type Size = 'small' | 'medium' | 'large';
+const sizeClasses: { [Key in Size]: string } = {
+  small: 'modal-sm',
+  medium: '',
+  large: 'modal-lg',
+};
 
 @Component({
   tag: 'kiwi-modal',
@@ -46,6 +53,10 @@ export class KiwiModal {
   /** Set to true if the modal should be closed on Escape press */
   @Prop()
   escape = false;
+
+  /** Set the size of the modal */
+  @Prop()
+  size: Size = 'medium';
 
   @Element()
   host!: HTMLKiwiModalElement;
@@ -152,7 +163,7 @@ export class KiwiModal {
           onClick={this.handleClickOutside}
           ref={(el) => (this.modalElement = el as HTMLDivElement)}
         >
-          <div class="modal-dialog">
+          <div class={`modal-dialog ${sizeClasses[this.size]}`}>
             <div class="modal-content">
               {this.withHeader && (
                 <div class="modal-header modal-default">
