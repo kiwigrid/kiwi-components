@@ -9,6 +9,7 @@ import { Size } from "./components/kiwi-empty/kiwi-empty";
 import { i18n, TOptions } from "i18next";
 import { LabelKind } from "./components/kiwi-label/kiwi-label";
 import { NavigateToEvent } from "./components/kiwi-link/kiwi-link";
+import { Size as Size1 } from "./components/kiwi-modal/kiwi-modal";
 import { Placement } from "@popperjs/core/lib";
 import { Modifier } from "@popperjs/core/lib/types";
 import { SortDirection } from "./components/kiwi-sortable-label/kiwi-sortable-label";
@@ -191,6 +192,10 @@ export namespace Components {
           * Set this text to show the previous button
          */
         "previousText"?: string;
+        /**
+          * Set the size of the modal
+         */
+        "size": Size;
         /**
           * Set this to true if you want to show the header
          */
@@ -704,6 +709,10 @@ declare namespace LocalJSX {
           * Set this text to show the previous button
          */
         "previousText"?: string;
+        /**
+          * Set the size of the modal
+         */
+        "size"?: Size;
         /**
           * Set this to true if you want to show the header
          */
