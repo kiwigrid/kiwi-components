@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, h } from '@stencil/core';
+import { Component, ComponentInterface, h, JSX } from '@stencil/core';
 
 @Component({
   tag: 'kiwi-breadcrumb-item',
