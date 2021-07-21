@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element } from '@stencil/core';
+import { Component, Element, h, JSX, Prop } from '@stencil/core';
 
 /**
  * NOTE: This component applies 'position: relative' to its parent

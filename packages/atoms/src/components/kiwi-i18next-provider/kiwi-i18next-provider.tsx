@@ -3,6 +3,7 @@ import {
   ComponentWillLoad,
   h,
   Host,
+  JSX,
   Prop,
   Watch,
 } from '@stencil/core';

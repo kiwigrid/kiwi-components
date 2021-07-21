@@ -1,4 +1,4 @@
-import { Component, h, Host, Listen, State } from '@stencil/core';
+import { Component, h, Host, JSX, Listen, State } from '@stencil/core';
 import { reject } from 'lodash-es';
 
 export interface Toast {

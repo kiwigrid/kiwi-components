@@ -1,4 +1,11 @@
-import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core';
+import {
+  Component,
+  ComponentInterface,
+  h,
+  Host,
+  JSX,
+  Prop,
+} from '@stencil/core';
 import { TOptions } from 'i18next';
 import store from '../kiwi-i18next-provider/kiwi-i18next-provider.store';
 
