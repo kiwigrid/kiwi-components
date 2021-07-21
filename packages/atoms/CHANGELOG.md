@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-atoms@0.7.0...@kiwigrid/kiwi-atoms@0.8.0) (2021-07-21)
+
+
+### Bug Fixes
+
+* **kiwi-atoms:** fix JSX imports ([7cd986a](https://github.com/kiwigrid/kiwi-components/commit/7cd986a05248a7180fed2fc70ce0e0277027c23f))
+
+
+### Features
+
+* **kiwi-atoms:** add button debounce to pager ([8620b1d](https://github.com/kiwigrid/kiwi-components/commit/8620b1dc75b8e533bee2aac86150e876afdbe95a))
+* **kiwi-atoms:** remove kiwi-link ([58bcc44](https://github.com/kiwigrid/kiwi-components/commit/58bcc443ad2a8dd6d6b0ac0c4ef08fd638e3beb9))
+
+
+
+
+
 # [0.7.0](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-atoms@0.6.0...@kiwigrid/kiwi-atoms@0.7.0) (2021-07-20)
 
 
