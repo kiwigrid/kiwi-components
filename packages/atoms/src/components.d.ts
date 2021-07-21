@@ -8,7 +8,6 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Size } from "./components/kiwi-empty/kiwi-empty";
 import { i18n, TOptions } from "i18next";
 import { LabelKind } from "./components/kiwi-label/kiwi-label";
-import { NavigateToEvent } from "./components/kiwi-link/kiwi-link";
 import { Size as Size1 } from "./components/kiwi-modal/kiwi-modal";
 import { Placement } from "@popperjs/core/lib";
 import { Modifier } from "@popperjs/core/lib/types";
@@ -151,12 +150,6 @@ export namespace Components {
          */
         "name": string;
     }
-    interface KiwiLink {
-        /**
-          * The navigation destination. Can be either a url or a `NavigateToEvent`
-         */
-        "to": string | NavigateToEvent;
-    }
     interface KiwiLoading {
         /**
           * Indicates the loading state.
@@ -203,7 +196,7 @@ export namespace Components {
     }
     interface KiwiPager {
         /**
-          * Debounce time in milliseconds (Default: 400)
+          * Debounce time in milliseconds.
          */
         "debounce": number;
         /**
@@ -408,12 +401,6 @@ declare global {
         prototype: HTMLKiwiLabeledCheckboxElement;
         new (): HTMLKiwiLabeledCheckboxElement;
     };
-    interface HTMLKiwiLinkElement extends Components.KiwiLink, HTMLStencilElement {
-    }
-    var HTMLKiwiLinkElement: {
-        prototype: HTMLKiwiLinkElement;
-        new (): HTMLKiwiLinkElement;
-    };
     interface HTMLKiwiLoadingElement extends Components.KiwiLoading, HTMLStencilElement {
     }
     var HTMLKiwiLoadingElement: {
@@ -489,7 +476,6 @@ declare global {
         "kiwi-input": HTMLKiwiInputElement;
         "kiwi-label": HTMLKiwiLabelElement;
         "kiwi-labeled-checkbox": HTMLKiwiLabeledCheckboxElement;
-        "kiwi-link": HTMLKiwiLinkElement;
         "kiwi-loading": HTMLKiwiLoadingElement;
         "kiwi-modal": HTMLKiwiModalElement;
         "kiwi-pager": HTMLKiwiPagerElement;
@@ -648,16 +634,6 @@ declare namespace LocalJSX {
          */
         "name": string;
     }
-    interface KiwiLink {
-        /**
-          * Dummy event documentation - please fix me!
-         */
-        "onNavigateTo"?: (event: CustomEvent<NavigateToEvent>) => void;
-        /**
-          * The navigation destination. Can be either a url or a `NavigateToEvent`
-         */
-        "to": string | NavigateToEvent;
-    }
     interface KiwiLoading {
         /**
           * Indicates the loading state.
@@ -720,7 +696,7 @@ declare namespace LocalJSX {
     }
     interface KiwiPager {
         /**
-          * Debounce time in milliseconds (Default: 400)
+          * Debounce time in milliseconds.
          */
         "debounce"?: number;
         /**
@@ -870,7 +846,6 @@ declare namespace LocalJSX {
         "kiwi-input": KiwiInput;
         "kiwi-label": KiwiLabel;
         "kiwi-labeled-checkbox": KiwiLabeledCheckbox;
-        "kiwi-link": KiwiLink;
         "kiwi-loading": KiwiLoading;
         "kiwi-modal": KiwiModal;
         "kiwi-pager": KiwiPager;
@@ -901,7 +876,6 @@ declare module "@stencil/core" {
             "kiwi-input": LocalJSX.KiwiInput & JSXBase.HTMLAttributes<HTMLKiwiInputElement>;
             "kiwi-label": LocalJSX.KiwiLabel & JSXBase.HTMLAttributes<HTMLKiwiLabelElement>;
             "kiwi-labeled-checkbox": LocalJSX.KiwiLabeledCheckbox & JSXBase.HTMLAttributes<HTMLKiwiLabeledCheckboxElement>;
-            "kiwi-link": LocalJSX.KiwiLink & JSXBase.HTMLAttributes<HTMLKiwiLinkElement>;
             "kiwi-loading": LocalJSX.KiwiLoading & JSXBase.HTMLAttributes<HTMLKiwiLoadingElement>;
             "kiwi-modal": LocalJSX.KiwiModal & JSXBase.HTMLAttributes<HTMLKiwiModalElement>;
             "kiwi-pager": LocalJSX.KiwiPager & JSXBase.HTMLAttributes<HTMLKiwiPagerElement>;
