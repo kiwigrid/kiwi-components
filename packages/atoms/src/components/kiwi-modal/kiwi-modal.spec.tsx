@@ -2,22 +2,17 @@ import { newSpecPage } from '@stencil/core/testing';
 import { KiwiModal } from './kiwi-modal';
 import { h } from '@stencil/core';
 import { expectDefined } from '../util/testing';
+import { KiwiModalFooter } from '../kiwi-modal-footer/kiwi-modal-footer';
 
 describe('kiwi-modal', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [KiwiModal],
+      components: [KiwiModal, KiwiModalFooter],
       template: () => (
-        <kiwi-modal
-          id="modalId"
-          with-header="true"
-          with-footer="true"
-          cancel-text="Cancel"
-          ok-text="Ok"
-          escape={true}
-        >
-          <i slot="modal-title">Italic Modal Header</i>
-          <div slot="modal-body">Press Escape to close the modal</div>
+        <kiwi-modal id="modalId" withHeader escape>
+          <i slot="kiwi-modal-title">Italic Modal Header</i>
+          <div slot="kiwi-modal-body">Press Escape to close the modal</div>
+          <kiwi-modal-footer slot="kiwi-modal-footer" />
         </kiwi-modal>
       ),
     });
@@ -39,8 +34,8 @@ describe('kiwi-modal', () => {
       components: [KiwiModal],
       template: () => (
         <kiwi-modal size={size}>
-          <i slot="modal-title">Italic Modal Header</i>
-          <div slot="modal-body">{size}</div>
+          <i slot="kiwi-modal-title">Italic Modal Header</i>
+          <div slot="kiwi-modal-body">{size}</div>
         </kiwi-modal>
       ),
     });

@@ -9,7 +9,6 @@ import {
   Prop,
   Watch,
 } from '@stencil/core';
-import { some } from 'lodash-es';
 
 export type Size = 'small' | 'medium' | 'large';
 const sizeClasses: { [Key in Size]: string } = {
@@ -30,25 +29,18 @@ export class KiwiModal {
   })
   open = false;
 
+  @Watch('open')
+  private onOpenChange(open: boolean): void {
+    if (open) {
+      this.handleOpeningCssClasses();
+    } else {
+      this.handleClosingCssClasses();
+    }
+  }
+
   /** Set this to true if you want to show the header */
   @Prop()
   withHeader = false;
-
-  /** Set this text to show the cancel button */
-  @Prop()
-  cancelText?: string;
-
-  /** Set this text to show the previous button */
-  @Prop()
-  previousText?: string;
-
-  /** Set this text to show the next button */
-  @Prop()
-  nextText?: string;
-
-  /** Set this text to show the ok button */
-  @Prop()
-  okText?: string;
 
   /** Set to true if the modal should be closed on Escape press */
   @Prop()
@@ -63,19 +55,7 @@ export class KiwiModal {
 
   /** This event is emitted after the modal was closed */
   @Event()
-  closed!: EventEmitter;
-
-  /** This event is emitted on click on the "previous" button  */
-  @Event()
-  previous!: EventEmitter;
-
-  /** This event is emitted on click on the "next" button */
-  @Event()
-  next!: EventEmitter;
-
-  /** This event is emitted on click on the "ok" button  */
-  @Event()
-  confirmed!: EventEmitter;
+  close!: EventEmitter;
 
   private modalElement!: HTMLDivElement;
 
@@ -88,22 +68,9 @@ export class KiwiModal {
     }
   }
 
-  @Watch('open')
-  private onOpenChange(newValue: boolean): void {
-    if (newValue) {
-      this.handleOpeningCssClasses();
-    } else {
-      this.handleClosingCssClasses();
-    }
-  }
-
   componentDidLoad(): void {
     if (this.escape) {
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          this.handleClose();
-        }
-      });
+      document.addEventListener('keydown', this.handleKeydown);
     }
 
     this.onOpenChange(this.open);
@@ -111,6 +78,52 @@ export class KiwiModal {
 
   disconnectedCallback(): void {
     this.handleClosingCssClasses();
+    document.removeEventListener('keydown', this.handleKeydown);
+  }
+
+  render(): void {
+    return (
+      <Host>
+        <div
+          class="modal"
+          onClick={this.handleClickOutside}
+          ref={(el) => (this.modalElement = el as HTMLDivElement)}
+        >
+          <div class={`modal-dialog ${sizeClasses[this.size]}`}>
+            <div class="modal-content">
+              {this.withHeader && (
+                <div class="modal-header modal-default">
+                  <button
+                    class="close"
+                    type="close"
+                    aria-hidden="true"
+                    onClick={this.handleClose}
+                  >
+                    ×
+                  </button>
+
+                  <h4 class="modal-title">
+                    <slot name="kiwi-modal-title"></slot>
+                  </h4>
+                </div>
+              )}
+
+              <div class="modal-body">
+                <slot name="kiwi-modal-body"></slot>
+              </div>
+
+              <slot name="kiwi-modal-footer"></slot>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="modal-backdrop"
+          style={{ display: 'none' }}
+          ref={(el) => (this.backdropElement = el as HTMLDivElement)}
+        />
+      </Host>
+    );
   }
 
   private handleOpeningCssClasses = (): void => {
@@ -137,96 +150,18 @@ export class KiwiModal {
 
   private handleClose = (): void => {
     this.open = false;
-    this.closed.emit();
+    this.close.emit();
   };
-  private handlePrevious = (): void => {
-    this.previous.emit();
-  };
-  private handleNext = (): void => {
-    this.next.emit();
-  };
-  private handleConfirmation = (): void => {
-    this.confirmed.emit();
-    this.handleClose();
-  };
+
   private handleClickOutside = (event: Event): void => {
     if (event.target === this.modalElement) {
       this.handleClose();
     }
   };
 
-  render(): void {
-    return (
-      <Host>
-        <div
-          class="modal"
-          onClick={this.handleClickOutside}
-          ref={(el) => (this.modalElement = el as HTMLDivElement)}
-        >
-          <div class={`modal-dialog ${sizeClasses[this.size]}`}>
-            <div class="modal-content">
-              {this.withHeader && (
-                <div class="modal-header modal-default">
-                  <button
-                    class="close"
-                    type="close"
-                    aria-hidden="true"
-                    onClick={this.handleClose}
-                  >
-                    ×
-                  </button>
-                  <h4 class="modal-title">
-                    <slot name="modal-title"></slot>
-                  </h4>
-                </div>
-              )}
-              <div class="modal-body">
-                <slot name="modal-body"></slot>
-              </div>
-              {some([
-                this.cancelText,
-                this.previousText,
-                this.nextText,
-                this.okText,
-              ]) && (
-                <div class="modal-footer">
-                  {this.previousText && (
-                    <button
-                      class="btn btn-link pull-left"
-                      onClick={this.handlePrevious}
-                    >
-                      {this.previousText}
-                    </button>
-                  )}
-                  {this.cancelText && (
-                    <button class="btn btn-link" onClick={this.handleClose}>
-                      {this.cancelText}
-                    </button>
-                  )}
-                  {this.nextText && (
-                    <button class="btn btn-primary" onClick={this.handleNext}>
-                      {this.nextText}
-                    </button>
-                  )}
-                  {this.okText && (
-                    <button
-                      class="btn btn-primary"
-                      onClick={this.handleConfirmation}
-                    >
-                      {this.okText}
-                    </button>
-                  )}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-        <div
-          class="modal-backdrop"
-          style={{ display: 'none' }}
-          ref={(el) => (this.backdropElement = el as HTMLDivElement)}
-        />
-      </Host>
-    );
-  }
+  private handleKeydown = (e: KeyboardEvent): void => {
+    if (e.key === 'Escape') {
+      this.handleClose();
+    }
+  };
 }

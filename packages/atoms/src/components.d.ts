@@ -162,29 +162,13 @@ export namespace Components {
     }
     interface KiwiModal {
         /**
-          * Set this text to show the cancel button
-         */
-        "cancelText"?: string;
-        /**
           * Set to true if the modal should be closed on Escape press
          */
         "escape": boolean;
         /**
-          * Set this text to show the next button
-         */
-        "nextText"?: string;
-        /**
-          * Set this text to show the ok button
-         */
-        "okText"?: string;
-        /**
           * Set this to true to show the modal or alternatively set an id to this element and dispatch a 'showKiwiModal' CustomEvent with the id as event.detail
          */
         "open": boolean;
-        /**
-          * Set this text to show the previous button
-         */
-        "previousText"?: string;
         /**
           * Set the size of the modal
          */
@@ -193,6 +177,16 @@ export namespace Components {
           * Set this to true if you want to show the header
          */
         "withHeader": boolean;
+    }
+    interface KiwiModalFooter {
+        /**
+          * The labels to be used for the default footer buttons, passed as a tuple of strings with the first entry being the confirm label, and the second being the cancel label.
+         */
+        "defaultLabels": [confirm: string, cancel: string];
+        /**
+          * Whether to render the default footer buttons or a slot.  This is a workaround since slot fallback content is not rendered correctly with `shadow: false`
+         */
+        "useDefault": boolean;
     }
     interface KiwiPager {
         /**
@@ -413,6 +407,12 @@ declare global {
         prototype: HTMLKiwiModalElement;
         new (): HTMLKiwiModalElement;
     };
+    interface HTMLKiwiModalFooterElement extends Components.KiwiModalFooter, HTMLStencilElement {
+    }
+    var HTMLKiwiModalFooterElement: {
+        prototype: HTMLKiwiModalFooterElement;
+        new (): HTMLKiwiModalFooterElement;
+    };
     interface HTMLKiwiPagerElement extends Components.KiwiPager, HTMLStencilElement {
     }
     var HTMLKiwiPagerElement: {
@@ -478,6 +478,7 @@ declare global {
         "kiwi-labeled-checkbox": HTMLKiwiLabeledCheckboxElement;
         "kiwi-loading": HTMLKiwiLoadingElement;
         "kiwi-modal": HTMLKiwiModalElement;
+        "kiwi-modal-footer": HTMLKiwiModalFooterElement;
         "kiwi-pager": HTMLKiwiPagerElement;
         "kiwi-popover": HTMLKiwiPopoverElement;
         "kiwi-ribbon": HTMLKiwiRibbonElement;
@@ -646,45 +647,17 @@ declare namespace LocalJSX {
     }
     interface KiwiModal {
         /**
-          * Set this text to show the cancel button
-         */
-        "cancelText"?: string;
-        /**
           * Set to true if the modal should be closed on Escape press
          */
         "escape"?: boolean;
         /**
-          * Set this text to show the next button
-         */
-        "nextText"?: string;
-        /**
-          * Set this text to show the ok button
-         */
-        "okText"?: string;
-        /**
           * This event is emitted after the modal was closed
          */
-        "onClosed"?: (event: CustomEvent<any>) => void;
-        /**
-          * This event is emitted on click on the "ok" button
-         */
-        "onConfirmed"?: (event: CustomEvent<any>) => void;
-        /**
-          * This event is emitted on click on the "next" button
-         */
-        "onNext"?: (event: CustomEvent<any>) => void;
-        /**
-          * This event is emitted on click on the "previous" button
-         */
-        "onPrevious"?: (event: CustomEvent<any>) => void;
+        "onClose"?: (event: CustomEvent<any>) => void;
         /**
           * Set this to true to show the modal or alternatively set an id to this element and dispatch a 'showKiwiModal' CustomEvent with the id as event.detail
          */
         "open"?: boolean;
-        /**
-          * Set this text to show the previous button
-         */
-        "previousText"?: string;
         /**
           * Set the size of the modal
          */
@@ -693,6 +666,24 @@ declare namespace LocalJSX {
           * Set this to true if you want to show the header
          */
         "withHeader"?: boolean;
+    }
+    interface KiwiModalFooter {
+        /**
+          * The labels to be used for the default footer buttons, passed as a tuple of strings with the first entry being the confirm label, and the second being the cancel label.
+         */
+        "defaultLabels"?: [confirm: string, cancel: string];
+        /**
+          * The event emitted when the user clicks the default cancel button.
+         */
+        "onCancel"?: (event: CustomEvent<any>) => void;
+        /**
+          * The event emitted when the user clicks the default confirm button.
+         */
+        "onConfirm"?: (event: CustomEvent<any>) => void;
+        /**
+          * Whether to render the default footer buttons or a slot.  This is a workaround since slot fallback content is not rendered correctly with `shadow: false`
+         */
+        "useDefault"?: boolean;
     }
     interface KiwiPager {
         /**
@@ -848,6 +839,7 @@ declare namespace LocalJSX {
         "kiwi-labeled-checkbox": KiwiLabeledCheckbox;
         "kiwi-loading": KiwiLoading;
         "kiwi-modal": KiwiModal;
+        "kiwi-modal-footer": KiwiModalFooter;
         "kiwi-pager": KiwiPager;
         "kiwi-popover": KiwiPopover;
         "kiwi-ribbon": KiwiRibbon;
@@ -878,6 +870,7 @@ declare module "@stencil/core" {
             "kiwi-labeled-checkbox": LocalJSX.KiwiLabeledCheckbox & JSXBase.HTMLAttributes<HTMLKiwiLabeledCheckboxElement>;
             "kiwi-loading": LocalJSX.KiwiLoading & JSXBase.HTMLAttributes<HTMLKiwiLoadingElement>;
             "kiwi-modal": LocalJSX.KiwiModal & JSXBase.HTMLAttributes<HTMLKiwiModalElement>;
+            "kiwi-modal-footer": LocalJSX.KiwiModalFooter & JSXBase.HTMLAttributes<HTMLKiwiModalFooterElement>;
             "kiwi-pager": LocalJSX.KiwiPager & JSXBase.HTMLAttributes<HTMLKiwiPagerElement>;
             "kiwi-popover": LocalJSX.KiwiPopover & JSXBase.HTMLAttributes<HTMLKiwiPopoverElement>;
             "kiwi-ribbon": LocalJSX.KiwiRibbon & JSXBase.HTMLAttributes<HTMLKiwiRibbonElement>;

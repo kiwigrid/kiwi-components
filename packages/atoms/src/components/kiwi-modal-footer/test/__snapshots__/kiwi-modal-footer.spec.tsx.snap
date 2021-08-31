@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kiwi-modal-footer renders custom footer: custom footer 1`] = `
+<kiwi-modal-footer slot="kiwi-modal-footer">
+  <!---->
+  <div class="modal-footer">
+    <button>
+      A Button
+    </button>
+  </div>
+</kiwi-modal-footer>
+`;
+
+exports[`kiwi-modal-footer renders custom labels: custom labels 1`] = `
+<kiwi-modal-footer slot="kiwi-modal-footer">
+  <!---->
+  <div class="modal-footer">
+    <button class="btn btn-link">
+      <slot-fb name="kiwi-modal-footer-cancel">
+        otmena
+      </slot-fb>
+    </button>
+    <button class="btn btn-primary">
+      <slot-fb name="kiwi-modal-footer-confirm">
+        ok
+      </slot-fb>
+    </button>
+  </div>
+</kiwi-modal-footer>
+`;
+
+exports[`kiwi-modal-footer renders default buttons with slotted content: default buttons with slotted content 1`] = `
+<kiwi-modal-footer slot="kiwi-modal-footer">
+  <!---->
+  <div class="modal-footer">
+    <button class="btn btn-link">
+      <span slot="kiwi-modal-footer-cancel">
+        Abort
+      </span>
+      <slot-fb hidden="" name="kiwi-modal-footer-cancel">
+        Cancel
+      </slot-fb>
+    </button>
+    <button class="btn btn-primary">
+      <span slot="kiwi-modal-footer-confirm">
+        Confirm
+      </span>
+      <slot-fb hidden="" name="kiwi-modal-footer-confirm">
+        Ok
+      </slot-fb>
+    </button>
+  </div>
+</kiwi-modal-footer>
+`;
+
+exports[`kiwi-modal-footer renders default: default 1`] = `
+<kiwi-modal-footer slot="kiwi-modal-footer">
+  <!---->
+  <div class="modal-footer">
+    <button class="btn btn-link">
+      <slot-fb name="kiwi-modal-footer-cancel">
+        Cancel
+      </slot-fb>
+    </button>
+    <button class="btn btn-primary">
+      <slot-fb name="kiwi-modal-footer-confirm">
+        Ok
+      </slot-fb>
+    </button>
+  </div>
+</kiwi-modal-footer>
+`;

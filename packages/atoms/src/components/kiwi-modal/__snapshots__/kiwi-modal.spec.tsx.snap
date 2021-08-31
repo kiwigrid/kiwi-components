@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`kiwi-modal renders 1`] = `
-<kiwi-modal cancel-text="Cancel" id="modalId" ok-text="Ok" open="" with-footer="true" with-header="true">
+<kiwi-modal id="modalId" open="">
   <!---->
   <div class="fade modal show">
     <div class="modal-dialog">
@@ -11,24 +11,31 @@ exports[`kiwi-modal renders 1`] = `
             ×
           </button>
           <h4 class="modal-title">
-            <i slot="modal-title">
+            <i slot="kiwi-modal-title">
               Italic Modal Header
             </i>
           </h4>
         </div>
         <div class="modal-body">
-          <div slot="modal-body">
+          <div slot="kiwi-modal-body">
             Press Escape to close the modal
           </div>
         </div>
-        <div class="modal-footer">
-          <button class="btn btn-link">
-            Cancel
-          </button>
-          <button class="btn btn-primary">
-            Ok
-          </button>
-        </div>
+        <kiwi-modal-footer slot="kiwi-modal-footer">
+          <!---->
+          <div class="modal-footer">
+            <button class="btn btn-link">
+              <slot-fb name="kiwi-modal-footer-cancel">
+                Cancel
+              </slot-fb>
+            </button>
+            <button class="btn btn-primary">
+              <slot-fb name="kiwi-modal-footer-confirm">
+                Ok
+              </slot-fb>
+            </button>
+          </div>
+        </kiwi-modal-footer>
       </div>
     </div>
   </div>
@@ -39,14 +46,14 @@ exports[`kiwi-modal renders 1`] = `
 exports[`kiwi-modal renders with size large 1`] = `
 <kiwi-modal>
   <!---->
-  <i hidden="" slot="modal-title">
+  <i hidden="" slot="kiwi-modal-title">
     Italic Modal Header
   </i>
   <div class="modal">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-body">
-          <div slot="modal-body">
+          <div slot="kiwi-modal-body">
             large
           </div>
         </div>
@@ -60,14 +67,14 @@ exports[`kiwi-modal renders with size large 1`] = `
 exports[`kiwi-modal renders with size small 1`] = `
 <kiwi-modal>
   <!---->
-  <i hidden="" slot="modal-title">
+  <i hidden="" slot="kiwi-modal-title">
     Italic Modal Header
   </i>
   <div class="modal">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-body">
-          <div slot="modal-body">
+          <div slot="kiwi-modal-body">
             small
           </div>
         </div>
