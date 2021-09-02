@@ -25,6 +25,15 @@ To show the modal there are two options:
 | `close` | This event is emitted after the modal was closed | `CustomEvent<any>` |
 
 
+## Slots
+
+| Slot                  | Description                                                                     |
+| --------------------- | ------------------------------------------------------------------------------- |
+| `"kiwi-modal-body"`   | The content of the modal body                                                   |
+| `"kiwi-modal-footer"` | The content of the modal footer (see [kiwi-modal-footer](../kiwi-modal-footer)) |
+| `"kiwi-modal-title"`  | The content of the modal title                                                  |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

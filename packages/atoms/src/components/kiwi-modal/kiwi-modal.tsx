@@ -17,6 +17,11 @@ const sizeClasses: { [Key in Size]: string } = {
   large: 'modal-lg',
 };
 
+/**
+ * @slot kiwi-modal-title - The content of the modal title
+ * @slot kiwi-modal-body - The content of the modal body
+ * @slot kiwi-modal-footer - The content of the modal footer (see [kiwi-modal-footer](../kiwi-modal-footer))
+ */
 @Component({
   tag: 'kiwi-modal',
   shadow: false,
@@ -54,6 +59,7 @@ export class KiwiModal {
   host!: HTMLKiwiModalElement;
 
   /** This event is emitted after the modal was closed */
+
   @Event()
   close!: EventEmitter;
 
@@ -107,11 +113,9 @@ export class KiwiModal {
                   </h4>
                 </div>
               )}
-
               <div class="modal-body">
                 <slot name="kiwi-modal-body"></slot>
               </div>
-
               <slot name="kiwi-modal-footer"></slot>
             </div>
           </div>
