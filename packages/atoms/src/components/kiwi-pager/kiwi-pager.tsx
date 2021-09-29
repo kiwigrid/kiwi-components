@@ -8,7 +8,7 @@ import {
   Prop,
   State,
 } from '@stencil/core';
-import { concat, Subject } from 'rxjs';
+import { merge, Subject } from 'rxjs';
 import {
   debounceTime,
   distinctUntilChanged,
@@ -65,7 +65,7 @@ export class KiwiPager implements ComponentInterface {
   private disconnect$: Subject<void> = new Subject();
 
   componentDidLoad(): void {
-    concat(
+    merge(
       this.inputChangedDebouncer.pipe(
         distinctUntilChanged(),
         debounceTime(this.debounce),
