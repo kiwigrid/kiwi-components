@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.1](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-atoms@0.8.0...@kiwigrid/kiwi-atoms@0.8.1) (2021-10-07)
+
+
+### Bug Fixes
+
+* **kiwi-atoms:** emit pageChanged on button click ([16b7c4f](https://github.com/kiwigrid/kiwi-components/commit/16b7c4f3c77fb92dcb055c7f00c23a00c885de37))
+
+
+
+
+
 # [0.8.0](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-atoms@0.7.0...@kiwigrid/kiwi-atoms@0.8.0) (2021-07-21)
 
 
