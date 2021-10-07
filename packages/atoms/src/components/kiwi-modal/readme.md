@@ -10,26 +10,28 @@ To show the modal there are two options:
 
 ## Properties
 
-| Property       | Attribute       | Description                                                                                                                                          | Type                             | Default     |
-| -------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | ----------- |
-| `cancelText`   | `cancel-text`   | Set this text to show the cancel button                                                                                                              | `string \| undefined`            | `undefined` |
-| `escape`       | `escape`        | Set to true if the modal should be closed on Escape press                                                                                            | `boolean`                        | `false`     |
-| `nextText`     | `next-text`     | Set this text to show the next button                                                                                                                | `string \| undefined`            | `undefined` |
-| `okText`       | `ok-text`       | Set this text to show the ok button                                                                                                                  | `string \| undefined`            | `undefined` |
-| `open`         | `open`          | Set this to true to show the modal or alternatively set an id to this element and dispatch a 'showKiwiModal' CustomEvent with the id as event.detail | `boolean`                        | `false`     |
-| `previousText` | `previous-text` | Set this text to show the previous button                                                                                                            | `string \| undefined`            | `undefined` |
-| `size`         | `size`          | Set the size of the modal                                                                                                                            | `"large" \| "medium" \| "small"` | `'medium'`  |
-| `withHeader`   | `with-header`   | Set this to true if you want to show the header                                                                                                      | `boolean`                        | `false`     |
+| Property     | Attribute     | Description                                                                                                                                          | Type                             | Default    |
+| ------------ | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | ---------- |
+| `escape`     | `escape`      | Set to true if the modal should be closed on Escape press                                                                                            | `boolean`                        | `false`    |
+| `open`       | `open`        | Set this to true to show the modal or alternatively set an id to this element and dispatch a 'showKiwiModal' CustomEvent with the id as event.detail | `boolean`                        | `false`    |
+| `size`       | `size`        | Set the size of the modal                                                                                                                            | `"large" \| "medium" \| "small"` | `'medium'` |
+| `withHeader` | `with-header` | Set this to true if you want to show the header                                                                                                      | `boolean`                        | `false`    |
 
 
 ## Events
 
-| Event       | Description                                             | Type               |
-| ----------- | ------------------------------------------------------- | ------------------ |
-| `closed`    | This event is emitted after the modal was closed        | `CustomEvent<any>` |
-| `confirmed` | This event is emitted on click on the "ok" button       | `CustomEvent<any>` |
-| `next`      | This event is emitted on click on the "next" button     | `CustomEvent<any>` |
-| `previous`  | This event is emitted on click on the "previous" button | `CustomEvent<any>` |
+| Event   | Description                                      | Type               |
+| ------- | ------------------------------------------------ | ------------------ |
+| `close` | This event is emitted after the modal was closed | `CustomEvent<any>` |
+
+
+## Slots
+
+| Slot                  | Description                                                                     |
+| --------------------- | ------------------------------------------------------------------------------- |
+| `"kiwi-modal-body"`   | The content of the modal body                                                   |
+| `"kiwi-modal-footer"` | The content of the modal footer (see [kiwi-modal-footer](../kiwi-modal-footer)) |
+| `"kiwi-modal-title"`  | The content of the modal title                                                  |
 
 
 ----------------------------------------------

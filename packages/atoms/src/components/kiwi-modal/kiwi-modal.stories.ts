@@ -1,4 +1,4 @@
-import { html } from 'lit-html';
+import { html, TemplateResult } from 'lit-html';
 import notes from './readme.md';
 
 export default {
@@ -7,78 +7,130 @@ export default {
   decorators: [],
 };
 
-const openModal = () => (document.querySelector('kiwi-modal').open = true);
+const toggleModal = (open: boolean) => (): void => {
+  const modal = document.querySelector('kiwi-modal');
 
-export const basic = () => {
+  if (!modal) {
+    return;
+  }
+
+  modal.open = open;
+};
+
+const openModal = toggleModal(true);
+const closeModal = toggleModal(false);
+
+export const basic = (): TemplateResult => {
   return html`<div class="panel panel-default m-1">
       <div class="panel-body">
         <button class="btn btn-default" @click=${openModal}>Show Modal</button>
       </div>
     </div>
     <kiwi-modal>
-      <div slot="modal-body">
+      <div slot="kiwi-modal-body">
         There is just this text and nothing else. Close me by clicking outside.
       </div>
     </kiwi-modal>`;
 };
 
-export const full = () => {
+export const fullWithDefaultFooter = (): TemplateResult => {
   return html`<div class="panel panel-default m-1">
       <div class="panel-body">
         <button class="btn btn-default" @click=${openModal}>Show Modal</button>
       </div>
     </div>
-    <kiwi-modal with-header cancel-text="Cancel" ok-text="Ok" escape>
-      <i slot="modal-title">Italic Modal Header</i>
-      <div slot="modal-body">Press Escape to close the modal</div>
+
+    <kiwi-modal with-header escape>
+      <i slot="kiwi-modal-title">Italic Modal Header</i>
+
+      <div slot="kiwi-modal-body">Press Escape to close the modal</div>
+
+      <kiwi-modal-footer
+        slot="kiwi-modal-footer"
+        @cancel=${closeModal}
+        @confirm=${closeModal}
+      ></kiwi-modal-footer>
     </kiwi-modal>`;
 };
 
-export const stepped = () => {
-  const setStep1 = (event) => {
-    if (event.target.id === 'steppedModal') {
-      event.target.nextText = 'Next';
-      event.target.cancelText = 'Cancel';
-      event.target.previousText = undefined;
-      event.target.okText = undefined;
-      event.target.querySelector('[slot="modal-body"]').textContent = 'Step 1';
-    }
-  };
-  const setStep2 = (event) => {
-    if (event.target.id === 'steppedModal') {
-      event.target.nextText = undefined;
-      event.target.cancelText = 'Cancel';
-      event.target.previousText = 'Back';
-      event.target.okText = 'Finish';
-      event.target.querySelector('[slot="modal-body"]').textContent = 'Step 2';
-    }
-  };
-  document.addEventListener('next', setStep2);
-  document.addEventListener('previous', setStep1);
-  document.addEventListener('closed', setStep1);
-
-  return html`<div class="panel panel-default m-1">
-      <div class="panel-body">
-        <button class="btn btn-default" @click=${openModal}>
-          Show Stepped Modal
-        </button>
-      </div>
-    </div>
-    <kiwi-modal
-      id="steppedModal"
-      with-header="true"
-      cancel-text="Cancel"
-      next-text="Next"
-    >
-      <i slot="modal-title">Italic Modal Header</i>
-      <div slot="modal-body">Step 1</div>
-    </kiwi-modal>`;
-};
-
-export const scrolling = () => {
+export const fullWithCustomFooterLabels = (): TemplateResult => {
   return html`<div class="panel panel-default m-1">
       <div class="panel-body">
         <button class="btn btn-default" @click=${openModal}>Show Modal</button>
+      </div>
+    </div>
+
+    <kiwi-modal with-header escape>
+      <i slot="kiwi-modal-title">Italic Modal Header</i>
+
+      <div slot="kiwi-modal-body">Press Escape to close the modal</div>
+
+      <kiwi-modal-footer
+        .defaultLabels=${['Confirm', 'Abort']}
+        @cancel=${closeModal}
+        @confirm=${closeModal}
+        slot="kiwi-modal-footer"
+      ></kiwi-modal-footer>
+    </kiwi-modal>`;
+};
+
+export const fullWithCustomFooterButtonContents = (): TemplateResult => {
+  return html`<div class="panel panel-default m-1">
+      <div class="panel-body">
+        <button class="btn btn-default" @click=${openModal}>Show Modal</button>
+      </div>
+    </div>
+
+    <kiwi-modal with-header escape>
+      <i slot="kiwi-modal-title">Italic Modal Header</i>
+
+      <div slot="kiwi-modal-body">Press Escape to close the modal</div>
+
+      <kiwi-modal-footer
+        slot="kiwi-modal-footer"
+        @cancel=${closeModal}
+        @confirm=${closeModal}
+      >
+        <span slot="kiwi-modal-footer-confirm">
+          <span class="glyphicon glyphicon-ok mr-1"></span>
+          Okay
+        </span>
+
+        <span slot="kiwi-modal-footer-cancel">
+          <span class="glyphicon glyphicon-remove mr-1"></span>
+          Abbrechen
+        </span>
+      </kiwi-modal-footer>
+    </kiwi-modal>`;
+};
+
+export const fullWithCustomFooter = (): TemplateResult => {
+  return html`<div class="panel panel-default m-1">
+      <div class="panel-body">
+        <button class="btn btn-default" @click=${openModal}>Show Modal</button>
+      </div>
+    </div>
+
+    <kiwi-modal with-header escape>
+      <i slot="kiwi-modal-title">Italic Modal Header</i>
+
+      <div slot="kiwi-modal-body">Press Escape to close the modal</div>
+
+      <kiwi-modal-footer .useDefault=${false} slot="kiwi-modal-footer">
+        <button class="btn btn-danger" @click=${closeModal}>Delete</button>
+      </kiwi-modal-footer>
+    </kiwi-modal>`;
+};
+
+export const scrolling = (): TemplateResult => {
+  return html`<div class="panel panel-default m-1">
+      <div class="panel-body">
+        <button class="btn btn-default" @click=${openModal}>Show Modal</button>
+
+        <hr />
+
+        <h2>This is long content</h2>
+
         <p style="width: 100px">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
           nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
@@ -128,8 +180,9 @@ export const scrolling = () => {
         </p>
       </div>
     </div>
-    <kiwi-modal with-header escape>
-      <div slot="modal-body">
+
+    <kiwi-modal escape>
+      <div slot="kiwi-modal-body">
         This is a very long text to show and test scrolling behaviour. Lorem
         ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
         eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
