@@ -86,7 +86,7 @@ describe('kiwi-pager', () => {
     pager.rootInstance?.disconnectedCallback();
   });
 
-  it('emits pageChanged event after debounce', async () => {
+  it('emits pageChanged event on input after debounce', async () => {
     jest.useFakeTimers();
 
     const pager = await newSpecPage({
@@ -123,6 +123,45 @@ describe('kiwi-pager', () => {
 
       expect(pagerInst.pageChanged.emit).toBeCalledTimes(1);
       expect(pagerInst.pageChanged.emit).toBeCalledWith({ page: 2 });
+
+      pager.rootInstance?.disconnectedCallback();
+    })();
+
+    jest.useRealTimers();
+  });
+
+  it('emits pageChanged event on click after debounce', async () => {
+    jest.useFakeTimers();
+
+    const pager = await newSpecPage({
+      components: [KiwiPager],
+      template: () => (
+        <kiwi-pager
+          page={0}
+          total={3}
+          ofLabel="vong"
+          debounce={400}
+        ></kiwi-pager>
+      ),
+    });
+
+    fakeSchedulers((advance) => {
+      const pagerInst: KiwiPager = pager.rootInstance;
+
+      jest.spyOn(pagerInst.pageChanged, 'emit');
+
+      const nextButton = document.querySelector<HTMLButtonElement>(
+        '[aria-label="Next Page"]',
+      );
+
+      expectDefined(nextButton);
+
+      nextButton.click();
+
+      advance(400);
+
+      expect(pagerInst.pageChanged.emit).toBeCalledTimes(1);
+      expect(pagerInst.pageChanged.emit).toBeCalledWith({ page: 1 });
 
       pager.rootInstance?.disconnectedCallback();
     })();
