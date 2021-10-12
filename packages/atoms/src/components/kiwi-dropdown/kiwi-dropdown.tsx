@@ -19,12 +19,18 @@ export class KiwiDropdown implements ComponentInterface {
    * Css class to be applied to container.
    */
   @Prop()
-  containerClass!: string;
+  containerClass = '';
 
   /** Type of the toggle button. */
   @Prop()
   toggleButtonType: 'default' | 'primary' | 'danger' | 'warning' | 'info' =
     'default';
+
+  /**
+   * Setting this to true will cause the dropdown to close if a click is registered inside the dropdown-menu
+   */
+  @Prop()
+  closeOnContentClick = false;
 
   @State()
   private _open = false;
@@ -59,7 +65,7 @@ export class KiwiDropdown implements ComponentInterface {
         >
           <slot name="dropdown-toggle" />
         </button>
-        <div class="dropdown-menu">
+        <div class="dropdown-menu" onClick={this.handleContentClick}>
           <slot name="dropdown-content" />
         </div>
       </div>
@@ -71,6 +77,11 @@ export class KiwiDropdown implements ComponentInterface {
   };
   private handleMenuEnter: () => void = () => (this.hover = true);
   private handleMenuLeave: () => void = () => (this.hover = false);
+
+  private handleContentClick: () => void = () => {
+    if (!this.closeOnContentClick) return;
+    this.open = !this.open;
+  };
 
   private set open(isOpen: boolean) {
     this._open = isOpen;

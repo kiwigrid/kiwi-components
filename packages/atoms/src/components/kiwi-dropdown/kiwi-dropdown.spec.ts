@@ -1,4 +1,5 @@
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
+import { expectDefined } from '../util/testing';
 import { KiwiDropdown } from './kiwi-dropdown';
 
 const newKiwiDropdown = (): Promise<SpecPage> =>
@@ -39,20 +40,39 @@ describe('kiwi-dropdown', () => {
     ).toBe(true);
 
     const dropdownDiv = dropdown.root?.querySelector('.dropdown');
-    expect(dropdownDiv).toBeTruthy();
+    expectDefined(dropdownDiv);
 
-    if (dropdownDiv) {
-      dropdownDiv.dispatchEvent(new MouseEvent('mouseenter'));
-      dropdown.win.dispatchEvent(new MouseEvent('click'));
-      await dropdown.waitForChanges();
+    dropdownDiv.dispatchEvent(new MouseEvent('mouseenter'));
+    dropdown.win.dispatchEvent(new MouseEvent('click'));
+    await dropdown.waitForChanges();
 
-      expect(dropdownDiv.classList.contains('open')).toBe(true);
+    expect(dropdownDiv.classList.contains('open')).toBe(true);
 
-      dropdownDiv.dispatchEvent(new MouseEvent('mouseleave'));
-      dropdown.win.dispatchEvent(new MouseEvent('click'));
-      await dropdown.waitForChanges();
+    dropdownDiv.dispatchEvent(new MouseEvent('mouseleave'));
+    dropdown.win.dispatchEvent(new MouseEvent('click'));
+    await dropdown.waitForChanges();
 
-      expect(dropdownDiv.classList.contains('open')).toBe(false);
-    }
+    expect(dropdownDiv.classList.contains('open')).toBe(false);
+  });
+
+  it('closes on menu click', async () => {
+    const dropdown = await newKiwiDropdown();
+    (dropdown.root as HTMLKiwiDropdownElement).closeOnContentClick = true;
+
+    dropdown.root
+      ?.querySelector<HTMLButtonElement>('.dropdown-toggle')
+      ?.click();
+    await dropdown.waitForChanges();
+
+    expect(
+      dropdown.root?.querySelector('.dropdown')?.classList.contains('open'),
+    ).toBe(true);
+
+    const dropdownDiv = dropdown.root?.querySelector('.dropdown');
+    expectDefined(dropdownDiv);
+
+    dropdownDiv.querySelector('.dropdown-menu span')?.click();
+    await dropdown.waitForChanges();
+    expect(dropdownDiv.classList.contains('open')).toBe(false);
   });
 });
