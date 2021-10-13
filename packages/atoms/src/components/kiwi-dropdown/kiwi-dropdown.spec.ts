@@ -55,23 +55,28 @@ describe('kiwi-dropdown', () => {
     expect(dropdownDiv.classList.contains('open')).toBe(false);
   });
 
-  it('closes on menu click', async () => {
+  it('closes on content click if attribute is set', async () => {
     const dropdown = await newKiwiDropdown();
-    (dropdown.root as HTMLKiwiDropdownElement).closeOnContentClick = true;
 
     dropdown.root
       ?.querySelector<HTMLButtonElement>('.dropdown-toggle')
       ?.click();
     await dropdown.waitForChanges();
 
-    expect(
-      dropdown.root?.querySelector('.dropdown')?.classList.contains('open'),
-    ).toBe(true);
-
     const dropdownDiv = dropdown.root?.querySelector('.dropdown');
     expectDefined(dropdownDiv);
+    const dropdownContent = dropdownDiv.querySelector('.dropdown-menu span');
+    expectDefined(dropdownContent);
 
-    dropdownDiv.querySelector('.dropdown-menu span')?.click();
+    expect(dropdownDiv.classList.contains('open')).toBe(true);
+
+    dropdownContent.click();
+    await dropdown.waitForChanges();
+    expect(dropdownDiv.classList.contains('open')).toBe(true);
+
+    dropdown.root?.setAttribute('close-on-content-click', '');
+
+    dropdownContent.click();
     await dropdown.waitForChanges();
     expect(dropdownDiv.classList.contains('open')).toBe(false);
   });
