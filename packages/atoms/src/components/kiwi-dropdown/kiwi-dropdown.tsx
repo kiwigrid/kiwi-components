@@ -1,7 +1,6 @@
 import {
   Component,
   ComponentInterface,
-  Element,
   Event,
   EventEmitter,
   h,
@@ -16,8 +15,7 @@ import {
   shadow: false,
 })
 export class KiwiDropdown implements ComponentInterface {
-  @Element()
-  el: HTMLElement | undefined;
+  private dropdownEl: HTMLDivElement | undefined;
 
   /**
    * Css class to be applied to container.
@@ -63,7 +61,10 @@ export class KiwiDropdown implements ComponentInterface {
         >
           <slot name="dropdown-toggle" />
         </button>
-        <div class="dropdown-menu">
+        <div
+          class="dropdown-menu"
+          ref={(el) => (this.dropdownEl = el as HTMLInputElement)}
+        >
           <slot name="dropdown-content" />
         </div>
       </div>
@@ -78,23 +79,23 @@ export class KiwiDropdown implements ComponentInterface {
 
   componentDidRender(): void {
     // make sure that the dropdown does not stick over the right edge of the body
-    if(this.el) {
-      const dropdown = this.el.querySelector('.dropdown-menu') as HTMLElement;
+    this.adjustPositionAtScreenEdge();
+  }
+
+  private adjustPositionAtScreenEdge(): void {
+    if (this.dropdownEl) {
       if (this.open) {
-        const ddBoundingRect = dropdown.getBoundingClientRect();
-        let offset = Math.ceil(
-          ddBoundingRect.right - window.visualViewport.width,
-        );
+        const rect = this.dropdownEl.getBoundingClientRect();
+        const offset =
+          rect.width > window.visualViewport.width
+            ? Math.floor(rect.left)
+            : Math.ceil(rect.right - window.visualViewport.width);
 
         if (offset > 0) {
-          // if the popup is wider than the screen then make it start at the left screen edge
-          if (ddBoundingRect.left - offset < 0) {
-            offset = ddBoundingRect.left;
-          }
-          dropdown.style.translate = `-${Math.ceil(offset)}px`;
+          this.dropdownEl.style.translate = `-${Math.ceil(offset)}px`;
         }
       } else {
-        dropdown.style.translate = '0px';
+        this.dropdownEl.style.translate = '0px';
       }
     }
   }

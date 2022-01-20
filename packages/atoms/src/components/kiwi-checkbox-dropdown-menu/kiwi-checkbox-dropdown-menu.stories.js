@@ -34,8 +34,8 @@ export const rightScreenEdge = (args) => {
   const { buttonText, options, menuEntryWidth } = args;
 
   return html`<div class="panel panel-default m-1">
-    <div class="panel-body" style="text-align:right">
-      <kiwi-checkbox-dropdown-menu>
+    <div class="panel-body">
+      <kiwi-checkbox-dropdown-menu class="pull-right">
         <div slot="dropdown-toggle">${buttonText}</div>
         <kiwi-checkbox-menu slot="dropdown-content">
           ${options.map(
