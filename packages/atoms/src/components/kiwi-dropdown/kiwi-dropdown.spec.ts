@@ -1,5 +1,6 @@
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { KiwiDropdown } from './kiwi-dropdown';
+import { expectDefined } from '../util/testing';
 
 const newKiwiDropdown = (): Promise<SpecPage> =>
   newSpecPage({
@@ -13,6 +14,44 @@ const newKiwiDropdown = (): Promise<SpecPage> =>
   });
 
 describe('kiwi-dropdown', () => {
+  it.each`
+    left    | right   | expected
+    ${50}   | ${350}  | ${'0px'}
+    ${1700} | ${2000} | ${'-80px'}
+    ${100}  | ${3000} | ${'-100px'}
+  `(
+    'translates the dropdown { left: $left, right: $right } horizontally by $expected for FullHD screen',
+    async ({ left, right, expected }) => {
+      const dropdown = await newKiwiDropdown();
+
+      if (dropdown.win.visualViewport === undefined) {
+        Object.defineProperty(dropdown.win, 'visualViewport', {
+          value: { width: 1920 },
+        });
+      }
+
+      const dropdownMenu = dropdown.root?.querySelector(
+        '.dropdown-menu',
+      ) as HTMLDivElement;
+      expectDefined(dropdownMenu);
+
+      dropdownMenu.getBoundingClientRect = jest.fn(() => {
+        return {
+          left: left,
+          right: right,
+          width: right - left,
+        } as DOMRect;
+      });
+
+      dropdown.root
+        ?.querySelector<HTMLButtonElement>('.dropdown-toggle')
+        ?.click();
+      await dropdown.waitForChanges();
+
+      expect(dropdownMenu.style.translate).toEqual(expected);
+    },
+  );
+
   it('renders', async () => {
     const dropdown = await newKiwiDropdown();
 

@@ -9,7 +9,7 @@ exports[`kiwi-dropdown renders: initially closed 1`] = `
         Toggle Me
       </span>
     </button>
-    <div class="dropdown-menu">
+    <div class="dropdown-menu" style="translate: 0px;">
       <span slot="dropdown-content">
         Boring content
       </span>
@@ -27,7 +27,7 @@ exports[`kiwi-dropdown renders: opened on click 1`] = `
         Toggle Me
       </span>
     </button>
-    <div class="dropdown-menu">
+    <div class="dropdown-menu" style="translate: 0px;">
       <span slot="dropdown-content">
         Boring content
       </span>
