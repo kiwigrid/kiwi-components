@@ -14,21 +14,34 @@ const newKiwiDropdown = (): Promise<SpecPage> =>
   });
 
 describe('kiwi-dropdown', () => {
+  beforeEach(() => {
+    Object.defineProperty(window, 'visualViewport', {
+      value: { width: 1920 },
+      writable: true,
+    });
+  });
+
+  it('renders', async () => {
+    const dropdown = await newKiwiDropdown();
+    expect(dropdown.root).toMatchSnapshot('initially closed');
+
+    dropdown.root
+      ?.querySelector<HTMLButtonElement>('.dropdown-toggle')
+      ?.click();
+    await dropdown.waitForChanges();
+
+    expect(dropdown.root).toMatchSnapshot('opened on click');
+  });
+
   it.each`
     left    | right   | expected
-    ${50}   | ${350}  | ${'0px'}
+    ${50}   | ${350}  | ${''}
     ${1700} | ${2000} | ${'-80px'}
     ${100}  | ${3000} | ${'-100px'}
   `(
     'translates the dropdown { left: $left, right: $right } horizontally by $expected for FullHD screen',
     async ({ left, right, expected }) => {
       const dropdown = await newKiwiDropdown();
-
-      if (dropdown.win.visualViewport === undefined) {
-        Object.defineProperty(dropdown.win, 'visualViewport', {
-          value: { width: 1920 },
-        });
-      }
 
       const dropdownMenu = dropdown.root?.querySelector(
         '.dropdown-menu',
@@ -51,19 +64,6 @@ describe('kiwi-dropdown', () => {
       expect(dropdownMenu.style.translate).toEqual(expected);
     },
   );
-
-  it('renders', async () => {
-    const dropdown = await newKiwiDropdown();
-
-    expect(dropdown.root).toMatchSnapshot('initially closed');
-
-    dropdown.root
-      ?.querySelector<HTMLButtonElement>('.dropdown-toggle')
-      ?.click();
-    await dropdown.waitForChanges();
-
-    expect(dropdown.root).toMatchSnapshot('opened on click');
-  });
 
   it('closes on outside click', async () => {
     const dropdown = await newKiwiDropdown();

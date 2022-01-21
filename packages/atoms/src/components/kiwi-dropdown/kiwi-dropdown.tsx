@@ -15,7 +15,7 @@ import {
   shadow: false,
 })
 export class KiwiDropdown implements ComponentInterface {
-  private dropdownEl: HTMLDivElement | undefined;
+  private dropdownMenu: HTMLDivElement | undefined;
 
   /**
    * Css class to be applied to container.
@@ -63,7 +63,7 @@ export class KiwiDropdown implements ComponentInterface {
         </button>
         <div
           class="dropdown-menu"
-          ref={(el) => (this.dropdownEl = el as HTMLDivElement)}
+          ref={(el) => (this.dropdownMenu = el as HTMLDivElement)}
         >
           <slot name="dropdown-content" />
         </div>
@@ -85,9 +85,9 @@ export class KiwiDropdown implements ComponentInterface {
    * Make sure that the dropdown does not stick over the right edge of the body
    */
   private adjustPositionAtScreenEdge(): void {
-    if (this.dropdownEl) {
+    if (this.dropdownMenu) {
       if (this.open) {
-        const rect = this.dropdownEl.getBoundingClientRect();
+        const rect = this.dropdownMenu.getBoundingClientRect();
 
         if (rect.right > window.visualViewport.width) {
           const offset =
@@ -95,10 +95,10 @@ export class KiwiDropdown implements ComponentInterface {
               ? Math.floor(rect.left)
               : Math.ceil(rect.right - window.visualViewport.width);
 
-          this.dropdownEl.style.translate = `-${offset}px`;
+          this.dropdownMenu.style.translate = `-${offset}px`;
         }
       } else {
-        this.dropdownEl.style.translate = '0px';
+        this.dropdownMenu.style.translate = '';
       }
     }
   }
