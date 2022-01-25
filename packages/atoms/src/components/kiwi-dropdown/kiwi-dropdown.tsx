@@ -95,10 +95,10 @@ export class KiwiDropdown implements ComponentInterface {
               ? Math.floor(rect.left)
               : Math.ceil(rect.right - window.visualViewport.width);
 
-          this.dropdownMenu.style.transform = `translate(-${offset}px)`;
+          this.dropdownMenu.style.marginLeft = `-${offset}px`;
         }
       } else {
-        this.dropdownMenu.style.transform = '';
+        this.dropdownMenu.style.marginLeft = '';
       }
     }
   }

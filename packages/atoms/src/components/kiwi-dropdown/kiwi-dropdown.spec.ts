@@ -62,9 +62,9 @@ describe('kiwi-dropdown', () => {
       await dropdown.waitForChanges();
 
       if (expected) {
-        expect(dropdownMenu.style.transform).toEqual(`translate(${expected})`);
+        expect(dropdownMenu.style.marginLeft).toEqual(`${expected}`);
       } else {
-        expect(dropdownMenu.style.transform).toEqual('');
+        expect(dropdownMenu.style.marginLeft).toEqual('');
       }
     },
   );
