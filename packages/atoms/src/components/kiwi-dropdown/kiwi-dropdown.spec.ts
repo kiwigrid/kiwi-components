@@ -1,6 +1,7 @@
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { expectDefined } from '../util/testing';
 import { KiwiDropdown } from './kiwi-dropdown';
+import { expectDefined } from '../util/testing';
 
 const newKiwiDropdown = (): Promise<SpecPage> =>
   newSpecPage({
@@ -14,9 +15,15 @@ const newKiwiDropdown = (): Promise<SpecPage> =>
   });
 
 describe('kiwi-dropdown', () => {
+  beforeEach(() => {
+    Object.defineProperty(window, 'visualViewport', {
+      value: { width: 1920 },
+      writable: true,
+    });
+  });
+
   it('renders', async () => {
     const dropdown = await newKiwiDropdown();
-
     expect(dropdown.root).toMatchSnapshot('initially closed');
 
     dropdown.root
@@ -26,6 +33,42 @@ describe('kiwi-dropdown', () => {
 
     expect(dropdown.root).toMatchSnapshot('opened on click');
   });
+
+  it.each`
+    left    | right   | expected
+    ${50}   | ${350}  | ${''}
+    ${1700} | ${2000} | ${'-80px'}
+    ${100}  | ${3000} | ${'-100px'}
+  `(
+    'translates the dropdown { left: $left, right: $right } horizontally by $expected for FullHD screen',
+    async ({ left, right, expected }) => {
+      const dropdown = await newKiwiDropdown();
+
+      const dropdownMenu = dropdown.root?.querySelector(
+        '.dropdown-menu',
+      ) as HTMLDivElement;
+      expectDefined(dropdownMenu);
+
+      dropdownMenu.getBoundingClientRect = jest.fn(() => {
+        return {
+          left: left,
+          right: right,
+          width: right - left,
+        } as DOMRect;
+      });
+
+      dropdown.root
+        ?.querySelector<HTMLButtonElement>('.dropdown-toggle')
+        ?.click();
+      await dropdown.waitForChanges();
+
+      if (expected) {
+        expect(dropdownMenu.style.marginLeft).toEqual(`${expected}`);
+      } else {
+        expect(dropdownMenu.style.marginLeft).toEqual('');
+      }
+    },
+  );
 
   it('closes on outside click', async () => {
     const dropdown = await newKiwiDropdown();

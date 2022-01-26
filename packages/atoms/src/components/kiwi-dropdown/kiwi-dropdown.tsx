@@ -15,6 +15,8 @@ import {
   shadow: false,
 })
 export class KiwiDropdown implements ComponentInterface {
+  private dropdownMenu: HTMLDivElement | undefined;
+
   /**
    * Css class to be applied to container.
    */
@@ -65,11 +67,19 @@ export class KiwiDropdown implements ComponentInterface {
         >
           <slot name="dropdown-toggle" />
         </button>
-        <div class="dropdown-menu" onClick={this.handleContentClick}>
+        <div
+          class="dropdown-menu"
+          ref={(el) => (this.dropdownMenu = el as HTMLDivElement)}
+          onClick={this.handleContentClick}
+        >
           <slot name="dropdown-content" />
         </div>
       </div>
     );
+  }
+
+  componentDidRender(): void {
+    this.adjustPositionAtScreenEdge();
   }
 
   private handleDropdownToggle: () => void = () => {
@@ -82,6 +92,28 @@ export class KiwiDropdown implements ComponentInterface {
     if (!this.closeOnContentClick) return;
     this.open = !this.open;
   };
+
+  /**
+   * Make sure that the dropdown does not stick over the right edge of the body
+   */
+  private adjustPositionAtScreenEdge(): void {
+    if (this.dropdownMenu) {
+      if (this.open) {
+        const rect = this.dropdownMenu.getBoundingClientRect();
+
+        if (rect.right > window.visualViewport.width) {
+          const offset =
+            rect.width > window.visualViewport.width
+              ? Math.floor(rect.left)
+              : Math.ceil(rect.right - window.visualViewport.width);
+
+          this.dropdownMenu.style.marginLeft = `-${offset}px`;
+        }
+      } else {
+        this.dropdownMenu.style.marginLeft = '';
+      }
+    }
+  }
 
   private set open(isOpen: boolean) {
     this._open = isOpen;
