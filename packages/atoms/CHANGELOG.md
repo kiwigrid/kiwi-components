@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.3](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-atoms@0.8.2...@kiwigrid/kiwi-atoms@0.8.3) (2022-01-26)
+
+
+### Bug Fixes
+
+* **kiwi-atoms:** fix dropdown positioning at right screen edge ([3b39233](https://github.com/kiwigrid/kiwi-components/commit/3b39233d374ff528e0fde025e6a8e9cf940c1521))
+* **kiwi-atoms:** fix dropdown positioning at right screen edge - additional code review fixes ([7aa6af8](https://github.com/kiwigrid/kiwi-components/commit/7aa6af83a085f137d7c0bbf7b9c9c86271c02943))
+* **kiwi-atoms:** fix dropdown positioning at right screen edge, use negative margins for positioning ([1635c2b](https://github.com/kiwigrid/kiwi-components/commit/1635c2bb84d5d08b6cfa2ea67ccf6257eea8ed53))
+* **kiwi-atoms:** fix dropdown positioning at right screen edge. User transform:translate(...) instead of translate:... to position the dropdown menu ([4107e0a](https://github.com/kiwigrid/kiwi-components/commit/4107e0acb9349a4898fd09e8b05a11c834980bee))
+
+
+
+
+
 ## [0.8.2](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-atoms@0.8.1...@kiwigrid/kiwi-atoms@0.8.2) (2021-10-07)
 
 **Note:** Version bump only for package @kiwigrid/kiwi-atoms
