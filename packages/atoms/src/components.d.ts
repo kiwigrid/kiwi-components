@@ -35,6 +35,10 @@ export namespace Components {
     }
     interface KiwiDropdown {
         /**
+          * Setting this to true will cause the dropdown to close if a click is registered inside the dropdown-menu
+         */
+        "closeOnContentClick": boolean;
+        /**
           * Css class to be applied to container.
          */
         "containerClass": string;
@@ -516,9 +520,13 @@ declare namespace LocalJSX {
     }
     interface KiwiDropdown {
         /**
+          * Setting this to true will cause the dropdown to close if a click is registered inside the dropdown-menu
+         */
+        "closeOnContentClick"?: boolean;
+        /**
           * Css class to be applied to container.
          */
-        "containerClass": string;
+        "containerClass"?: string;
         /**
           * Event signaling this dropdown is being closed.
          */

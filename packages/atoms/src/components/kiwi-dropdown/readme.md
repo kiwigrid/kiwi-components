@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property                      | Attribute            | Description                           | Type                                                        | Default     |
-| ----------------------------- | -------------------- | ------------------------------------- | ----------------------------------------------------------- | ----------- |
-| `containerClass` _(required)_ | `container-class`    | Css class to be applied to container. | `string`                                                    | `undefined` |
-| `toggleButtonType`            | `toggle-button-type` | Type of the toggle button.            | `"danger" \| "default" \| "info" \| "primary" \| "warning"` | `'default'` |
+| Property              | Attribute                | Description                                                                                             | Type                                                        | Default     |
+| --------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ----------- |
+| `closeOnContentClick` | `close-on-content-click` | Setting this to true will cause the dropdown to close if a click is registered inside the dropdown-menu | `boolean`                                                   | `false`     |
+| `containerClass`      | `container-class`        | Css class to be applied to container.                                                                   | `string`                                                    | `''`        |
+| `toggleButtonType`    | `toggle-button-type`     | Type of the toggle button.                                                                              | `"danger" \| "default" \| "info" \| "primary" \| "warning"` | `'default'` |
 
 
 ## Events

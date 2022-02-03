@@ -1,4 +1,5 @@
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
+import { expectDefined } from '../util/testing';
 import { KiwiDropdown } from './kiwi-dropdown';
 import { expectDefined } from '../util/testing';
 
@@ -82,20 +83,44 @@ describe('kiwi-dropdown', () => {
     ).toBe(true);
 
     const dropdownDiv = dropdown.root?.querySelector('.dropdown');
-    expect(dropdownDiv).toBeTruthy();
+    expectDefined(dropdownDiv);
 
-    if (dropdownDiv) {
-      dropdownDiv.dispatchEvent(new MouseEvent('mouseenter'));
-      dropdown.win.dispatchEvent(new MouseEvent('click'));
-      await dropdown.waitForChanges();
+    dropdownDiv.dispatchEvent(new MouseEvent('mouseenter'));
+    dropdown.win.dispatchEvent(new MouseEvent('click'));
+    await dropdown.waitForChanges();
 
-      expect(dropdownDiv.classList.contains('open')).toBe(true);
+    expect(dropdownDiv.classList.contains('open')).toBe(true);
 
-      dropdownDiv.dispatchEvent(new MouseEvent('mouseleave'));
-      dropdown.win.dispatchEvent(new MouseEvent('click'));
-      await dropdown.waitForChanges();
+    dropdownDiv.dispatchEvent(new MouseEvent('mouseleave'));
+    dropdown.win.dispatchEvent(new MouseEvent('click'));
+    await dropdown.waitForChanges();
 
-      expect(dropdownDiv.classList.contains('open')).toBe(false);
-    }
+    expect(dropdownDiv.classList.contains('open')).toBe(false);
+  });
+
+  it('closes on content click if attribute is set', async () => {
+    const dropdown = await newKiwiDropdown();
+
+    dropdown.root
+      ?.querySelector<HTMLButtonElement>('.dropdown-toggle')
+      ?.click();
+    await dropdown.waitForChanges();
+
+    const dropdownDiv = dropdown.root?.querySelector('.dropdown');
+    expectDefined(dropdownDiv);
+    const dropdownContent = dropdownDiv.querySelector('.dropdown-menu span');
+    expectDefined(dropdownContent);
+
+    expect(dropdownDiv.classList.contains('open')).toBe(true);
+
+    dropdownContent.click();
+    await dropdown.waitForChanges();
+    expect(dropdownDiv.classList.contains('open')).toBe(true);
+
+    dropdown.root?.setAttribute('close-on-content-click', '');
+
+    dropdownContent.click();
+    await dropdown.waitForChanges();
+    expect(dropdownDiv.classList.contains('open')).toBe(false);
   });
 });
