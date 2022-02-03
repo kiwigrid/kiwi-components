@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-atoms@0.8.3...@kiwigrid/kiwi-atoms@0.9.0) (2022-02-03)
+
+
+### Features
+
+* **kiwi-atoms:** kiwi-dropdown can now close on content click with optional property "closeOnContentClick", property "containerClass" is now optional ([fa946e5](https://github.com/kiwigrid/kiwi-components/commit/fa946e50f151c454da7e3318e9c75efe08ab905d))
+
+
+
+
+
 ## [0.8.3](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-atoms@0.8.2...@kiwigrid/kiwi-atoms@0.8.3) (2022-01-26)
 
 
