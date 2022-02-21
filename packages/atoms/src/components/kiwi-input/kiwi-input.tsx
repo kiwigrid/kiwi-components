@@ -31,12 +31,12 @@ export class KiwiInput implements ComponentInterface {
     return (
       <input
         ref={(el) => (this.input = el as HTMLInputElement)}
+        type="text"
         name={this.name}
         placeholder={this.placeholder}
         value={this.value}
         onInput={this.handleOnInput}
         class="form-control"
-        type="text"
       />
     );
   }

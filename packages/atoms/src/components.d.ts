@@ -108,7 +108,7 @@ export namespace Components {
         "lng": string;
         /**
           * Base path used to configure i18next backend.
-          * @see {BackendOptions #loadPath}
+          * @see {BackendOptions#loadPath}
          */
         "loadBasePath": string;
         /**
@@ -597,7 +597,7 @@ declare namespace LocalJSX {
         "lng"?: string;
         /**
           * Base path used to configure i18next backend.
-          * @see {BackendOptions #loadPath}
+          * @see {BackendOptions#loadPath}
          */
         "loadBasePath": string;
         /**

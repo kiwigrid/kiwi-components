@@ -68,6 +68,7 @@ describe('kiwi-sidebar', () => {
     });
 
     const sidebarInst: KiwiSidebar = sidebar.rootInstance;
+    const sidebarElem = sidebar.root as HTMLKiwiSidebarElement;
 
     jest.spyOn(sidebarInst.requestClose, 'emit');
 
@@ -79,7 +80,7 @@ describe('kiwi-sidebar', () => {
 
     expect(sidebarInst.requestClose.emit).toBeCalled();
 
-    sidebarInst.visible = false;
+    sidebarElem.visible = false;
 
     document.dispatchEvent(
       new KeyboardEvent('keydown', {
