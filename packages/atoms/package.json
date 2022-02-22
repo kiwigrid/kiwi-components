@@ -19,7 +19,7 @@
     "lint": "eslint --fix '*/**/*.{ts,tsx}'",
     "start": "run-p start:stencil start:storybook",
     "start:stencil": "stencil build --docs --dev --watch --serve --port 3334",
-    "start:storybook": "start-storybook -p 6007 -s www",
+    "start:storybook": "start-storybook -p 6007",
     "test": "NODE_ICU_DATA=node_modules/full-icu stencil test --spec --e2e -c stencil.testing-config.ts",
     "test:spec": "NODE_ICU_DATA=node_modules/full-icu stencil test --spec -c stencil.testing-config.ts",
     "test:e2e": "NODE_ICU_DATA=node_modules/full-icu stencil test --e2e -c stencil.testing-config.ts",
