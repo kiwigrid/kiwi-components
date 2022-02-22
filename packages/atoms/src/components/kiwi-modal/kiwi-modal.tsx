@@ -131,10 +131,28 @@ export class KiwiModal {
   }
 
   private handleOpeningCssClasses = (): void => {
-    document.body.classList.add('modal-open');
+    if (!document.body.classList.contains('modal-open')) {
+      document.body.classList.add('modal-open');
+    } else {
+      // another modal is still open or might have been closed recently
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((m) => {
+          if (
+            m.type === 'attributes' &&
+            m.attributeName === 'class' &&
+            !document.body.classList.contains('modal-open')
+          ) {
+            document.body.classList.add('modal-open');
+            observer.disconnect();
+          }
+        });
+      });
+      observer.observe(document.body, { attributeFilter: ['class'] });
+    }
+
     this.modalElement.classList.add('show', 'fade');
     this.backdropElement.classList.add('show', 'fade');
-    window.setTimeout(() => {
+    globalThis.setTimeout(() => {
       this.modalElement.classList.add('in');
       this.backdropElement.classList.add('in');
     }, 150);
@@ -142,11 +160,11 @@ export class KiwiModal {
 
   private handleClosingCssClasses = (): void => {
     this.modalElement.classList.remove('in');
-    window.setTimeout(() => {
+    globalThis.setTimeout(() => {
       this.modalElement.classList.remove('show', 'fade');
       this.backdropElement.classList.remove('in');
     }, 250);
-    window.setTimeout(() => {
+    globalThis.setTimeout(() => {
       this.backdropElement.classList.remove('show', 'fade');
       document.body.classList.remove('modal-open');
     }, 500);
