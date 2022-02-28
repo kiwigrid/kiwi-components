@@ -1,8 +1,8 @@
-import { newSpecPage } from '@stencil/core/testing';
-import { KiwiModal } from './kiwi-modal';
 import { h } from '@stencil/core';
-import { expectDefined } from '../util/testing';
+import { newSpecPage } from '@stencil/core/testing';
 import { KiwiModalFooter } from '../kiwi-modal-footer/kiwi-modal-footer';
+import { expectDefined } from '../util/testing';
+import { KiwiModal } from './kiwi-modal';
 
 describe('kiwi-modal', () => {
   it('renders', async () => {

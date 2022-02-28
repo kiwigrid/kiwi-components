@@ -87,7 +87,7 @@ describe('kiwi-pager', () => {
   });
 
   it('emits pageChanged event on input after debounce', async () => {
-    jest.useFakeTimers();
+    jest.useFakeTimers('legacy');
 
     const pager = await newSpecPage({
       components: [KiwiPager],
@@ -106,9 +106,8 @@ describe('kiwi-pager', () => {
 
       jest.spyOn(pagerInst.pageChanged, 'emit');
 
-      const input = document.querySelector<HTMLInputElement>(
-        'input.pager-input',
-      );
+      const input =
+        document.querySelector<HTMLInputElement>('input.pager-input');
 
       expectDefined(input);
 
@@ -131,7 +130,7 @@ describe('kiwi-pager', () => {
   });
 
   it('emits pageChanged event on click after debounce', async () => {
-    jest.useFakeTimers();
+    jest.useFakeTimers('legacy');
 
     const pager = await newSpecPage({
       components: [KiwiPager],

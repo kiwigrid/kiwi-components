@@ -38,7 +38,7 @@ describe('kiwi-i18next-provider', () => {
 
     expect(store.get('t')('common:hello')).toEqual('Hallo');
 
-    (page.rootInstance as KiwiI18nextProvider).lng = 'en';
+    (page.root as HTMLKiwiI18nextProviderElement).lng = 'en';
 
     expect(store.get('t')('common:hello')).toEqual('Hello');
   });

@@ -1,3 +1,4 @@
+import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 import { fakeSchedulers } from 'rxjs-marbles/jest';
 import { KiwiInput } from '../kiwi-input/kiwi-input';
@@ -52,16 +53,16 @@ describe('kiwi-searchbar', () => {
   });
 
   describe('async behaviour', () => {
-    beforeEach(() => jest.useFakeTimers());
+    beforeEach(() => jest.useFakeTimers('legacy'));
+    afterEach(() => jest.useRealTimers());
 
-    it(
-      'emits search event on type',
-      fakeSchedulers(async (advance) => {
-        const searchbar = await newSpecPage({
-          components: [KiwiSearchbar, KiwiInput],
-          html: `<kiwi-searchbar debounce="1000"></kiwi-searchbar>`,
-        });
+    it('emits search event on type', async () => {
+      const searchbar = await newSpecPage({
+        components: [KiwiSearchbar, KiwiInput],
+        template: () => <kiwi-searchbar debounce={1000}></kiwi-searchbar>,
+      });
 
+      fakeSchedulers((advance) => {
         const triggerSearchSpy = jest.fn();
         const rootElement = searchbar.root;
         expectDefined(rootElement);
@@ -71,16 +72,17 @@ describe('kiwi-searchbar', () => {
         expectDefined(input);
         input.value = '123';
         input.dispatchEvent(new Event('input'));
-        await searchbar.waitForChanges();
 
         expect(triggerSearchSpy).not.toHaveBeenCalled();
+
         advance(800);
         expect(triggerSearchSpy).not.toHaveBeenCalled();
         advance(200);
+
         expect(triggerSearchSpy).toHaveBeenCalledWith(
           expect.objectContaining({ detail: '123' }),
         );
-      }),
-    );
+      })();
+    });
   });
 });

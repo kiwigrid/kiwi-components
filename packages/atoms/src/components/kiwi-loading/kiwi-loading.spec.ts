@@ -12,7 +12,7 @@ describe('kiwi-loading', () => {
 
     expect(loading.root).toMatchSnapshot('loading');
 
-    loading.rootInstance.loading = false;
+    (loading.root as HTMLKiwiLoadingElement).loading = false;
     await loading.waitForChanges();
 
     expect(loading.root).toMatchSnapshot('not loading');
