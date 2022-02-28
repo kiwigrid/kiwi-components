@@ -8,7 +8,7 @@ import {
   Prop,
 } from '@stencil/core';
 import { Subject } from 'rxjs';
-import { debounceTime, tap } from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   tag: 'kiwi-searchbar',
@@ -43,15 +43,7 @@ export class KiwiSearchbar implements ComponentInterface {
 
   componentWillLoad(): void {
     this.debouncedEmission
-      .pipe(
-        tap((query) => {
-          console.log('Query vor debounce:', query, this.debounce);
-        }),
-        debounceTime(this.debounce),
-        tap((query) => {
-          console.log('Query nach debounce:', query);
-        }),
-      )
+      .pipe(debounceTime(this.debounce))
       .subscribe((query) => this.emitTriggerSearch(query));
   }
 
