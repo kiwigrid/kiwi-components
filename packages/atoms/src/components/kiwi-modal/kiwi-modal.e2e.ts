@@ -25,6 +25,7 @@ describe('kiwi-modal', () => {
     await page.addStyleTag({
       url: globalStylesUrl,
     });
+    await page.waitForNetworkIdle();
 
     const modals = await page.findAll('kiwi-modal');
     const modalOne = modals[0];
