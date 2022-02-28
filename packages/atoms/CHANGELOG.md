@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.1](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-atoms@0.9.0...@kiwigrid/kiwi-atoms@0.9.1) (2022-02-28)
+
+
+### Bug Fixes
+
+* **atoms:** add waitForNetworkIdle to kiwi-modal e2e test ([1dce400](https://github.com/kiwigrid/kiwi-components/commit/1dce400f61e2126fc53e1f7c97c883b581bc3517))
+* **atoms:** fix scrolling for consecutive modals ([e7d54e6](https://github.com/kiwigrid/kiwi-components/commit/e7d54e60d79d866c5ac75d4ec49d72a324ead57c))
+* **atoms:** improve storybook configuration ([a0cef04](https://github.com/kiwigrid/kiwi-components/commit/a0cef045542ce2562aeb0bfe7ead072be17bf8b5))
+* **atoms:** remove unnecessary console logs ([156703b](https://github.com/kiwigrid/kiwi-components/commit/156703bd7951ffba9b2f2a3471d8dcd5ded4b97c))
+
+
+
+
+
 # [0.9.0](https://github.com/kiwigrid/kiwi-components/compare/@kiwigrid/kiwi-atoms@0.8.3...@kiwigrid/kiwi-atoms@0.9.0) (2022-02-03)
 
 
